@@ -2,9 +2,8 @@ export default function Project() {
     return (
         <>
             {/* Fixed Header */}
-            <header className="w-full text-[36px] sm:text-[45px] md:text-[60px] lg:text-[100px] xl:text-[140px] leading-none tracking-wide font-bold">
-                PROJECTS
-            </header>
+            <header className="w-full text-[36px] sm:text-[45px] md:text-[60px] lg:text-[100px] xl:text-[140px] 
+            leading-none tracking-wide font-bold">PROJECTS</header>
 
                 <div className="px-4 sm:px-10 pb-16 bg-black min-h-screen text-white">
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-start">
@@ -34,14 +33,11 @@ export default function Project() {
                     </div>
 
                     {/* Visit Site */}
-                    <div className="flex items-start justify-end mt-4 md:mt-0">
-                    <a
-                        href="https://titanic-survival-prediction-peach.vercel.app"
-                        target="_blank"
-                        className="text-[#d8ff4a] text-[28px] sm:text-[36px] hover:underline"
-                    >
-                        VISIT SITE →
-                    </a>
+                    <div className="w-full justify-end sm:justify-start">
+                        <a href="https://titanic-survival-prediction-peach.vercel.app" target="_blank"
+                            className="text-[#d8ff4a] text-[28px] sm:text-[36px] hover:underline">
+                            VISIT SITE →
+                        </a>
                     </div>
                 </div>
             </div>
