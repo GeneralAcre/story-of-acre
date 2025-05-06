@@ -1,6 +1,5 @@
 'use client';
-
-import { useState, useEffect } from 'react';
+import { useEffect, useState} from 'react';
 
 const TypingText = () => {
   const messages = ['NICE TO MEET YOU ALL','はじめまして。よろしくおねがいします','认识你很开心'];
@@ -181,8 +180,6 @@ const RandomAppearText = ({ text, delay = 500, speed = 150, className = "" }) =>
       </header>
     );
   };
-  
 
 export default TypingText;
-export  {RandomAppearText};
-export  {AnimatedHeader};
+export {RandomAppearText,AnimatedHeader};

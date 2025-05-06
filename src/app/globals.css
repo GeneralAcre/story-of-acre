@@ -5,3 +5,12 @@ body {
   background-color: black;
   color: white;
 }
+
+@keyframes fillBox {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
