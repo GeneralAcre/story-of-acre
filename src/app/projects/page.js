@@ -1,3 +1,4 @@
+import Test from './Test';
 import Titanic from './titanic';
 
 export default function Projects() {
@@ -7,6 +8,8 @@ export default function Projects() {
        leading-none tracking-wide font-bold mb-8 ">PROJECTS</header>
 
       <Titanic/> {/* Titanic Project*/}
+
+      <Test/> {/* Titanic Project*/}
 
     </div>
   );

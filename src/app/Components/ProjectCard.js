@@ -9,7 +9,8 @@ export default function ProjectCard({
   timeline,
   description,
   overview,
-  imageUrl, // dynamic image for each project
+  imageUrl,
+  children, // dynamic image for each project
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -109,7 +110,10 @@ export default function ProjectCard({
                         <p className="mt-1">Coding & Debugging</p>
                     </div>
                 </div>
-             
+
+
+                {children && <div className="mt-[20px]">{children}</div>} {/* Custom Section */}
+
             </div>
           </div>
         </div>

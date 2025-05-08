@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import ProjectCard from '../Components/ProjectCard';
-import EndResult from './TitanicDetail';
+import EndResult, { OtherDetails } from './TitanicDetail';
 
-export default function Titanic() {
+export default function Test() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -66,7 +66,7 @@ export default function Titanic() {
           imageUrl="/Titanic/titanic-vintage-image.jpg"
         >
 
-          <EndResult/>
+          <OtherDetails/>
 
         </ProjectCard>
       
