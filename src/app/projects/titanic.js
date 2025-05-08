@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import ProjectCard from '../Components/ProjectCard';
-import ProjectModal from '../Components/ProjectCard';
 
 export default function Titanic() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,19 +49,22 @@ export default function Titanic() {
       </div>
 
       {/* Modal */}
-      <ProjectModal
-        year="2025"
-        name="TITANIC SURVIVAL PREDICTION"
-        role="Design & Coding"
-        timeline="February - April 2025"
-        description="This website was created to predict Titanic’s survival rate. 
-        To analyze what type of person is most likely to survive the Titanic."
-        overview="For a very long time, I have enjoyed watching Titanic. Its story astounded me. 
-        I occasionally consider what kind of person would have the best chance of surviving if they were on the Titanic. 
-        I therefore made the decision to create a website that predicts survival chance using data from Kaggle."
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
+    
+        <ProjectCard
+          year="2025"
+          name="TITANIC SURVIVAL PREDICTION"
+          role="Design & Coding"
+          timeline="February - April 2025"
+          description="This website was created to predict Titanic’s survival rate. 
+          To analyze what type of person is most likely to survive the Titanic."
+          overview="For a very long time, I have enjoyed watching Titanic. Its story astounded me. 
+          I occasionally consider what kind of person would have the best chance of surviving if they were on the Titanic. 
+          I therefore made the decision to create a website that predicts survival chance using data from Kaggle."
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          imageUrl="/Titanic/titanic-vintage-image.jpg"
+        />
+      
     </div>
   );
 }

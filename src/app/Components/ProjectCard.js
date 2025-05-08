@@ -2,7 +2,15 @@
 
 import { useState } from 'react';
 
-export default function ProjectModal({ year, name, role, timeline, description, overview }) {
+export default function ProjectCard({
+  year,
+  name,
+  role,
+  timeline,
+  description,
+  overview,
+  imageUrl, // dynamic image for each project
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -16,44 +24,92 @@ export default function ProjectModal({ year, name, role, timeline, description, 
       {/* Modal */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center px-4">
-          <div className="bg-white max-w-[800px] w-full p-6 rounded-lg text-black relative">
-            <button onClick={() => setIsOpen(false)} className="absolute top-2 right-3 text-black text-xl">×</button>
+          <div className="bg-white w-full h-full p-0 sm:p-0 rounded-xl text-black relative overflow-y-auto shadow-lg">
+            
+            {/* Sticky Top Bar */}
+            <div className="sticky top-0 z-10 bg-[#EAFE48] flex justify-center items-center py-2 border-b border-black relative">
+                {/* Project Name in Center */}
+                <h3 className="text-black font-bold text-[16px] sm:text-[24px] tracking-widest text-center">
+                    {name}
+                </h3>
 
-            {/* Header */}
-            <h2 className="text-[#D61A69] text-2xl font-bold mb-2">{name}</h2>
-            <p className="text-sm mb-2">&lt;UX/UI Designs&gt; &lt;Uni Project&gt;</p>
-            <p className="mb-4">{description}</p>
+                {/* Close Button in Top Right */}
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 group">
+                    <button
+                    onClick={() => setIsOpen(false)}
+                    className="text-black text-2xl font-bold hover:opacity-80"
+                    >
+                    ×
+                    </button>
 
-            {/* Info */}
-            <div className="flex justify-between text-sm text-gray-500 mt-4">
-              <span><strong>Role:</strong> {role}</span>
-              <span><strong>Timeline:</strong> {timeline}</span>
+                    {/* Tooltip */}
+                    <span className="absolute right-0 top-full mt-1 bg-[#D61A69] text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+                    Close Tab
+                    </span>
+                </div>
             </div>
 
-            {/* Overview */}
-            <div className="mt-6 border-t pt-4 text-sm text-gray-700">
-              <h3 className="text-[#D61A69] font-semibold mb-2">Overview</h3>
-              <p>{overview}</p>
-            </div>
+            {/* Header Image */}
+            <div
+              className="w-full h-[550px] bg-cover bg-center"
+              style={{ backgroundImage: `url(${imageUrl})` }}
+            />
 
-            {/* 4-Step Section */}
-            <div className="mt-6 border border-[#D61A69] p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-sm">
+            {/* Content Section */}
+            <div className="p-6 sm:p-10 space-y-6">
+              {/* Background Section */}
               <div>
-                <p className="text-[#D61A69] font-bold">{`<RESEARCH>`}</p>
-                <p className="mt-1">Gatering Data</p>
+                <p className="text-pink-600 text-xs tracking-widest font-bold">BACKGROUND</p>
+                <h2 className="text-pink-600 text-3xl sm:text-4xl font-bold tracking-widest mb-2">{name}</h2>
+                <p className="text-sm text-gray-700 mb-2">&lt;UX/UI Design&gt; &lt;Uni Project&gt;</p>
+                <p className="text-sm text-black leading-relaxed">{description}</p>
               </div>
+
+              {/* Role & Timeline */}
+              <div className="flex flex-col sm:flex-row justify-between border-y py-4 text-sm">
+                <div>
+                  <p className="text-pink-600 font-bold">ROLE</p>
+                  <p>{role}</p>
+                </div>
+                <div>
+                  <p className="text-pink-600 font-bold">TIMELINE</p>
+                  <p>{timeline}</p>
+                </div>
+              </div>
+
+              {/* Visit Site */}
               <div>
-                <p className="text-[#D61A69] font-bold">{`<DESIGN>`}</p>
-                <p className="mt-1">Select style<br />of Website</p>
+                <button className="bg-[#EAFE48] text-black font-bold px-4 py-2 mt-2 rounded-sm inline-flex items-center hover:opacity-80 transition">
+                  VISIT SITE <span className="ml-2">→</span>
+                </button>
               </div>
+
+
+              {/* Overview */}
               <div>
-                <p className="text-[#D61A69] font-bold">{`<PROTOTYPE>`}</p>
-                <p className="mt-1">Responsive & Layout</p>
+                <p className="text-pink-600 text-xs font-bold tracking-widest">OVERVIEW</p>
+                <p className="text-sm mt-2 text-gray-800 leading-relaxed">{overview}</p>
               </div>
-              <div>
-                <p className="text-[#FFFFFF] font-bold">{`<IMPLEMENT>`}</p>
-                <p className="mt-1">Coding & Debugging</p>
-              </div>
+            
+              <div className="mt-6 border border-[#D61A69] p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-sm">
+                    <div>
+                        <p className="text-[#D61A69] font-bold">&lt;RESEARCH&gt;</p>
+                        <p className="mt-1">Gathering Data</p>
+                    </div>
+                    <div>
+                        <p className="text-[#D61A69] font-bold">&lt;DESIGN&gt;</p>
+                        <p className="mt-1">Select style<br />of Website</p>
+                    </div>
+                    <div>
+                        <p className="text-[#D61A69] font-bold">&lt;PROTOTYPE&gt;</p>
+                        <p className="mt-1">Responsive & Layout</p>
+                    </div>
+                    <div>
+                        <p className="text-[#D61A69] font-bold">&lt;IMPLEMENT&gt;</p>
+                        <p className="mt-1">Coding & Debugging</p>
+                    </div>
+                </div>
+             
             </div>
           </div>
         </div>
