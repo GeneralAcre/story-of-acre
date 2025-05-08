@@ -64,6 +64,7 @@ export default function Titanic() {
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           imageUrl="/Titanic/titanic-vintage-image.jpg"
+          siteUrl="https://titanic-survival-prediction-peach.vercel.app"
         >
 
           <EndResult/>

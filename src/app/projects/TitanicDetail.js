@@ -1,8 +1,8 @@
 export default function EndResult(){
     return(
-        <div className="mt-4"> {/* Extra details specific to this project */}
-        <h4 className="text-pink-600 font-bold">Prediction Accuracy</h4>
-        <p className="text-sm">Achieved ~85% accuracy using cross-validation.</p>
+        <div className="mt-[50px] w-full bg-[#D61A69] h-[1000px]"> {/* Extra details specific to this project */}
+            <h1 className="mt-[50px]">END RESULT</h1>
+            <div>This is end result</div>
         </div>
     )
 }

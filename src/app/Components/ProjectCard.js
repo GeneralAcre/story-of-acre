@@ -10,6 +10,7 @@ export default function ProjectCard({
   description,
   overview,
   imageUrl,
+  siteUrl,
   children, // dynamic image for each project
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,9 +45,11 @@ export default function ProjectCard({
                     </button>
 
                     {/* Tooltip */}
-                    <span className="absolute right-0 top-full mt-1 bg-[#D61A69] text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+                    <span className="absolute right-0 top-full mt-1 bg-[#D61A69] text-white text-[16px] px-2 py-1 
+                    rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
                     Close Tab
                     </span>
+
                 </div>
             </div>
 
@@ -60,36 +63,47 @@ export default function ProjectCard({
             <div className="p-6 sm:p-10 space-y-6">
               {/* Background Section */}
               <div>
-                <p className="text-pink-600 text-xs tracking-widest font-bold">BACKGROUND</p>
-                <h2 className="text-pink-600 text-3xl sm:text-4xl font-bold tracking-widest mb-2">{name}</h2>
-                <p className="text-sm text-gray-700 mb-2">&lt;UX/UI Design&gt; &lt;Uni Project&gt;</p>
-                <p className="text-sm text-black leading-relaxed">{description}</p>
+                <p className="text-[#D61A69] text-[20px] tracking-widest font-bold ">BACKGROUND</p>
+
+                <hr className="border-b-1 border-[#72767F] mb-[30px]" />
+
+                <h2 className="text-[#D61A69] text-[32px] sm:text-4xl font-bold tracking-widest mb-[15px]">{name}</h2>
+                <p className="text-[20px] text-[#72767F] mb-2">&lt;UX/UI Design&gt; &lt;Uni Project&gt;</p>
+                <p className="text-[20px] text-black leading-relaxed max-w-[750px]">{description}</p>
               </div>
 
               {/* Role & Timeline */}
               <div className="flex flex-col sm:flex-row justify-between border-y py-4 text-sm">
                 <div>
-                  <p className="text-pink-600 font-bold">ROLE</p>
-                  <p>{role}</p>
+                  <p className="text-[#D61A69] text-[20px] font-bold">ROLE</p>
+                  <p className="text-[20px]">{role}</p>
                 </div>
                 <div>
-                  <p className="text-pink-600 font-bold">TIMELINE</p>
-                  <p>{timeline}</p>
+                  <p className="text-[#D61A69] text-[20px] font-bold">TIMELINE</p>
+                  <p className="text-[20px]">{timeline}</p>
                 </div>
               </div>
 
               {/* Visit Site */}
-              <div>
-                <button className="bg-[#EAFE48] text-black font-bold px-4 py-2 mt-2 rounded-sm inline-flex items-center hover:opacity-80 transition">
-                  VISIT SITE <span className="ml-2">→</span>
-                </button>
-              </div>
+              {siteUrl && (
+                <a
+                  href={siteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block"
+                >
+                  <button className="bg-[#EAFE48] text-black font-bold px-4 py-2 mt-2 rounded-sm inline-flex items-center hover:opacity-80 transition">
+                    VISIT SITE <span className="ml-2">→</span>
+                  </button>
+                </a>
+              )}
 
 
               {/* Overview */}
               <div>
-                <p className="text-pink-600 text-xs font-bold tracking-widest">OVERVIEW</p>
-                <p className="text-sm mt-2 text-gray-800 leading-relaxed">{overview}</p>
+                <p className="text-[#D61A69] text-[20px] tracking-widest font-bold ">OVERVIEW</p>
+                <hr className="border-b-1 border-[#72767F] mb-[30px]" />
+                <p className="text-[20px] mt-2 text-black leading-relaxed max-w-[1200px]">{overview}</p>
               </div>
             
               <div className="mt-6 border border-[#D61A69] p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-sm">
