@@ -1,5 +1,4 @@
 'use client';
-
 import '@fontsource/press-start-2p';
 
 export default function LoadingScreen() {
@@ -10,26 +9,33 @@ export default function LoadingScreen() {
       </h1>
 
       <div className="flex flex-wrap justify-center gap-1 max-w-full px-2">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="w-4 h-6 sm:w-6 sm:h-8 md:w-8 md:h-10 border-2 border-white bg-black overflow-hidden"
-          >
+        {[...Array(15)].map((_, i) => {
+          const delay = i * 200; // in milliseconds
+          return (
             <div
-              className="h-full bg-[#d8ff4a]"
-              style={{
-                width: '0%',
-                animation: 'fillBox 0.5s steps(1) forwards',
-                animationDelay: `${i * 0.2}s`, // Adjust delay to ensure filling starts one by one
-              }}
-            />
-          </div>
-        ))}
+              key={i}
+              className="w-4 h-6 sm:w-6 sm:h-8 md:w-8 md:h-10 border-2 border-white bg-black overflow-hidden"
+            >
+              <div
+                className="h-full bg-[#d8ff4a] animate-fillBox"
+                style={{
+                  animationDelay: `${delay}ms`,
+                }}
+              />
+            </div>
+          );
+        })}
       </div>
 
       <style jsx global>{`
         @keyframes fillBox {
-          to { width: 100%; }
+          to {
+            width: 100%;
+          }
+        }
+        .animate-fillBox {
+          width: 0%;
+          animation: fillBox 0.5s steps(1) forwards;
         }
       `}</style>
     </div>
