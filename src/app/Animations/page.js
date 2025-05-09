@@ -85,11 +85,12 @@ const RandomAppearText = ({ text, delay = 500, speed = 150, className = "" }) =>
   return <p className={className}>{displayedText}</p>;
 };
 
+
+const colors = ['#D61A69', '#d8ff4a'];
 // AnimatedHeader Component
 const AnimatedHeader = () => {
   const firstName = 'SANPAPHAT';
   const lastName = 'PORNTONGPRASERT';
-  const colors = ['#D61A69', '#d8ff4a'];
 
   const [coloredLetters, setColoredLetters] = useState([]);
 
