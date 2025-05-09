@@ -152,7 +152,7 @@ const RandomAppearText = ({ text, delay = 500, speed = 150, className = "" }) =>
   
     return (
       <header className="fixed top-0 left-0 z-20 text-[45px] sm:text-[60px] md:text-[100px] lg:text-[140px] leading-none 
-      tracking-wide font-bold flex flex-wrap ">{/* First Name */}
+      tracking-wide font-bold flex flex-wrap ml-[10px]">{/* First Name */}
         {firstName.split('').map((char, i) => (
           <span
             key={`first-${i}`}
