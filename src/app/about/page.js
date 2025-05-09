@@ -12,7 +12,11 @@ export default function About() {
             {/* Video Section */}
             <div className="flex justify-center md:justify-start">
               <div className="w-full max-w-xs sm:max-w-sm md:max-w-md aspect-video">
-                <video src="/About-me.mp4" autoPlay loop muted playsInline className="w-full  h-auto object-cover rounded" />
+                <video src="/About-me.mp4" autoPlay loop muted playsInline className="w-full  h-auto object-cover rounded">
+                  <source src="/About-me.mp4" type="video/mp4" />
+                  <source src="/About-me.webm" type="video/webm" />
+                  <source src="/About-me.ogv" type="video/ogg" />
+                </video>
               </div>
             </div>
 

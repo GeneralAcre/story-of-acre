@@ -18,9 +18,9 @@ export default function LoadingScreen() {
             <div
               className="h-full bg-[#d8ff4a]"
               style={{
-                width: '100%',
+                width: '0%',
                 animation: 'fillBox 0.5s steps(1) forwards',
-                animationDelay: `${i * 0.2}s`, // Adjust delay to ensure filling starts on time
+                animationDelay: `${i * 0.2}s`, // Adjust delay to ensure filling starts one by one
               }}
             />
           </div>
