@@ -27,9 +27,9 @@ export default function About() {
 
               {/* Intro Text */}
               <div className="space-y-4 mb-8 text-[18px] sm:text-[22px] md:text-[24px] text-white">
-                <p>Hi! I'm Acre</p>
-                <p>I'm a UI/UX Designer based in Bangkok, Thailand, with a background in Industrial Design.</p>
-                <p>I'm passionate about turning curious ideas into clean, functional digital experiences.</p>
+                <p>Hi! I&apos;m Acre</p>
+                <p>I&apos;m a UI/UX Designer based in Bangkok, Thailand, with a background in Industrial Design.</p>
+                <p>I&apos;m passionate about turning curious ideas into clean, functional digital experiences.</p>
                 <p>I believe in thoughtful design, real value, and building fresh, honest solutions.</p>
               </div>
 
