@@ -137,19 +137,19 @@ const AnimatedHeader = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 z-20 text-[45px] sm:text-[60px] md:text-[100px] lg:text-[140px] leading-none tracking-wide font-bold flex flex-wrap ml-[10px]">
-      {firstName.split('').map((char, i) => (
-        <span key={`first-${i}`} style={{ color: getColor('first', i), transition: 'color 0.6s ease' }}>
-          {char}
-        </span>
-      ))}
-      <span className="px-2" />
-      {lastName.split('').map((char, i) => (
-        <span key={`last-${i}`} style={{ color: getColor('last', i), transition: 'color 0.6s ease' }}>
-          {char}
-        </span>
-      ))}
-    </header>
+    <header className="fixed top-0 left-0 w-full z-20 text-[36px] sm:text-[45px] md:text-[100px] lg:text-[140px] leading-none tracking-wide font-bold flex flex-wrap mx-4">
+    {firstName.split('').map((char, i) => (
+      <span key={`first-${i}`} style={{ color: getColor('first', i), transition: 'color 0.6s ease' }}>
+        {char}
+      </span>
+    ))}
+    <span className="px-2" />
+    {lastName.split('').map((char, i) => (
+      <span key={`last-${i}`} style={{ color: getColor('last', i), transition: 'color 0.6s ease' }}>
+        {char}
+      </span>
+    ))}
+  </header>
   );
 };
 

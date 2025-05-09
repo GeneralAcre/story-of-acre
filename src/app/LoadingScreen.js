@@ -13,14 +13,14 @@ export default function LoadingScreen() {
         {[...Array(15)].map((_, i) => (
           <div
             key={i}
-            className="w-4 h-6 border-2 border-white bg-black overflow-hidden"
+            className="w-4 h-6 sm:w-6 sm:h-8 md:w-8 md:h-10 border-2 border-white bg-black overflow-hidden"
           >
             <div
               className="h-full bg-[#d8ff4a]"
               style={{
-                width: '0%',
+                width: '100%',
                 animation: 'fillBox 0.5s steps(1) forwards',
-                animationDelay: `${i * 0.2}s`,
+                animationDelay: `${i * 0.2}s`, // Adjust delay to ensure filling starts on time
               }}
             />
           </div>
@@ -29,9 +29,7 @@ export default function LoadingScreen() {
 
       <style jsx global>{`
         @keyframes fillBox {
-          to {
-            width: 100%;
-          }
+          to { width: 100%; }
         }
       `}</style>
     </div>

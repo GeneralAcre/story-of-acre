@@ -11,8 +11,8 @@ export default function About() {
           <div className="flex flex-col md:grid md:grid-cols-3 gap-8">
             {/* Video Section */}
             <div className="flex justify-center md:justify-start">
-              <div className="w-full max-w-xs sm:max-w-sm md:max-w-md aspect-[9/10]">
-                <video src="/About-me.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover rounded" />
+              <div className="w-full max-w-xs sm:max-w-sm md:max-w-md aspect-video">
+                <video src="/About-me.mp4" autoPlay loop muted playsInline className="w-full  h-auto object-cover rounded" />
               </div>
             </div>
 
