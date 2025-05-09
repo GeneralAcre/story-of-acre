@@ -86,7 +86,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="h-16"></div>
+      <div className="h-20 sm:h-30"></div>
     </div>
   );
 }

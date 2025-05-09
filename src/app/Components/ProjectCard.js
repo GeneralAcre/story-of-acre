@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 
 export default function ProjectCard({
   year,
@@ -11,18 +8,13 @@ export default function ProjectCard({
   overview,
   imageUrl,
   siteUrl,
-  children, // dynamic image for each project
+  children,
+  isOpen,       
+  setIsOpen,        
 }) {
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
-      {/* Year + Read More */}
-      <div className="flex text-[20px] sm:text-[24px] mt-2 ml-0 sm:ml-[60px] gap-4">
-        <p className="text-[#06FFFE]">{year}</p>
-        <button onClick={() => setIsOpen(true)} className="text-white underline">Read More</button>
-      </div>
-
       {/* Modal */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center px-4">

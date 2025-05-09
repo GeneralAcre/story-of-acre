@@ -9,6 +9,8 @@ export default function Projects() {
 
       <Titanic/> {/* Titanic Project*/}
 
+      <div className="mb-[50px]"></div>
+
 
     </div>
   );

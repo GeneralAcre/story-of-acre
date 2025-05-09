@@ -9,7 +9,7 @@ export default function LoadingScreen() {
         LOADING<span className="animate-bounce">...</span>
       </h1>
 
-      <div className="flex gap-1">
+      <div className="flex flex-wrap justify-center gap-1 max-w-full px-2">
         {[...Array(15)].map((_, i) => (
           <div
             key={i}
