@@ -9,7 +9,6 @@ export default function Projects() {
 
       <Titanic/> {/* Titanic Project*/}
 
-      <Test/> {/* Titanic Project*/}
 
     </div>
   );
