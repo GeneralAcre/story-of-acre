@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
 body {
-  font-family: var(--font-vt323), monospace;
+  font-family: var(--font-vt323), Lato;
   background-color: black;
   color: white;
+}
+
+
+.font-lato {
+  font-family: var(--font-lato);
 }
 
 @keyframes fillBox {

@@ -37,13 +37,13 @@ export default function Titanic() {
         {/* Info Section */}
         <div className="max-w-[800px] flex-1">
           <p className="text-[#E4FF00] text-[28px] md:text-[32px] lg:text-[36px]  mb-2">{`[/> INFO`}</p>
-          <p className="text-[20px] lg:text-[24px] mb-4">
+          <p className="text-[20px] lg:text-[24px] mb-4 ">
             This project is a machine learning web app that predicts whether a passenger would survive 
             the Titanic disaster based on personal and travel information, using historical data and classification models, 
             with an interactive user interface for real-time predictions.
           </p>
-          <p className="text-[20px] lg:text-[24px]  mb-1">DESIGN: FIGMA</p>
-          <p className="text-[20px] lg:text-[24px] mb-1">TECH: NEXTJS , TAILWINDCSS</p>
+          <p className="text-[20px] lg:text-[24px]  mb-1 ">DESIGN: FIGMA</p>
+          <p className="text-[20px] lg:text-[24px] mb-1 ">TECH: NEXTJS , TAILWINDCSS</p>
           <p className="text-[20px] lg:text-[24px]  mb-1 break-all">
             https://titanic-survival-prediction-peach.vercel.app
           </p>

@@ -1,4 +1,3 @@
-import Test from './Test';
 import Titanic from './titanic';
 
 export default function Projects() {

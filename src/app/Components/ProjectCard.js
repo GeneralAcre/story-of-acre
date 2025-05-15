@@ -1,6 +1,5 @@
 
 export default function ProjectCard({
-  year,
   name,
   role,
   timeline,
@@ -29,11 +28,8 @@ export default function ProjectCard({
 
                 {/* Close Button in Top Right */}
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 group">
-                    <button
-                    onClick={() => setIsOpen(false)}
-                    className="text-black text-2xl font-bold hover:opacity-80"
-                    >
-                    ×
+                    <button onClick={() => setIsOpen(false)}
+                    className="text-black text-2xl font-bold hover:opacity-80">×
                     </button>
 
                     {/* Tooltip */}
@@ -46,10 +42,7 @@ export default function ProjectCard({
             </div>
 
             {/* Header Image */}
-            <div
-              className="w-full h-[550px] bg-cover bg-center"
-              style={{ backgroundImage: `url(${imageUrl})` }}
-            />
+            <div className="w-full h-[550px] bg-cover bg-center" style={{ backgroundImage: `url(${imageUrl})` }}/>
 
             {/* Content Section */}
             <div className="p-6 sm:p-10 space-y-6">
@@ -61,31 +54,26 @@ export default function ProjectCard({
 
                 <h2 className="text-[#D61A69] text-[32px] sm:text-4xl font-bold tracking-widest mb-[15px]">{name}</h2>
                 <p className="text-[20px] text-[#72767F] mb-2">&lt;UX/UI Design&gt; &lt;Uni Project&gt;</p>
-                <p className="text-[20px] text-black leading-relaxed max-w-[750px]">{description}</p>
+                <p className="text-[16px] text-black leading-relaxed max-w-[750px] font-lato">{description}</p>
               </div>
 
               {/* Role & Timeline */}
               <div className="flex flex-col sm:flex-row justify-between border-y py-4 text-sm">
                 <div>
                   <p className="text-[#D61A69] text-[20px] font-bold">ROLE</p>
-                  <p className="text-[20px]">{role}</p>
+                  <p className="text-[16px] font-lato">{role}</p>
                 </div>
                 <div>
                   <p className="text-[#D61A69] text-[20px] font-bold">TIMELINE</p>
-                  <p className="text-[20px]">{timeline}</p>
+                  <p className="text-[16px] font-lato">{timeline}</p>
                 </div>
               </div>
 
               {/* Visit Site */}
               {siteUrl && (
-                <a
-                  href={siteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
-                  <button className="bg-[#EAFE48] text-black font-bold px-4 py-2 mt-2 rounded-sm inline-flex items-center hover:opacity-80 transition">
-                    VISIT SITE <span className="ml-2">→</span>
+                <a href={siteUrl} target="_blank" rel="noopener noreferrer"className="inline-block">
+                  <button className="bg-[#EAFE48] text-black font-bold px-4 py-2 mt-2 rounded-sm 
+                    inline-flex items-center hover:opacity-80 transition">VISIT SITE <span className="ml-2">→</span>
                   </button>
                 </a>
               )}
@@ -95,28 +83,27 @@ export default function ProjectCard({
               <div>
                 <p className="text-[#D61A69] text-[20px] tracking-widest font-bold ">OVERVIEW</p>
                 <hr className="border-b-1 border-[#72767F] mb-[30px]" />
-                <p className="text-[20px] mt-2 text-black leading-relaxed max-w-[1200px]">{overview}</p>
+                <p className="mt-2 text-black leading-relaxed max-w-[1200px] text-[16px] font-lato">{overview}</p>
               </div>
             
               <div className="mt-6 border border-[#D61A69] p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-sm">
                     <div>
                         <p className="text-[#D61A69] font-bold">&lt;RESEARCH&gt;</p>
-                        <p className="mt-1">Gathering Data</p>
+                        <p className="mt-1 font-lato text-[12px]">Gathering Data</p>
                     </div>
                     <div>
                         <p className="text-[#D61A69] font-bold">&lt;DESIGN&gt;</p>
-                        <p className="mt-1">Select style<br />of Website</p>
+                        <p className="mt-1 font-lato text-[12px]">Select style<br />of Website</p>
                     </div>
                     <div>
                         <p className="text-[#D61A69] font-bold">&lt;PROTOTYPE&gt;</p>
-                        <p className="mt-1">Responsive & Layout</p>
+                        <p className="mt-1 font-lato text-[12px]">Responsive & Layout</p>
                     </div>
                     <div>
                         <p className="text-[#D61A69] font-bold">&lt;IMPLEMENT&gt;</p>
-                        <p className="mt-1">Coding & Debugging</p>
+                        <p className="mt-1 font-lato text-[12px]">Coding & Debugging</p>
                     </div>
                 </div>
-
 
                 {children && <div className="mt-[20px]">{children}</div>} {/* Custom Section */}
 
