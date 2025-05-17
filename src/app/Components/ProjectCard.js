@@ -20,25 +20,21 @@ export default function ProjectCard({
           <div className="bg-white w-full h-full p-0 sm:p-0 rounded-xl text-black relative overflow-y-auto shadow-lg">
             
             {/* Sticky Top Bar */}
-            <div className="sticky top-0 z-10 bg-[#EAFE48] flex justify-center items-center py-2 border-b border-black relative">
+            <div className="sticky top-0 z-10 bg-[#EAFE48] flex justify-center items-center py-2 
+                 border-b border-black relative">
                 {/* Project Name in Center */}
-                <h3 className="text-black font-bold text-[16px] sm:text-[24px] tracking-widest text-center">
-                    {name}
-                </h3>
+              <h3 className="text-black font-bold text-[16px] sm:text-[24px] tracking-widest text-center">{name}</h3>
 
-                {/* Close Button in Top Right */}
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 group">
-                    <button onClick={() => setIsOpen(false)}
-                    className="text-black text-2xl font-bold hover:opacity-80">×
-                    </button>
+              {/* Close Button in Top Right */}
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 group">
+                  <button onClick={() => setIsOpen(false)}
+                  className="text-black text-2xl font-bold hover:opacity-80">×</button>
 
-                    {/* Tooltip */}
-                    <span className="absolute right-0 top-full mt-1 bg-[#D61A69] text-white text-[16px] px-2 py-1 
-                    rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
-                    Close Tab
-                    </span>
-
-                </div>
+                  {/* Tooltip */}
+                  <span className="absolute right-0 top-full mt-1 bg-[#000000] text-white text-[16px] px-2 py-1 
+                  rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">Close Tab
+                  </span>
+              </div>
             </div>
 
             {/* Header Image */}
@@ -58,7 +54,7 @@ export default function ProjectCard({
               </div>
 
               {/* Role & Timeline */}
-              <div className="flex flex-col sm:flex-row justify-between border-y py-4 text-sm">
+              <div className="flex flex-row justify-between py-4 text-sm">
                 <div>
                   <p className="text-[#D61A69] text-[20px] font-bold">ROLE</p>
                   <p className="text-[16px] font-lato">{role}</p>
@@ -77,7 +73,6 @@ export default function ProjectCard({
                   </button>
                 </a>
               )}
-
 
               {/* Overview */}
               <div>
@@ -104,10 +99,10 @@ export default function ProjectCard({
                         <p className="mt-1 font-lato text-[12px]">Coding & Debugging</p>
                     </div>
                 </div>
-
-                {children && <div className="mt-[20px]">{children}</div>} {/* Custom Section */}
-
             </div>
+
+            {children && <div className="mt-[20px]">{children}</div>} {/*End Result Section */}
+
           </div>
         </div>
       )}

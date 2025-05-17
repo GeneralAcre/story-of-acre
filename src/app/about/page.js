@@ -57,8 +57,8 @@ export default function About() {
                 
 
       {/* Education Section */}
-      <div className="mx-auto px-4 mt-8 border-t border-gray-800">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl mb-6">Education</h2>
+      <div className="mx-auto px-4 mt-4 lg:mt-8 border-t border-white">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl mb-6 mt-4">Education</h2>
         
         <div className="border border-white p-4 md:p-6 max-w-full sm:max-w-xl md:max-w-2xl">
           {/* University Info with Logo - always keeping logo on left */}

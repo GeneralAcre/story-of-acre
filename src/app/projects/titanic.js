@@ -52,11 +52,8 @@ export default function Titanic() {
 
       {/* Visit Site */}
       <div className="mt-8 text-right lg:text-right text-center">
-        <Link
-          href="https://titanic-survival-prediction-peach.vercel.app"
-          target="_blank"
-          className="text-[#E4FF00] text-[28px] hover:underline"
-        >
+        <Link href="https://titanic-survival-prediction-peach.vercel.app" target="_blank"
+          className="text-[#E4FF00] text-[28px] hover:underline">
           VISIT SITE →
         </Link>
       </div>

@@ -48,7 +48,8 @@ export default function Menubar() {
 
       {/* Mobile Bottom Nav */}
       {isMobile && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white text-black flex justify-around py-3 z-20 shadow-inner border-t border-gray-300 text-[16px] sm:text-[18px]">
+        <div className="fixed bottom-0 left-0 right-0 bg-white text-black flex justify-around py-3 z-20 shadow-inner 
+        border-t border-gray-300 text-[16px] sm:text-[18px]">
           <Link href="/about" className="hover:text-[#D61A69] transition">
             {`</>`} ABOUT
           </Link>
