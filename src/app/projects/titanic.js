@@ -64,7 +64,7 @@ export default function Titanic() {
         name="TITANIC SURVIVAL PREDICTION"
         role="Design & Coding"
         timeline="February - April 2025"
-        description="This website was created to predict Titanic’s survival rate. 
+        description="This website was created to predict Titanic&apos;s survival rate. 
         To analyze what type of person is most likely to survive the Titanic."
         overview="For a very long time, I have enjoyed watching Titanic. Its story astounded me. 
         I occasionally consider what kind of person would have the best chance of surviving if they were on the Titanic. 

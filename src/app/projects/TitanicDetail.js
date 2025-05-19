@@ -11,8 +11,6 @@ export default function EndResult(){
             <WarningInfo/>
             <ResultInfo/>
             <AboutProjectInfo/>
-            <h1 className="text-[16px] font-bold text-[#FFFFFF] bg-[#030000]">FORM</h1>
-
 
         </div>
     )
