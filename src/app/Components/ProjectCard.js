@@ -16,7 +16,7 @@ export default function ProjectCard({
     <div>
       {/* Modal */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center px-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
           <div className="bg-white w-full h-full p-0 sm:p-0 rounded-xl text-black relative overflow-y-auto shadow-lg">
             
             {/* Sticky Top Bar */}
