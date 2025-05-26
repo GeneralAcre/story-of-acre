@@ -12,10 +12,8 @@ export default function About() {
             {/* Video Section */}
             <div className="w-full px-4">
               <div className="aspect-video max-w-[90vw] mx-auto">
-                <video autoPlay loop muted playsInline className="w-full h-auto object-cover rounded">
+                <video autoPlay loop muted playsInline className="w-full h-auto object-cover rounded " poster="/fallback.jpg">
                   <source src="/About-me.mp4" type="video/mp4" />
-                  <source src="/About-me.webm" type="video/webm" />
-                  <source src="/About-me.ogv" type="video/ogg" />
                 </video>
               </div>
             </div>
