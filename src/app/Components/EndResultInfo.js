@@ -32,7 +32,7 @@ export function StyleInfo() {
           <p className="font-lato text-white text-sm md:text-base max-w-xl leading-relaxed">
             This is the style I am using on this website.
             <br />
-            The Titanic survival prediction website uses the Rethink Sans font. I'm using two main colors to represent
+            The Titanic survival prediction website uses the Rethink Sans font. I&apos;m using two main colors to represent
             my work: 
             <span className="font-bold ml-1 bg-[#2541B2] px-2 py-1 rounded-md text-black">navy blue</span> and 
             <span className="font-bold ml-1 bg-[#EEC750] px-2 py-1 rounded-md text-black">yellow</span> Neutral
