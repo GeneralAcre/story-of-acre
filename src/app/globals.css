@@ -5,12 +5,27 @@ body {
   background-color: black;
   color: white;
 }
-
-
-.font-lato {
-  font-family: var(--font-lato);
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 1800px; /* visible width */
 }
 
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+  width: 1600px; /* twice the width */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-800px); /* negative of one set width */
+  }
+}
 @keyframes fillBox {
   from {
     width: 0%;

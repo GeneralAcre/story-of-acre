@@ -1,8 +1,11 @@
 import Image from "next/image";
+import MovingText from "../Animations/text";
 
 export default function About() {
   return (
-    <div className="bg-black text-white min-h-screen px-4 sm:px-8">
+    <div>
+      <MovingText />
+      <div className="bg-black text-white min-h-screen px-4 sm:px-8">
       {/* ABOUT Header */}
       <header className="w-full text-[40px] sm:text-[45px] md:text-[60px] lg:text-[100px] xl:text-[140px] 
             leading-none tracking-wide font-bold mb-8 ">ABOUT</header>
@@ -89,6 +92,7 @@ export default function About() {
         </div>
       </div>
       <div className="h-20 sm:h-30"></div>
+    </div>
     </div>
   );
 }
