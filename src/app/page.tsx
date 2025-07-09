@@ -5,6 +5,8 @@ import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { SparklesText } from "@/components/magicui/sparkles-text";
 import { TECH_STACK } from "@/constance/tech-stack";
 import Header from "../constance/Title"
+import { Separator } from "../components/ui/separator";
+import MyProjectsSection from "../constance/projects/page"
 
 export default function Home() {
   return (
@@ -14,6 +16,7 @@ export default function Home() {
 
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
       <SparklesText>My Work</SparklesText>
+      <Separator />
         <Marquee pauseOnHover className="[--duration:20s]">
           {TECH_STACK .map((techStackItem) => (
             <ReviewCard key={techStackItem .title} {...techStackItem} />
@@ -22,7 +25,7 @@ export default function Home() {
 
 
 
-
+          <MyProjectsSection/>
         <VelocityScroll>CONTACT</VelocityScroll>
       </div>
 

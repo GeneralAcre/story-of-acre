@@ -1,0 +1,19 @@
+import ProjectCard from "./projectCard"; // Make sure the path is correct
+import ProjectData from "./projectData"; // Make sure the path is correct
+
+export default function MyProjectsSection() { // It's good practice to name your components
+  return (
+    <div>
+      {ProjectData.map((pro) => ( // Added 'index' for key, important for lists
+        <ProjectCard
+          key={pro.key}
+          title={pro.title}
+          image={pro.image}
+          description={pro.description}
+          website={pro.website}
+          scope={pro.scope}
+        />
+      ))}
+    </div>
+  );
+}
