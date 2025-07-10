@@ -19,9 +19,11 @@ export default function Hero() {
 
         />
 
-        <main className="flex flex-col items-center justify-center p-4">
+        <main className="flex flex-col items-center justify-center">
             <div className="text-center">
-                 {/* <MorphingTextDemo/>*/}
+                <div className="z-10">
+                    <MorphingTextDemo/>
+                </div>
                 <TypingAnimation/>
                 
                 <p className="mt-4 text-lg md:text-xl">
@@ -29,7 +31,7 @@ export default function Hero() {
                 </p>
 
                 {/* And finally the second paragraph */}
-                <p className="font-serif mt-8 max-w-2xl text-base md:text-lg leading-relaxed mx-auto">
+                <p className="font-serif mt-8 max-w-2xl text-base md:text-lg leading-relaxed max-w-4xl">
                 Hi! I'm Acre, a frontend developer with a keen interest in blockchain technology. 
                 I'm fascinated by how blockchain can reshape industries and empower individuals. 
                 Feel free to check out my works and don't hesitate to reach out if you have any questions or 
