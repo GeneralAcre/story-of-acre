@@ -15,22 +15,25 @@ export default function Home() {
       <SmoothScroll>
       <div className="left-1/2 right-1/2 top-0 z-10 -ml-[50vw] -mr-[50vw] flex h-full w-screen flex-col items-center bg-background *:z-10">
       <div className="absolute left-0 top-0 h-screen w-full"></div>
-      <Hero />
+        
+        <Hero />
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
       
 
-      <Separator />
+      <div className="relative flex w-full flex-col gap-2 py-8 md:max-w-[64rem] md:gap-4 items-center">
+        <Header title="Tech Stack" subtitle="Here are some of the technologies I'm familiar with."/>
+      </div>
+
         <Marquee pauseOnHover className="[--duration:20s]">
           {TECH_STACK .map((techStackItem) => (
             <ReviewCard key={techStackItem .title} {...techStackItem} />
           ))}
         </Marquee>
 
-
-      <Header title="Projects" subtitle="This is my Project"/>
+      <div className="relative flex w-full flex-col gap-2 py-8 md:max-w-[64rem] md:gap-4 items-center">
+        <Header title="Projects" subtitle="Additional projects that I've worked on or contributed to."/>
+      </div>
       {/* Pass only string cause we do not want to define variable again just pass it*/}
-
-
 
 
         <VelocityScroll>CONTACT</VelocityScroll>
