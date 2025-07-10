@@ -7,6 +7,7 @@ import MyProjectsSection from "../constance/projects/page"
 import ReviewCard from "@/constance/Card/ReviewCard";
 import SmoothScroll from "./smoothScroll";
 import { Header } from "@/components/common/header";
+import Footer from "@/components/common/footer";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
       
 
-      <Separator />
+      <Header title="Tech Stack" subtitle="Here are some of the technologies I'm familiar with."/>
         <Marquee pauseOnHover className="[--duration:20s]">
           {TECH_STACK .map((techStackItem) => (
             <ReviewCard key={techStackItem .title} {...techStackItem} />
@@ -24,13 +25,14 @@ export default function Home() {
         </Marquee>
 
 
-      <Header title="Projects" subtitle="This is my Project"/>
+      <Header title="Projects" subtitle="Additional projects that I've worked on or contributed to"/>
       {/* Pass only string cause we do not want to define variable again just pass it*/}
 
           <MyProjectsSection/>
         <VelocityScroll>CONTACT</VelocityScroll>
       </div>
       </SmoothScroll>
+      <Footer/>
     </main>
     
   )

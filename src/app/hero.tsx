@@ -28,13 +28,8 @@ export default function Hero() {
                 "Exploring the power of blockchain to reshape industries and empower individuals."
                 </p>
 
-                {/* And finally the second paragraph */}
-                <p className="font-serif mt-8 max-w-2xl text-base md:text-lg leading-relaxed mx-auto">
-                Hi! I'm Acre, a frontend developer with a keen interest in blockchain technology. 
-                I'm fascinated by how blockchain can reshape industries and empower individuals. 
-                Feel free to check out my works and don't hesitate to reach out if you have any questions or 
-                just want to connect!
-                </p>
+               
+            
             </div>
         </main>
 
