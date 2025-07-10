@@ -1,21 +1,21 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
-import { SparklesText } from "@/components/magicui/sparkles-text";
 import { TECH_STACK } from "@/constance/tech-stack";
-import Header from "../constance/Title"
+import Hero from "./hero";
 import { Separator } from "../components/ui/separator";
 import MyProjectsSection from "../constance/projects/page"
+import ReviewCard from "@/constance/Card/ReviewCard";
+import SmoothScroll from "./smoothScroll";
+import { Header } from "@/components/common/header";
 
 export default function Home() {
   return (
-    <div>
-      <Header/>
-
-
+    <main>
+      <SmoothScroll>
+      <Hero />
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <SparklesText>My Work</SparklesText>
+      
+
       <Separator />
         <Marquee pauseOnHover className="[--duration:20s]">
           {TECH_STACK .map((techStackItem) => (
@@ -24,32 +24,17 @@ export default function Home() {
         </Marquee>
 
 
+      <Header title="Projects" subtitle="This is my Project"/>
+      {/* Pass only string cause we do not want to define variable again just pass it*/}
 
           <MyProjectsSection/>
         <VelocityScroll>CONTACT</VelocityScroll>
       </div>
-
-    </div>
+      </SmoothScroll>
+    </main>
     
   )
 }
  
  
- 
-const ReviewCard = ({title,description,}: {title: string;description: string;}) => {
-  return (
-    <figure
-      className={cn(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
-        " bg-black hover:bg-black/90",)}>
-
-      <div className="flex flex-row items-center gap-2">
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-medium text-white">{title}</figcaption>
-        </div>
-      </div>
-      <blockquote className="mt-2 text-sm text-white">{description}</blockquote>
-    </figure>
-  )
-};
  

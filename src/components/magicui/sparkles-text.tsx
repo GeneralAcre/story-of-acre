@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { CSSProperties, ReactElement, useEffect, useState } from "react";
 
+
 import { cn } from "@/lib/utils";
 
 interface Sparkle {
@@ -58,11 +59,11 @@ interface SparklesTextProps {
 
   /**
    * @required
-   * @type ReactNode
+   * @type 
    * @description
    * The content to be displayed
    * */
-  children: React.ReactNode;
+  text?: string;
 
   /**
    * @default 10
@@ -85,7 +86,7 @@ interface SparklesTextProps {
 }
 
 export const SparklesText: React.FC<SparklesTextProps> = ({
-  children,
+  text = "My Work",
   colors = { first: "#FEFE00", second: "#a53860" },
   className,
   sparklesCount = 10,
@@ -130,7 +131,7 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
 
   return (
     <div
-      className={cn("text-6xl font-bold", className)}
+      className={cn("text-3xl font-bold", className)}
       {...props}
       style={
         {
@@ -143,7 +144,7 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />
         ))}
-        <strong>{children}</strong>
+        <strong>{text}</strong>
       </span>
     </div>
   );

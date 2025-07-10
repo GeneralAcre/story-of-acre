@@ -1,5 +1,5 @@
-import ProjectCard from "./projectCard"; // Make sure the path is correct
-import ProjectData from "./projectData"; // Make sure the path is correct
+import ProjectCard from "../../components/common/projectCard"; // Make sure the path is correct
+import ProjectData from "../Data/projectData"; // Make sure the path is correct
 
 export default function MyProjectsSection() { // It's good practice to name your components
   return (

@@ -1,5 +1,3 @@
-// src/components/ProjectCard.tsx (or src/constance/projects/ProjectCard.tsx)
-
 import React from 'react';
 import Image from 'next/image'; // For optimized images in Next.js
 import Link from 'next/link'; // For internal links if applicable
