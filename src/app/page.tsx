@@ -2,8 +2,8 @@ import { Marquee } from "@/components/magicui/marquee";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { TECH_STACK } from "@/constance/tech-stack";
 import Hero from "./hero";
-import { Separator } from "../components/ui/separator";
-import ProjectCard from "../constance/projects/page"
+{/* import { Separator } from "../components/ui/separator";
+import ProjectCard from "../constance/projects/page"*/}
 import ReviewCard from "@/constance/Card/ReviewCard";
 import SmoothScroll from "./smoothScroll";
 import { Header } from "@/components/common/header";

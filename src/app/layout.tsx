@@ -1,5 +1,4 @@
-import React from 'react'; // ADD THIS LINE
-
+import React from 'react'; // Keep this line if you added it earlier for previous errors
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -25,11 +24,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    // Apply the font variables as classes here
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-          {children}
+        {children}
       </body>
     </html>
   );
 }
-
