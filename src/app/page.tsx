@@ -2,12 +2,13 @@ import { Marquee } from "@/components/magicui/marquee";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { TECH_STACK } from "@/constance/tech-stack";
 import Hero from "./hero";
-{/* import { Separator } from "../components/ui/separator";
-import ProjectCard from "../constance/projects/page"*/}
+// import { Separator } from "../components/ui/separator";
+import ProjectCard from "../constance/projects/page";
 import ReviewCard from "@/constance/Card/ReviewCard";
 import SmoothScroll from "./smoothScroll";
 import { Header } from "@/components/common/header";
 import Footer from "@/components/common/footer";
+import { PROJECTS } from "@/constance/work"
 
 export default function Home() {
   return (
@@ -30,18 +31,24 @@ export default function Home() {
           ))}
         </Marquee>
 
-      <div className="relative flex w-full flex-col gap-2 py-8 md:max-w-[64rem] md:gap-4 items-center">
-        <Header title="Projects" subtitle="Additional projects that I've worked on or contributed to."/>
-      </div>
-      {/* Pass only string cause we do not want to define variable again just pass it*/}
-
+        {/*Project Section */}
+        <div className="relative flex w-full flex-col gap-2 py-8 md:max-w-[64rem] md:gap-4">
+            <Header
+              title="Projects"
+              subtitle="Additional projects that I've worked on or contributed to."
+            />
+            <div className="h-4" />
+            <div className="space-y-6 md:space-y-8">
+              {PROJECTS.map((project, i) => (<ProjectCard key={i} {...project} />))}
+            </div>
+        </div>
 
         <VelocityScroll>CONTACT</VelocityScroll>
       </div>
       <Footer/>
+
       </div>
       </SmoothScroll>
-
     </main>
     
   )

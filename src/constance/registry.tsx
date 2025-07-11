@@ -21,12 +21,12 @@ export const REGISTRY = {
         logo: "https://assets.staticimg.com/cms/media/8uGGQmvkfODw7cnx3GuekBb404A2bTYUcTjBklHja.png",
         website: "https://sui.io",
       },
-      Initia: {
-        title: "Initia",
+      Chula: {
+        title: "ID Chula",
         description:
           "Initia is a network for interwoven rollups. Binding a highly interwoven system of modular networks through architectural ownership.",
-        logo: "https://chainbroker.io/_next/image/?url=https%3A%2F%2Fstatic.chainbroker.io%2Fmediafiles%2Fprojects%2Finitia%2Finitia.jpeg&w=2560&q=75",
-        website: "https://initia.xyz",
+        logo: "https://static.wixstatic.com/media/cf3b7e_6fe3d60eb28c4ee7878f303ef3a63090~mv2.jpg/v1/fill/w_252,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/logoid.jpg",
+        website: "https://www.idchulalongkorn.com/",
       },
     },
     organization: {

@@ -3,87 +3,92 @@ import Image from 'next/image'; // For optimized images in Next.js
 import Link from 'next/link'; // For internal links if applicable
 import { ExternalLink } from 'lucide-react'; // For an external link icon
 import { cn } from '@/lib/utils'; // Assuming you have this utility for conditional classes
+import {REGISTRY} from "@/constance/registry"
 
 // Assuming you have these UI components from your setup (like Shadcn UI)
 import { Badge } from '@/components/ui/badge'; // Adjust path based on your setup
 import { buttonVariants } from '@/components/ui/button'; // Adjust path based on your setup
 
 interface ProjectCardProps {
-  title: string;
-  image: string; // URL to the image
-  description: string;
-  website: string; // URL to the project website
-  scope: string;   // e.g., "Frontend,UXUI Design" - we can split this into multiple badges
+  title: string
+  image: string
+  w?: string
+  description: string
+  website: string
+  scope: string
+  chain: string
 }
 
-export default function ProjectCard({
-  title,
-  image,
+export function ProjectCard({
   description,
-  website,
+  image,
   scope,
+  title,
+  website,
+  w,
+  chain,
 }: ProjectCardProps) {
-  // Split the scope string into an array for individual badges
-  const scopesArray = scope.split(',').map(s => s.trim());
-
   return (
-    <div
-      className={cn(
-        "relative flex flex-col overflow-hidden rounded-lg border", // Card container styling
-        "bg-card text-card-foreground shadow-sm", // Shadcn card colors
-        "group transition-all duration-300 hover:shadow-lg hover:border-primary" // Hover effects
-      )}
-    >
-      {/* Project Image */}
-      <div className="relative h-48 w-full overflow-hidden bg-muted">
-        {image && ( // Only render if image URL is provided
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Optimize image loading
-          />
-        )}
-        {!image && ( // Placeholder if no image
-          <div className="flex h-full items-center justify-center text-muted-foreground">
-            No Image
-          </div>
-        )}
-      </div>
-
-      {/* Card Content */}
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-xl font-semibold text-foreground mb-2 leading-tight">
-          {title}
+    <div className="group flex flex-col items-start gap-4 text-start transition-transform duration-500 md:scale-90 md:items-center md:gap-8 md:odd:flex-row-reverse md:odd:text-end md:even:flex-row md:even:text-start md:hover:scale-100">
+      <img src={image} alt={title} className="w-[80%] rounded-2xl md:w-[40%]" />
+      <div className="flex flex-col gap-2 md:group-odd:items-end md:group-even:items-start">
+        <h3 className="font-mono text-xs transition-opacity duration-500 group-hover:opacity-100 md:text-sm md:opacity-0">
+          {scope}
         </h3>
-
-        {/* Description */}
-        <p className="text-sm text-muted-foreground flex-grow mb-4 line-clamp-3">
-          {description}
-        </p>
-
-        {/* Scope Badges */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {scopesArray.map((s, idx) => (
-            <Badge key={idx} variant="secondary">
-              {s}
-            </Badge>
-          ))}
-        </div>
-
-        {/* Website Link (Button) */}
-        <div className="mt-auto"> {/* Push button to bottom */}
+        <h2 className="font-serif text-2xl font-bold tracking-wide animate-in md:text-3xl">
+          {title}
+        </h2>
+        <div className="flex items-center gap-2">
+          {w && (
+            <Link
+              href={REGISTRY.organization[w].website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer"
+            >
+              <Badge className="gap-1 px-1" variant="secondary">
+                <img
+                  src={REGISTRY.organization[w].logo}
+                  alt={REGISTRY.organization[w].title}
+                  className="size-4 rounded-full"
+                />{" "}
+                {REGISTRY.organization[w].title}
+              </Badge>
+            </Link>
+          )}
           <Link
-            href={website}
+            href={REGISTRY.chain[chain].website}
             target="_blank"
             rel="noopener noreferrer"
-            className={cn(buttonVariants({ variant: "default", size: "sm" }), "w-full")}
+            className="cursor-pointer"
           >
-            Visit Website <ExternalLink className="ml-2 h-4 w-4" />
+            <Badge className="gap-1 px-1" variant="secondary">
+              <img
+                src={REGISTRY.chain[chain].logo}
+                alt={REGISTRY.chain[chain].title}
+                className="size-4 rounded-full"
+              />{" "}
+              {REGISTRY.chain[chain].title}
+            </Badge>
           </Link>
         </div>
+        <p className="text-sm text-muted-foreground md:text-base md:leading-5">
+          {description}
+        </p>
+        <Link
+          className={cn(
+            buttonVariants({
+              variant: "outline",
+            }),
+            "w-fit rounded-full transition-opacity duration-500 group-hover:opacity-100 md:opacity-0"
+          )}
+          href={website}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit <ExternalLink className="ml-2 size-3" />
+        </Link>
       </div>
     </div>
-  );
+  )
 }

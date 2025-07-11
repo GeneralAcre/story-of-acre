@@ -27,15 +27,15 @@ export default function Hero() {
                 <TypingAnimation/>
                 
                 <p className="mt-4 text-lg md:text-xl">
-                "Exploring the power of blockchain to reshape industries and empower individuals."
+                Exploring the power of blockchain to reshape industries and empower individuals.
                 </p>
 
                 {/* And finally the second paragraph */}
                 <p className="font-serif mt-8 max-w-2xl text-base md:text-lg leading-relaxed max-w-4xl">
-                Hi! I'm Acre, a frontend developer with a keen interest in blockchain technology. 
-                I'm fascinated by how blockchain can reshape industries and empower individuals. 
-                Feel free to check out my works and don't hesitate to reach out if you have any questions or 
-                just want to connect!
+                    Hi! I&apos;m Acre, a frontend developer with a keen interest in blockchain technology. 
+                    I&apos;m fascinated by how blockchain can reshape industries and empower individuals. 
+                    Feel free to check out my works and don&apos;t hesitate to reach out if you have any questions or 
+                    just want to connect!
                 </p>
             </div>
         </main>

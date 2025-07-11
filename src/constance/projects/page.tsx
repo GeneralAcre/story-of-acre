@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { REGISTRY } from "@/constance/registry"
-import { ExternalLink } from "lucide-react"
+import { Link2  } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -14,7 +14,7 @@ interface ProjectCardProps {
   description: string
   website: string
   scope?: string
-  chain: string
+  chain?: string
 }
 
 export default function ProjectCard({
@@ -37,39 +37,42 @@ export default function ProjectCard({
           {title}
         </h2>
         <div className="flex items-center gap-2">
-          {w && (
+          {w && REGISTRY.organization[w] && ( // Add check for REGISTRY.organization[w]
             <Link
-              href={REGISTRY.organization[w].website}
+              href={REGISTRY.organization[w]?.website} 
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer"
             >
               <Badge className="gap-1 px-1" variant="secondary">
                 <img
-                  src={REGISTRY.organization[w].logo}
-                  alt={REGISTRY.organization[w].title}
+                  src={REGISTRY.organization[w]?.logo}
+                  alt={REGISTRY.organization[w]?.title} 
                   className="size-4 rounded-full"
                 />{" "}
-                {REGISTRY.organization[w].title}
+                {REGISTRY.organization[w]?.title} {/* Add optional chaining */}
               </Badge>
             </Link>
           )}
-          <Link
-            href={REGISTRY.chain[chain].website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cursor-pointer"
-          >
-            <Badge className="gap-1 px-1" variant="secondary">
-              <img
-                src={REGISTRY.chain[chain].logo}
-                alt={REGISTRY.chain[chain].title}
-                className="size-4 rounded-full"
-              />{" "}
-              {REGISTRY.chain[chain].title}
-            </Badge>
-          </Link>
+          {chain && REGISTRY.chain[chain] && (
+            <Link
+              href={REGISTRY.chain[chain]?.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer"
+            >
+              <Badge className="gap-1 px-1" variant="secondary">
+                <img
+                  src={REGISTRY.chain[chain]?.logo}
+                  alt={REGISTRY.chain[chain]?.title}
+                  className="size-4 rounded-full"
+                />{" "}
+                {REGISTRY.chain[chain]?.title}
+              </Badge>
+            </Link>
+          )}
         </div>
+
         <p className="text-sm text-muted-foreground md:text-base md:leading-5">
           {description}
         </p>
@@ -84,7 +87,7 @@ export default function ProjectCard({
           target="_blank"
           rel="noopener noreferrer"
         >
-          Visit <ExternalLink className="ml-2 size-3" />
+          <Link2  className="ml-2 size-3" />Visit 
         </Link>
       </div>
     </div>
