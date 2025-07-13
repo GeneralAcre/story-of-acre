@@ -10,7 +10,7 @@ export default function Hero() {
         <div className="flex flex-col justify-center min-h-screen p-4 text-center">
         {/* Text for your name/title, now centered by the parent */}
         <FlickeringGrid
-            className="absolute inset-0 z-0 size-full" // size-full sets width: 100%; height: 100%
+            className="absolute inset-0 z-0 size-full opacity-40" // size-full sets width: 100%; height: 100%
             squareSize={10}
             gridGap={6}
             color="#6B7280"
@@ -24,23 +24,24 @@ export default function Hero() {
                 <div className="z-10">
                     <MorphingTextDemo/>
                 </div>
-                <TypingAnimation/>
+
+                <TypingAnimation/> {/* Personal Portfolio */}
                 
-                <p className="mt-4 text-lg md:text-xl">
+                <p className="mt-4 text-base md:text-xl">
                 Exploring the power of blockchain to reshape industries and empower individuals.
                 </p>
 
                 {/* And finally the second paragraph */}
                 <p className="font-serif mt-8 max-w-2xl text-base md:text-lg leading-relaxed max-w-4xl">
-                    Hi! I&apos;m Acre, a frontend developer with a keen interest in blockchain technology. 
-                    I&apos;m fascinated by how blockchain can reshape industries and empower individuals. 
+                    Hi! I&apos;m Acre, a frontend developer with a keen interest in blockchain technology. <br/>
+                    I&apos;m fascinated by how blockchain can reshape industries and empower individuals. <br/>
                     Feel free to check out my works and don&apos;t hesitate to reach out if you have any questions or 
                     just want to connect!
                 </p>
             </div>
         </main>
 
-        <div className="z-20 mt-8"> 
+        <div className="z-20 mt-[100px]"> 
             <LinkButton/>
         </div>{/* z-10 more than z-0 now this button work , grid has z-0*/}
          

@@ -17,34 +17,28 @@ export default function Home() {
       <div className="left-1/2 right-1/2 top-0 z-10 -ml-[50vw] -mr-[50vw] flex h-full w-screen flex-col items-center bg-background *:z-10">
       <div className="absolute left-0 top-0 h-screen w-full"></div>
         
-        <Hero />
-      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      
+      <Hero />
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+        
+          <div className="relative flex  w-full flex-col gap-2 py-8 md:max-w-[64rem] gap-4"> {/*Tech Section */}
+            <Header title="Tech Stack" subtitle="Here are some of the technologies I'm familiar with."/>
+            <Marquee pauseOnHover className="[--duration:20s]">
+              {TECH_STACK .map((techStackItem) => (
+                <ReviewCard key={techStackItem .title} {...techStackItem} />
+              ))}
+            </Marquee>
+          </div>
 
-      <div className="relative flex w-full flex-col gap-2 py-8 md:max-w-[64rem] md:gap-4 items-center">
-        <Header title="Tech Stack" subtitle="Here are some of the technologies I'm familiar with."/>
-      </div>
-
-        <Marquee pauseOnHover className="[--duration:20s]">
-          {TECH_STACK .map((techStackItem) => (
-            <ReviewCard key={techStackItem .title} {...techStackItem} />
-          ))}
-        </Marquee>
-
-        {/*Project Section */}
-        <div className="relative flex w-full flex-col gap-2 py-8 md:max-w-[64rem] md:gap-4">
-            <Header
-              title="Projects"
-              subtitle="Additional projects that I've worked on or contributed to."
-            />
-            <div className="h-4" />
-            <div className="space-y-6 md:space-y-8">
-              {PROJECTS.map((project, i) => (<ProjectCard key={i} {...project} />))}
-            </div>
+          <div className="relative flex w-full flex-col gap-2 py-8 md:max-w-[64rem] gap-4 ">{/*Project Section */}
+              <Header title="Projects" subtitle="Additional projects that I've worked on or contributed to."/>
+              <div className="h-4" />
+              <div className="space-y-6 md:space-y-8">
+                {PROJECTS.map((project, i) => (<ProjectCard key={i} {...project} />))}
+              </div>
+          </div>
         </div>
 
-        <VelocityScroll>CONTACT</VelocityScroll>
-      </div>
+      <VelocityScroll>CONTACT</VelocityScroll>
       <Footer/>
 
       </div>

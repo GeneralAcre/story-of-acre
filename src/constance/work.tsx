@@ -1,24 +1,24 @@
 export const PROJECTS = [
     {
       title: "Titanic Survial Prediction",
-      image: "https://i.imgur.com/lBdTI25.png",
+      image: "/projectPicture/ProjectPicture_1.png",
       w: "ID Chula",
       chain: "Chula",
       description:
-        "Governance dashboard for Optimism focusing on participation, voter behavior, power structure, proposal outcomes. Providing insights and democratizing information for informed decision-making in governance process.",
-      website: "https://optimism.curiahub.xyz/",
-      scope: "Frontend, UXUI",
+      "Predicting Titanic survival rates, this site analyzes data to identify characteristics of survivors and the factors involved.",
+      website: "https://titanic-survival-prediction-peach.vercel.app/",
+      scope: "Frontend,UXUI",
     },
     {
-      title: "OP Passport",
-      image: "https://i.imgur.com/TScpjoJ.png",
-      w: "Curia Lab",
-      chain: "Optimism",
+      title: "Blockchain Flashcard",
+      image: "/projectPicture/404_img.png",
+      w: "",
+      chain: "Personal",
       description:
-        "The OP Passport project aims to develop an open-source platform for governance participants on Optimism, ZKP technology for privacy-preserving attestations and on-chain self-manageable identity passports.",
-      website: "https://www.oppassport.xyz/",
+        "This project is developing an interactive web platform utilizing flashcards to educate beginners on fundamental blockchain and cryptocurrency concepts. It aims to simplify complex Web3 topics into an accessible and digestible format.",
+      website: "This is not finished",
       scope:
-        "Privacy-preserving attestation design, ZK Circuit (Noir), Smart Contract, Demo Frontend",
+        "Frontend,UXUI,Data Pipeline",
     }
   ]
   
