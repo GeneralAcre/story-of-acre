@@ -26,22 +26,23 @@ export default function Hero() {
                 </div>
 
                 <TypingAnimation/> {/* Personal Portfolio */}
-                
-                <p className="mt-4 text-base md:text-xl">
-                Exploring the power of blockchain to reshape industries and empower individuals.
-                </p>
+                <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+                    <p className="mt-4 text-base md:text-xl">
+                        Exploring the power of blockchain to reshape industries and empower individuals.
+                    </p>
 
-                {/* And finally the second paragraph */}
-                <p className="font-serif mt-8 max-w-2xl text-base md:text-lg leading-relaxed max-w-4xl">
-                    Hi! I&apos;m Acre, a frontend developer with a keen interest in blockchain technology. <br/>
-                    I&apos;m fascinated by how blockchain can reshape industries and empower individuals. <br/>
-                    Feel free to check out my works and don&apos;t hesitate to reach out if you have any questions or 
-                    just want to connect!
-                </p>
+                    {/* And finally the second paragraph */}
+                    <p className="mt-8 max-w-2xl text-base md:text-lg leading-relaxed max-w-4xl">
+                        Hi! I&apos;m Acre, a frontend developer with a keen interest in blockchain technology. <br/>
+                        I&apos;m fascinated by how blockchain can reshape industries and empower individuals. <br/>
+                        Feel free to check out my works and don&apos;t hesitate to reach out if you have any questions or 
+                        just want to connect!
+                    </p>
+                </div>
             </div>
         </main>
 
-        <div className="z-20 mt-[100px]"> 
+        <div className="z-20 mt-[50px]"> 
             <LinkButton/>
         </div>{/* z-10 more than z-0 now this button work , grid has z-0*/}
          
