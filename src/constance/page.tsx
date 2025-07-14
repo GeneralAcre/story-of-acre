@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { REGISTRY } from "@/constance/registry"
 import { Link2  } from "lucide-react"
-
 import { cn } from "@/lib/utils"
 
 import { Badge } from "@/components/ui/badge"
@@ -28,7 +27,7 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div className="group flex flex-col items-start gap-4 text-start transition-transform duration-500 md:scale-90 md:items-center md:gap-8 md:odd:flex-row-reverse md:odd:text-end md:even:flex-row md:even:text-start md:hover:scale-100">
-      <img src={image} alt={title} className="w-[80%] rounded-2xl md:w-[40%]" />
+      <img src={image} alt={title} className="w-[80%] rounded-2xl md:w-[40%]"/>
       <div className="flex flex-col gap-2 md:group-odd:items-end md:group-even:items-start">
         <h3 className="font-mono text-xs transition-opacity duration-500 group-hover:opacity-100 md:text-sm md:opacity-0">
           {scope}
@@ -58,8 +57,6 @@ export default function ProjectCard({
             <Link
               href={REGISTRY.chain[chain]?.website}
               target="_blank"
-              rel="noopener noreferrer"
-              className="cursor-pointer"
             >
               <Badge className="gap-1 px-1" variant="secondary">
                 <img

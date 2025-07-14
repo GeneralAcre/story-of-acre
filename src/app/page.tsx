@@ -3,7 +3,7 @@ import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { TECH_STACK } from "@/constance/tech-stack";
 import Hero from "./hero";
 // import { Separator } from "../components/ui/separator";
-import ProjectCard from "../constance/projects/page";
+import ProjectCard from "../constance/page";
 import ReviewCard from "@/constance/Card/ReviewCard";
 import SmoothScroll from "./smoothScroll";
 import { Header } from "@/components/common/header";
@@ -14,11 +14,11 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center overflow-x-hidden overscroll-none scroll-smooth md:text-center">
       <SmoothScroll>
-      <div className="left-1/2 right-1/2 top-0 z-10 -ml-[50vw] -mr-[50vw] flex h-full w-screen flex-col items-center bg-background *:z-10">
+      <div className="left-1/2 right-1/2 top-0 z-10 -ml-[50vw] -mr-[50vw] flex h-full w-screen flex-col items-center *:z-10">
       <div className="absolute left-0 top-0 h-screen w-full"></div>
         
       <Hero />
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden px-8">
         
           <div className="relative flex  w-full flex-col gap-2 py-8 md:max-w-[64rem] gap-4"> {/*Tech Section */}
             <Header title="Tech Stack" subtitle="Here are some of the technologies I'm familiar with."/>
@@ -38,8 +38,10 @@ export default function Home() {
           </div>
         </div>
 
-      <VelocityScroll>CONTACT</VelocityScroll>
-      <Footer/>
+        <VelocityScroll>CONTACT</VelocityScroll>
+        <div className="px-8">
+          <Footer/>
+        </div>
 
       </div>
       </SmoothScroll>

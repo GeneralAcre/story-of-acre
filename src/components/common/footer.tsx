@@ -4,9 +4,9 @@ import Link
 
 export default function Footer() {
   return (
-    <div className="container flex flex-1 flex-col gap-6">
+    <div className="container flex flex-1 flex-col gap-10 w-full">
       <Separator />
-      <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-around">
+      <div className="flex flex-wrap gap-x-20 gap-y-2 md:justify-around">
         <div className="text-start text-2xl font-semibold md:text-3xl">
           <h2 className="text-xl text-muted-foreground md:text-2xl">
             X/TWITTER
