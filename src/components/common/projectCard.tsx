@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image'; // For optimized images in Next.js
 import Link from 'next/link'; // For internal links if applicable
 import { ExternalLink } from 'lucide-react'; // For an external link icon
 import { cn } from '@/lib/utils'; // Assuming you have this utility for conditional classes
