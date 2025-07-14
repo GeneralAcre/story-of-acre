@@ -7,7 +7,7 @@ import Link from "next/link"; // You'll need this for 'asChild' to work with Lin
 const AddButton = [
   { name: "Github", link: "https://github.com/GeneralAcre" },
   { name: "Linkedin", link: "https://www.linkedin.com/in/sanpaphat-porntongprasert-0b239b321/overlay/contact-info/" },
-  { name: "Resume", link: "/assets/Sanpaphat_Porntongprasert_Resume.pdf" },
+  { name: "Resume", link: "https://drive.google.com/drive/u/3/folders/15jSRsKVAzv75epQmutLIzA_yjgoYTniX" },
 ];
 
 export default function LinkButton() {
