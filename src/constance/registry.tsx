@@ -3,17 +3,24 @@ export const REGISTRY = {
       Personal: {
         title: "Personal Project",
         description:
-          "Sui is a first-of-its-kind Layer 1 blockchain and smart contract platform designed to make digital asset ownership fast, private, secure, and accessible.",
+          "It's my beloved project",
         logo: "/projectPicture/MyDefaultProfile.jpg",
         website: "https://acre-sanpaphat.vercel.app/",
       },
-      Chula: {
+      ID: {
         title: "ID Chula",
         description:
-          "Initia is a network for interwoven rollups. Binding a highly interwoven system of modular networks through architectural ownership.",
+          "Department of Industrial Design",
         logo: "https://static.wixstatic.com/media/cf3b7e_6fe3d60eb28c4ee7878f303ef3a63090~mv2.jpg/v1/fill/w_252,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/logoid.jpg",
         website: "https://www.idchulalongkorn.com/",
       },
+      ISD: {
+        title: "ISD Chula",
+        description:
+          "We are a group of students who are passionate about technology who work together to develop and maintain various projects that benefit the Chulalongkorn University community.",
+        logo: "/projectPicture/ISD-Logo.png",
+        website: "https://github.com/isd-sgcu",
+      }
     },
 
     organization: {

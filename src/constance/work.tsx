@@ -3,22 +3,22 @@ export const PROJECTS = [
       title: "Titanic Survial Prediction",
       image: "/projectPicture/ProjectPicture_1.png",
       w: "ID Chula",
-      chain: "Chula",
+      chain: "ID",
       description:
       "Predicting Titanic survival rates, this site analyzes data to identify characteristics of survivors and the factors involved.",
       website: "https://titanic-survival-prediction-peach.vercel.app/",
       scope: "Frontend,UXUI",
     },
     {
-      title: "Blockchain Flashcard",
-      image: "/projectPicture/404_img.png",
+      title: "Freshmen Fest",
+      image: "/projectPicture/Freshmen-2025.png",
       w: "",
-      chain: "Personal",
+      chain: "ISD",
       description:
-        "This project is developing an interactive web platform utilizing flashcards to educate beginners on fundamental blockchain and cryptocurrency concepts. It aims to simplify complex Web3 topics into an accessible and digestible format.",
-      website: "This is not finished",
+        "This project involves creating a website for freshmen to help them navigate their first day of university. The website will provide essential information for the FreshmenFest, including details about food and events on that day. It is a team project.",
+      website: "https://freshmenfest2025.com/fest",
       scope:
-        "Frontend,UXUI,Data Pipeline",
+        "Frontend",
     }
   ]
   
