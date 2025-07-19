@@ -42,7 +42,7 @@ export default function Hero() {
             </div>
         </main>
 
-        <div className="z-20 mt-[50px]"> 
+        <div className="z-20 mt-[30px]"> 
             <LinkButton/>
         </div>{/* z-10 more than z-0 now this button work , grid has z-0*/}
          
