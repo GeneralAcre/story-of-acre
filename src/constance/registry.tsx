@@ -20,6 +20,13 @@ export const REGISTRY = {
           "We are a group of students who are passionate about technology who work together to develop and maintain various projects that benefit the Chulalongkorn University community.",
         logo: "/projectPicture/ISD-Logo.png",
         website: "https://github.com/isd-sgcu",
+      },
+      Ethereum: {
+        title: "Ethereum",
+        description:
+          "Ethereum is the main platform for thousands of apps and blockchains, all powered by the Ethereum protocol.",
+        logo: "/projectPicture/ISD-Logo.png",
+        website: "https://ethereum.org/en/",
       }
     },
 
