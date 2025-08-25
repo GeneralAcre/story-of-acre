@@ -25,7 +25,7 @@ export const REGISTRY = {
         title: "Ethereum",
         description:
           "Ethereum is the main platform for thousands of apps and blockchains, all powered by the Ethereum protocol.",
-        logo: "/projectPicture/ISD-Logo.png",
+        logo: "/projectPicture/eth-logo.png",
         website: "https://ethereum.org/en/",
       }
     },
