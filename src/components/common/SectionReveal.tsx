@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { motion } from "motion/react"
 
 interface SectionRevealProps {
@@ -9,6 +10,16 @@ interface SectionRevealProps {
 }
 
 export default function SectionReveal({ children, className, delay = 0 }: SectionRevealProps) {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile("ontouchstart" in window || navigator.maxTouchPoints > 0)
+  }, [])
+
+  if (isMobile) {
+    return <div className={className}>{children}</div>
+  }
+
   return (
     <motion.div
       className={className}

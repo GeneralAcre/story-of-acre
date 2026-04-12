@@ -12,7 +12,7 @@ import SectionReveal from "@/components/common/SectionReveal";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center overflow-x-hidden overscroll-none scroll-smooth md:text-center">
+    <main className="flex flex-col items-center justify-center overflow-x-hidden md:overscroll-none md:scroll-smooth md:text-center">
       <SmoothScroll>
         <div className="left-1/2 right-1/2 top-0 z-10 -ml-[50vw] -mr-[50vw] flex h-full w-screen flex-col items-center *:z-10">
           <div className="absolute left-0 top-0 h-screen w-full" />
