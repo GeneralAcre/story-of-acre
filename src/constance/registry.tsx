@@ -45,6 +45,20 @@ export const REGISTRY = {
         logo: "https://www.curialab.xyz/images/favicon.png",
         website: "https://curialab.xyz",
       },
+      "Cursor": {
+        title: "Cursor",
+        description:
+          "Cursor is the AI-first code editor built for pair-programming with AI.",
+        logo: "https://www.cursor.com/favicon.ico",
+        website: "https://cursor.com",
+      },
+      "Pacifica": {
+        title: "Pacifica",
+        description:
+          "Real-time intent analysis platform for decoding whale behavior through social alpha.",
+        logo: "https://whale-sight.vercel.app/favicon.ico",
+        website: "https://whale-sight.vercel.app/",
+      },
     },
   } as {
     chain: Record<

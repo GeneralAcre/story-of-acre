@@ -2,7 +2,7 @@ export const PROJECTS = [
     {
       title: "Girl or Ladyboy",
       image: "/projectPicture/girlorladyboy.png",
-      chain: "Personal",
+      w: "Cursor",
       description:
         "A retro arcade-style browser game inspired by Bangkok's Nana Plaza. Players test their perception in a pixel-art themed challenge complete with score tracking, music toggle, and classic 80s arcade aesthetics.",
       website: "https://girlorladyboy.vercel.app/",
@@ -11,7 +11,7 @@ export const PROJECTS = [
     {
       title: "WhaleSight",
       image: "/projectPicture/Whalesight/Landing-Page.png",
-      chain: "Personal",
+      w: "Pacifica",
       description:
         "An intelligent whale tracking platform for on-chain analytics. Monitors institutional crypto wallet movements and decodes large-player sentiment in real-time to help investors understand market behavior.",
       website: "https://whale-sight.vercel.app/",
