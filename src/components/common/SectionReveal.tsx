@@ -17,7 +17,7 @@ export default function SectionReveal({ children, className, delay = 0 }: Sectio
       viewport={{ once: true, margin: "-80px" }}
       transition={{
         duration: 0.7,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as const,
         delay,
       }}
     >
