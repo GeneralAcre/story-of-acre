@@ -6,8 +6,8 @@ import Link from "next/link"; // You'll need this for 'asChild' to work with Lin
 
 const AddButton = [
   { name: "Github", link: "https://github.com/GeneralAcre" },
-  { name: "Linkedin", link: "https://www.linkedin.com/in/sanpaphat-porntongprasert-0b239b321/overlay/contact-info/" },
-  { name: "Resume", link: "https://drive.google.com/drive/u/3/folders/15jSRsKVAzv75epQmutLIzA_yjgoYTniX" },
+  { name: "Linkedin", link: "https://www.linkedin.com/in/sanpaphat-porntongprasert/" },
+  { name: "Resume", link: "/Sanpaphat-Porntongprasert-Resume.pdf" },
 ];
 
 export default function LinkButton() {
@@ -15,21 +15,25 @@ export default function LinkButton() {
     <div className="flex justify-center items-center space-x-4">
       {AddButton.map((buttonData) => {
         const isResumeButton = buttonData.name === "Resume";
-        const target = isResumeButton ? "_self" : "_blank";
-        const rel = isResumeButton ? undefined : "noopener noreferrer";
+        if (isResumeButton) {
+          return (
+            <a
+              key={buttonData.name}
+              href={buttonData.link}
+              download="Sanpaphat-Porntongprasert-Resume.pdf"
+            >
+              <Button>{buttonData.name}</Button>
+            </a>
+          );
+        }
         return (
           <Link
             key={buttonData.name}
             href={buttonData.link}
-            passHref
-            target={target}
-            rel={rel}
-            {...(isResumeButton && { download: "Sanpaphat_Porntongprasert_Resume.pdf" })}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-
-            <Button>
-              {buttonData.name}
-            </Button>
+            <Button>{buttonData.name}</Button>
           </Link>
         );
       })}
