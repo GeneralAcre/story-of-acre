@@ -27,7 +27,14 @@ export const REGISTRY = {
           "Ethereum is the main platform for thousands of apps and blockchains, all powered by the Ethereum protocol.",
         logo: "/projectPicture/eth-logo.png",
         website: "https://ethereum.org/en/",
-      }
+      },
+      Polkadot: {
+        title: "Polkadot",
+        description:
+          "Polkadot enables cross-blockchain transfers of any type of data or asset, not just tokens.",
+        logo: "https://cryptologos.cc/logos/polkadot-new-dot-logo.png",
+        website: "https://polkadot.network/",
+      },
     },
 
     organization: {

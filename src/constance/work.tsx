@@ -1,5 +1,32 @@
 export const PROJECTS = [
     {
+      title: "Girl or Ladyboy",
+      image: "/projectPicture/girlorladyboy.png",
+      chain: "Personal",
+      description:
+        "A retro arcade-style browser game inspired by Bangkok's Nana Plaza. Players test their perception in a pixel-art themed challenge complete with score tracking, music toggle, and classic 80s arcade aesthetics.",
+      website: "https://girlorladyboy.vercel.app/",
+      scope: "Game Dev · Frontend",
+    },
+    {
+      title: "WhaleSight",
+      image: "/projectPicture/Whalesight/Landing-Page.png",
+      chain: "Personal",
+      description:
+        "An intelligent whale tracking platform for on-chain analytics. Monitors institutional crypto wallet movements and decodes large-player sentiment in real-time to help investors understand market behavior.",
+      website: "https://whale-sight.vercel.app/",
+      scope: "Frontend · Web3",
+    },
+    {
+      title: "Mirage",
+      image: "/projectPicture/Polkadot/mirage.svg",
+      chain: "Polkadot",
+      description:
+        "A React-based web application built for the Polkadot 2025 ecosystem. Explores the Polkadot network's cross-chain capabilities through an interactive interface.",
+      website: "https://polkadot-2025-react-sfna.vercel.app/",
+      scope: "Frontend · Web3",
+    },
+    {
       title: "Titanic Survial Prediction",
       image: "/projectPicture/ProjectPicture_1.png",
       w: "ID Chula",
