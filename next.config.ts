@@ -1,12 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
-    domains: [
-      'static.wixstatic.com',
+    remotePatterns: [
+      { hostname: 'static.wixstatic.com' },
+      { hostname: 'cryptologos.cc' },
+      { hostname: 'www.curialab.xyz' },
+      { hostname: 'www.cursor.com' },
+      { hostname: 'whale-sight.vercel.app' },
     ],
   },
 };
