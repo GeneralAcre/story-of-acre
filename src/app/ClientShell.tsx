@@ -11,7 +11,7 @@ export default function ClientShell({ children }: { children: React.ReactNode })
   return (
     <>
       <CustomCursor />
-      <LoadingScreen onComplete={() => setLoaded(true)} />
+      <LoadingScreen onCompleteAction={() => setLoaded(true)} />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: loaded ? 1 : 0 }}

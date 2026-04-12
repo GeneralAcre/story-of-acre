@@ -2,24 +2,24 @@
 
 import { useEffect, useState } from "react"
 import { motion } from "motion/react"
+import HeroEye from "@/components/common/HeroEye"
 
 interface LoadingScreenProps {
-  onComplete: () => void
+  onCompleteAction: () => void
 }
 
-export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
+export default function LoadingScreen({ onCompleteAction }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
-  const [phase, setPhase] = useState<"loading" | "exiting" | "done">("loading")
+  const [phase, setPhase] = useState<"loading" | "entering" | "done">("loading")
 
   useEffect(() => {
-    const totalDuration = 2400
+    const totalDuration = 2600
     const start = Date.now()
     let raf: number
 
     const tick = () => {
       const elapsed = Date.now() - start
       const t = Math.min(elapsed / totalDuration, 1)
-      // Ease in-out cubic
       const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
       setProgress(Math.floor(eased * 100))
 
@@ -28,96 +28,128 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       } else {
         setProgress(100)
         setTimeout(() => {
-          setPhase("exiting")
-          onComplete()
-        }, 500)
+          setPhase("entering")
+          // Site starts fading in while we zoom through
+          setTimeout(onCompleteAction, 700)
+          // Remove overlay after zoom completes
+          setTimeout(() => setPhase("done"), 1800)
+        }, 350)
       }
     }
 
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
-  }, [onComplete])
-
-  useEffect(() => {
-    if (phase === "exiting") {
-      const t = setTimeout(() => setPhase("done"), 1100)
-      return () => clearTimeout(t)
-    }
-  }, [phase])
+  }, [onCompleteAction])
 
   if (phase === "done") return null
 
-  const isExiting = phase === "exiting"
+  const isEntering = phase === "entering"
 
   return (
-    <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
-      {/* Top curtain */}
-      <motion.div
-        className="absolute inset-x-0 top-0 h-1/2 bg-[#4A043A]"
-        animate={{ y: isExiting ? "-100%" : "0%" }}
-        transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
-      />
+    <div className="fixed inset-0 z-[9999] overflow-hidden bg-[#4A043A]">
 
-      {/* Bottom curtain */}
+      {/* ── Scene — zooms toward the eye on enter ── */}
       <motion.div
-        className="absolute inset-x-0 bottom-0 h-1/2 bg-[#4A043A]"
-        animate={{ y: isExiting ? "100%" : "0%" }}
-        transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
-      />
-
-      {/* Content overlay — sits above curtains */}
-      <motion.div
-        className="absolute inset-0 z-10 flex flex-col"
-        animate={{ opacity: isExiting ? 0 : 1 }}
-        transition={{ duration: 0.35 }}
+        className="absolute inset-0 flex flex-col items-center justify-center"
+        animate={
+          isEntering
+            ? { scale: 7, opacity: 0, filter: "brightness(6) blur(4px)" }
+            : { scale: 1, opacity: 1, filter: "brightness(1) blur(0px)" }
+        }
+        transition={{ duration: 1.6, ease: [0.4, 0, 1, 1] }}
+        style={{ transformOrigin: "50% 50%" }}
       >
-        {/* Center: ACRE name */}
-        <div className="flex-1 flex items-center justify-center">
-          <div className="text-center select-none">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="font-mono font-black leading-none tracking-tighter text-[#FAC335]"
-              style={{ fontSize: "clamp(5rem, 22vw, 18rem)" }}
-            >
-              ACRE
-            </motion.div>
+        {/* Atmospheric background glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 65% 55% at 50% 50%, rgba(161,5,53,0.22) 0%, rgba(74,4,58,0.75) 55%, #4A043A 100%)",
+          }}
+        />
 
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-[#D4A0C0] text-xs md:text-sm tracking-[0.5em] uppercase mt-4"
-            >
-              Frontend Developer · Portfolio
-            </motion.p>
-          </div>
-        </div>
+        {/* Outer ambient ring */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 30% 20% at 50% 50%, rgba(250,195,53,0.06) 0%, transparent 70%)",
+          }}
+        />
 
-        {/* Bottom bar */}
+        {/* Corner label — like "TURN THE SOUND ON" */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="px-8 md:px-12 pb-8 flex items-end justify-between"
+          animate={{ opacity: isEntering ? 0 : 0.45 }}
+          transition={{ delay: 0.6 }}
+          className="absolute top-8 right-8 flex items-center gap-2 font-mono text-[9px] tracking-[0.35em] uppercase text-[#FAC335]"
         >
-          <span className="text-[#D4A0C0] text-xs tracking-[0.35em] uppercase font-mono">
+          <div className="flex gap-[3px]">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="w-[3px] h-[3px] rounded-full bg-[#FAC335]" />
+            ))}
+          </div>
+          Identity Scan
+        </motion.div>
+
+        {/* Top-left coordinate */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isEntering ? 0 : 0.35 }}
+          transition={{ delay: 0.8 }}
+          className="absolute top-8 left-8 font-mono text-[9px] text-[#FAC335] tracking-widest"
+        >
+          {`48°51'N / 2°21'E`}
+        </motion.div>
+
+        {/* The Eye — portal centrepiece */}
+        <motion.div
+          className="relative z-10 w-full max-w-lg px-6"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <HeroEye />
+        </motion.div>
+
+        {/* Scanning label */}
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: isEntering ? 0 : 0.55, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-5 font-mono text-[9px] tracking-[0.5em] uppercase text-[#FAC335]"
+        >
+          Scanning Identity
+        </motion.p>
+      </motion.div>
+
+      {/* ── Flash bloom on entering ── */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse 40% 30% at 50% 50%, #FAC335, #DD192F, transparent)" }}
+        initial={{ opacity: 0 }}
+        animate={isEntering ? { opacity: [0, 0.6, 0] } : { opacity: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+      />
+
+      {/* ── Progress bar + counter ── */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0"
+        animate={{ opacity: isEntering ? 0 : 1 }}
+        transition={{ duration: 0.25 }}
+      >
+        <div className="px-8 md:px-12 pb-8 flex items-end justify-between">
+          <span className="font-mono text-[10px] tracking-[0.35em] uppercase text-[#D4A0C0]">
             Loading
           </span>
           <span className="font-mono text-4xl md:text-5xl font-bold text-[#FAC335] tabular-nums">
             {String(progress).padStart(2, "0")}
           </span>
-        </motion.div>
-
-        {/* Progress line */}
+        </div>
         <div className="h-[2px] bg-[#482D40]">
           <div
             className="h-full bg-[#FAC335]"
-            style={{
-              width: `${progress}%`,
-              transition: "width 80ms linear",
-            }}
+            style={{ width: `${progress}%`, transition: "width 80ms linear" }}
           />
         </div>
       </motion.div>
