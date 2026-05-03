@@ -80,7 +80,7 @@ export default function ProjectCard({
 
         <div className="flex flex-wrap items-center gap-3 mt-1">
           <Link
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#FAC335] px-4 py-2 text-sm font-medium text-[#FAC335] bg-transparent opacity-0 transition-all duration-500 ease-in-out group-hover:opacity-100 hover:bg-[#FAC335] hover:text-[#1A0015]"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#FAC335] px-4 py-2 text-sm font-medium text-[#FAC335] bg-transparent transition-all duration-500 ease-in-out lg:opacity-0 group-hover:opacity-100 hover:bg-[#FAC335] hover:text-[#1A0015]"
             href={website}
             target="_blank"
             rel="noopener noreferrer"
