@@ -35,16 +35,16 @@ export const REGISTRY = {
         logo: "https://cryptologos.cc/logos/polkadot-new-dot-logo.png",
         website: "https://polkadot.network/",
       },
+      Solana: {
+        title: "Solana",
+        description:
+          "Solana is a high-performance blockchain supporting builders around the world.",
+        logo: "https://cryptologos.cc/logos/solana-sol-logo.png",
+        website: "https://solana.com/",
+      },
     },
 
     organization: {
-      "Curia Lab": {
-        title: "Curia Lab",
-        description:
-          "Curia Lab is a research and development lab focusing on privacy-preserving technologies and decentralized governance",
-        logo: "https://www.curialab.xyz/images/favicon.png",
-        website: "https://curialab.xyz",
-      },
       "Cursor": {
         title: "Cursor",
         description:
@@ -56,8 +56,15 @@ export const REGISTRY = {
         title: "Pacifica",
         description:
           "Real-time intent analysis platform for decoding whale behavior through social alpha.",
-        logo: "https://whale-sight.vercel.app/favicon.ico",
+        logo: "/projectPicture/Whalesight/Pacifica-icon.png",
         website: "https://whale-sight.vercel.app/",
+      },
+      "Colosseum": {
+        title: "Colosseum",
+        description:
+          "An association to the Colosseum hackathon and Solana devnet event.",
+        logo: "/projectPicture/Solana/Symbol-Black.png",
+        website: "https://colosseum.com/",
       },
     },
   } as {

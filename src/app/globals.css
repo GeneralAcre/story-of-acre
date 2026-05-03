@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -63,6 +64,7 @@
 
 :root {
   --radius: 0.625rem;
+  --font-kdam: "Kdam Thmor Pro", sans-serif;
   /* Theme: Deep maroon/purple dark palette */
   --background: #4A043A;
   --foreground: #FAF0E6;
@@ -76,9 +78,9 @@
   --secondary-foreground: #FAF0E6;
   --muted: #6B2058;
   --muted-foreground: #D4A0C0;
-  --accent: #DD192F;
+  --accent: #9E3F29;
   --accent-foreground: #FAF0E6;
-  --destructive: #DD192F;
+  --destructive: #9E3F29;
   --border: rgba(250, 195, 53, 0.2);
   --input: rgba(250, 195, 53, 0.15);
   --ring: #FAC335;
@@ -108,6 +110,10 @@
   }
   a, button, [role="button"] {
     cursor: none;
+  }
+
+  .font-kdam {
+    font-family: var(--font-kdam);
   }
 }
 

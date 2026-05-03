@@ -25,19 +25,24 @@ export default function ProjectCard({
   chain,
 }: ProjectCardProps) {
   const isSvg = image.endsWith(".svg")
-  const isLogoOnly = isSvg || title === "ETH Chula"
+  const isLogoOnly = title === "ETH Chula"
+  const isLeftAlignedImage = title === "Mirage"
 
   return (
     <div className="group w-full flex flex-col gap-6 text-left transition-transform duration-500 md:scale-90 md:hover:scale-100 md:flex-row md:odd:flex-row-reverse md:items-center md:gap-10">
 
       {/* ── Image column ── */}
-      <div className="w-full md:w-[45%] shrink-0 flex items-center justify-center">
-        {isSvg ? (
-          <img src={image} alt={title} className="w-[200px] md:w-[260px] h-auto" />
-        ) : isLogoOnly ? (
-          <img src={image} alt={title} className="w-[130px] md:w-[160px] h-auto rounded-2xl" />
+      <div className="w-full md:w-[45%] shrink-0 flex items-center justify-center overflow-hidden rounded-2xl bg-transparent">
+        {isLogoOnly ? (
+          <img src={image} alt={title} className="w-[130px] md:w-[160px] h-auto rounded-2xl bg-transparent" />
         ) : (
-          <img src={image} alt={title} className="w-full max-w-[480px] rounded-2xl object-cover" />
+          <img
+            src={image}
+            alt={title}
+            className={`w-full max-w-[480px] h-[220px] md:h-[300px] rounded-2xl object-cover bg-transparent ${
+              isLeftAlignedImage ? "object-left" : "object-center"
+            }`}
+          />
         )}
       </div>
 
@@ -46,7 +51,7 @@ export default function ProjectCard({
         <h3 className="font-mono text-xs text-[#D4A0C0] transition-opacity duration-500 group-hover:opacity-100 md:text-sm md:opacity-0">
           {scope}
         </h3>
-        <h2 className="font-Inter text-2xl font-bold tracking-wide md:text-3xl break-words">
+        <h2 className="font-kdam text-2xl font-bold tracking-wide md:text-3xl break-words">
           {title}
         </h2>
 
@@ -73,17 +78,16 @@ export default function ProjectCard({
           {description}
         </p>
 
-        <Link
-          className={cn(
-            buttonVariants({ variant: "outline" }),
-            "w-fit rounded-full transition-opacity duration-500 group-hover:opacity-100 md:opacity-0 mt-1"
-          )}
-          href={website}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Link2 className="ml-2 size-3" />Visit
-        </Link>
+        <div className="flex flex-wrap items-center gap-3 mt-1">
+          <Link
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#FAC335] px-4 py-2 text-sm font-medium text-[#FAC335] bg-transparent opacity-0 transition-all duration-500 ease-in-out group-hover:opacity-100 hover:bg-[#FAC335] hover:text-[#1A0015]"
+            href={website}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Link2 className="ml-2 size-3" />Visit
+          </Link>
+        </div>
       </div>
 
     </div>
