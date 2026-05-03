@@ -46,11 +46,6 @@ export default function Home() {
 
           </div>
 
-          {/* Contact marquee */}
-          <SectionReveal className="w-full">
-            <VelocityScroll>CONTACT</VelocityScroll>
-          </SectionReveal>
-
           <div className="px-8 w-full">
             <SectionReveal>
               <Footer />

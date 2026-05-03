@@ -62,9 +62,7 @@ export default function Hero() {
                 Exploring the power of blockchain to reshape industries and empower individuals.
               </p>
               <p className="text-sm md:text-base text-[#D4A0C0] leading-relaxed">
-                Hi! I&apos;m Acre — a frontend developer with a keen interest in blockchain.
-                I build interfaces that are fast, expressive, and decentralised.
-                Feel free to check out my work and reach out anytime!
+                  Acre (Noun) : The person who builds the grid. I take raw ideas and messy chaos and turn them into something that works.
               </p>
             </div>
 

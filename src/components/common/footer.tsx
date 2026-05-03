@@ -23,15 +23,15 @@ export default function Footer() {
 
         <div className="text-start text-2xl font-semibold md:text-3xl">
           <h2 className="text-xl text-muted-foreground md:text-2xl">
-            GITHUB
+            MEDIUM
           </h2>
           <Link
-            href="https://github.com/GeneralAcre"
+            href="https://medium.com/@acreforcoding"
             className="underline transition-colors hover:text-muted-foreground"
             target="_blank"
             rel="noopener noreferrer"
           >
-            @GeneralAcre
+            @Sanpaphat Porntongprasert
           </Link>
         </div>
 
