@@ -66,6 +66,13 @@ export const REGISTRY = {
         logo: "/projectPicture/Solana/Symbol-Black.png",
         website: "https://colosseum.com/",
       },
+      "dev3pack": {
+        title: "dev3pack",
+        description:
+          "A Web3 developer collective building on Solana.",
+        logo: "/projectPicture/Medusa/Logo dev3pack transparent.png",
+        website: "https://hack.dev3pack.xyz/",
+      },
     },
   } as {
     chain: Record<

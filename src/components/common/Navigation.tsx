@@ -1,82 +1,68 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Bio", href: "/bio" },
+]
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
 
-  const toggleMenu = () => setIsOpen(!isOpen)
-
-  const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Content", href: "/content" },
-  ]
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   return (
-    <>
-      {/* Desktop Navigation */}
-      <nav className="hidden md:flex fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-background/50 border-b border-border">
-        <div className="w-full max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
-          <Link href="/" className="font-kdam text-xl font-bold text-primary">
-            Acre
-          </Link>
-          <div className="flex gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-foreground hover:text-primary transition-colors text-sm font-medium"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+    <div ref={ref} className="fixed top-5 right-6 z-50">
+      <button
+        onClick={() => setIsOpen((v) => !v)}
+        aria-label="Toggle menu"
+        className="focus:outline-none relative z-50"
+      >
+        <img src="/acre-logo.png" alt="Acre" className="h-8 w-auto" />
+      </button>
+
+      {/* Mobile: full-screen overlay */}
+      {isOpen && (
+        <div className="md:hidden fixed inset-0 bg-[#1B0B14]/98 backdrop-blur-md flex flex-col items-center justify-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="font-kdam text-3xl font-bold text-white/70 hover:text-white transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
-      </nav>
+      )}
 
-      {/* Mobile Header with Hamburger */}
-      <div className="fixed top-0 left-0 right-0 z-50 md:hidden backdrop-blur-sm bg-background/50 border-b border-border">
-        <div className="px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="font-kdam text-lg font-bold text-primary">
-            Acre
-          </Link>
-          <button
-            onClick={toggleMenu}
-            className="p-2 hover:bg-accent/10 rounded-lg transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <X className="size-6 text-foreground" />
-            ) : (
-              <Menu className="size-6 text-foreground" />
-            )}
-          </button>
+      {/* Desktop: small dropdown */}
+      {isOpen && (
+        <div className="hidden md:block absolute right-0 mt-3 w-40 rounded-2xl border border-white/10 bg-[#1B0B14]/95 backdrop-blur-md shadow-xl overflow-hidden">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="block px-5 py-3 text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
-
-        {/* Mobile Menu Dropdown */}
-        {isOpen && (
-          <div className="bg-background border-t border-border">
-            <div className="px-4 py-4 space-y-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block px-4 py-2 text-foreground hover:text-primary hover:bg-accent/10 rounded-lg transition-colors font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Spacer to prevent content from going under fixed nav */}
-      <div className="h-16 md:h-20" />
-    </>
+      )}
+    </div>
   )
 }
