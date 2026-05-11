@@ -82,11 +82,20 @@ export default function ProjectCard({
             href={award.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group/award inline-flex items-center gap-2 self-start text-sm text-white/70 transition hover:text-white"
+            className="group/award inline-flex items-start gap-2 self-start text-sm md:text-sm text-white/70 transition hover:text-white"
           >
-            <Trophy className="size-3.5 shrink-0 md:size-4" aria-hidden="true" />
-            <span className="group-hover/award:underline underline-offset-2">{award.label}</span>
-            <ExternalLink className="size-3.5 shrink-0 md:size-4" aria-hidden="true" />
+            <Trophy className="size-4 shrink-0 mt-0.5" aria-hidden="true" />
+            <span className="group-hover/award:underline underline-offset-2 leading-snug">
+              {award.label.split(" — ").map((part, i, arr) => (
+                <span key={i}>
+                  {part}
+                  {i < arr.length - 1 && (
+                    <><span className="mx-1">—</span><wbr /></>
+                  )}
+                </span>
+              ))}
+            </span>
+            <ExternalLink className="size-4 shrink-0 mt-0.5" aria-hidden="true" />
           </a>
         )}
 
