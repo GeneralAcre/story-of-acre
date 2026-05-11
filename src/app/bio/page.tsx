@@ -54,33 +54,6 @@ function GridCell({ item }: { item: typeof gridItems[number] }) {
     )
   }
 
-  // Flip with content (CO Content — Megapot article)
-  if (item.flipContent) {
-    return (
-      <div className="block h-full [perspective:800px] group/flip">
-        <div className="relative h-full [transform-style:preserve-3d] transition-transform duration-500 group-hover/flip:[transform:rotateY(180deg)]">
-          <div className="absolute inset-0 [backface-visibility:hidden]">{faceContent}</div>
-          <div className="absolute inset-0 flex flex-col p-4 bg-[#1B0B14] [backface-visibility:hidden] [transform:rotateY(180deg)]">
-            <span className="font-mono text-[8px] text-[#FAC335]/60 tracking-widest uppercase">Cryptocurrency · 5 min read</span>
-            <p className="text-xs font-bold text-white mt-3 leading-snug">
-              Megapot vs Thai Government Lottery: Which Offers Better Odds?
-            </p>
-            <p className="text-[10px] text-white/50 mt-2 leading-relaxed">
-              The odd connection between crypto lottery projects and the Thai lottery.
-            </p>
-            <a
-              href="https://medium.com/@acreforcoding/megapot-vs-thai-government-lottery-which-offers-better-odds-60272cb65fcc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-auto inline-flex items-center gap-1 text-[10px] text-[#FAC335] hover:underline"
-            >
-              Read More <ExternalLink className="size-3" />
-            </a>
-          </div>
-        </div>
-      </div>
-    )
-  }
 
   return item.href ? (
     <a href={item.href} target="_blank" rel="noopener noreferrer" className="block h-full hover:bg-white/5 transition-colors">
