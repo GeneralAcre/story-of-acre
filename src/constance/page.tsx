@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { REGISTRY } from "@/constance/registry"
 import { Link2, ExternalLink, Trophy } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
@@ -31,17 +32,19 @@ export default function ProjectCard({
     <div className="group w-full flex flex-col gap-6 text-left transition-transform duration-500 md:scale-90 md:hover:scale-100 md:flex-row md:odd:flex-row-reverse md:items-center md:gap-10">
 
       {/* ── Image column ── */}
-      <div className="w-full md:w-[45%] shrink-0 flex items-center justify-center overflow-hidden rounded-2xl bg-transparent">
+      <div className="w-full md:w-[45%] shrink-0 flex items-center justify-center bg-transparent">
         {isLogoOnly ? (
-          <img src={image} alt={title} className="w-[130px] md:w-[160px] h-auto rounded-2xl bg-transparent" />
+          <Image src={image} alt={title} width={160} height={160} className="w-[130px] md:w-[160px] h-auto rounded-2xl" />
         ) : (
-          <img
-            src={image}
-            alt={title}
-            className={`w-full max-w-[480px] h-[220px] md:h-[300px] rounded-2xl object-cover bg-transparent ${
-              isLeftAlignedImage ? "object-left" : "object-center"
-            }`}
-          />
+          <div className={`relative w-full max-w-[480px] h-[220px] md:h-[300px] rounded-2xl overflow-hidden`}>
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className={`object-cover ${isLeftAlignedImage ? "object-left" : "object-center"}`}
+              sizes="(max-width: 768px) 100vw, 480px"
+            />
+          </div>
         )}
       </div>
 
@@ -58,7 +61,7 @@ export default function ProjectCard({
           {w && REGISTRY.organization[w] && (
             <Link href={REGISTRY.organization[w]?.website} target="_blank" rel="noopener noreferrer">
               <Badge className="gap-1 px-1" variant="secondary">
-                <img src={REGISTRY.organization[w]?.logo} alt={REGISTRY.organization[w]?.title} className="size-4 rounded-full" />
+                <Image src={REGISTRY.organization[w]?.logo} alt={REGISTRY.organization[w]?.title} width={16} height={16} className="size-4 rounded-full" />
                 {REGISTRY.organization[w]?.title}
               </Badge>
             </Link>
@@ -66,7 +69,7 @@ export default function ProjectCard({
           {chain && REGISTRY.chain[chain] && (
             <Link href={REGISTRY.chain[chain]?.website} target="_blank">
               <Badge className="gap-1 px-1" variant="secondary">
-                <img src={REGISTRY.chain[chain]?.logo} alt={REGISTRY.chain[chain]?.title} className="size-4 rounded-full" />
+                <Image src={REGISTRY.chain[chain]?.logo} alt={REGISTRY.chain[chain]?.title} width={16} height={16} className="size-4 rounded-full" />
                 {REGISTRY.chain[chain]?.title}
               </Badge>
             </Link>

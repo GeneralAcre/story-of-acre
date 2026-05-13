@@ -13,7 +13,7 @@ export default function LoadingScreen({ onCompleteAction }: LoadingScreenProps) 
   const [phase, setPhase] = useState<"loading" | "entering" | "done">("loading")
 
   useEffect(() => {
-    const totalDuration = 2600
+    const totalDuration = 1200
     const start = Date.now()
     let raf: number
 

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { ExternalLink } from "lucide-react"
 
 export const metadata = {
@@ -77,8 +78,8 @@ export default function Bio() {
 
         <div className="flex-1 min-h-0 grid grid-cols-3 border-b border-white/10">
 
-          <div className="border-r border-white/10 overflow-hidden">
-            <img src="/acre.jpeg" alt="Acre" className="w-full h-full object-cover object-top" />
+          <div className="relative border-r border-white/10 overflow-hidden">
+            <Image src="/acre.jpeg" alt="Acre" fill className="object-cover object-top" priority />
           </div>
 
           <div className="border-r border-white/10 overflow-hidden flex flex-col">
@@ -112,8 +113,8 @@ export default function Bio() {
         </div>
 
         {/* Photo — mobile */}
-        <div className="border-b border-white/10">
-          <img src="/acre.jpeg" alt="Acre" className="w-full h-72 object-cover object-center" />
+        <div className="relative border-b border-white/10 h-72">
+          <Image src="/acre.jpeg" alt="Acre" fill className="object-cover object-center" priority />
         </div>
 
         <div className="border-b border-white/10 flex flex-col">

@@ -44,7 +44,7 @@ export const PROJECTS = [
       image: "/projectPicture/Polkadot/mirage-cover.png",
       chain: "Polkadot",
       description:
-        "A React-based web application built for the Polkadot 2025 ecosystem. Explores the Polkadot network's cross-chain capabilities through an interactive interface.",
+        "Mirage is a dynamic NFT on Polkadot from a 4x4 Polkadot pixel, your staked assets evolve a dynamic NFT. Earn $XP, watch your Mirage grow, and prepare for living testament to your ecosystem journey.",
       website: "https://polkadot-2025-react-sfna.vercel.app/",
       scope: "Frontend,UXUI",
     },
