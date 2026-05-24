@@ -8,37 +8,54 @@ interface LoadingScreenProps {
   onCompleteAction: () => void
 }
 
+type LoadingPhase = "loading" | "entering" | "done"
+
+const LOAD_DURATION = 1200
+const ENTER_DELAY = 350
+const CONTENT_REVEAL_DELAY = 700
+const OVERLAY_EXIT_DELAY = 1800
+
+function easeInOutCubic(t: number) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+}
+
 export default function LoadingScreen({ onCompleteAction }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
-  const [phase, setPhase] = useState<"loading" | "entering" | "done">("loading")
+  const [phase, setPhase] = useState<LoadingPhase>("loading")
 
   useEffect(() => {
-    const totalDuration = 1200
     const start = Date.now()
     let raf: number
+    let enterTimer: ReturnType<typeof setTimeout>
+    let revealTimer: ReturnType<typeof setTimeout>
+    let exitTimer: ReturnType<typeof setTimeout>
 
     const tick = () => {
       const elapsed = Date.now() - start
-      const t = Math.min(elapsed / totalDuration, 1)
-      const eased = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
-      setProgress(Math.floor(eased * 100))
+      const t = Math.min(elapsed / LOAD_DURATION, 1)
+      setProgress(Math.floor(easeInOutCubic(t) * 100))
 
       if (t < 1) {
         raf = requestAnimationFrame(tick)
       } else {
         setProgress(100)
-        setTimeout(() => {
+        enterTimer = setTimeout(() => {
           setPhase("entering")
           // Site starts fading in while we zoom through
-          setTimeout(onCompleteAction, 700)
+          revealTimer = setTimeout(onCompleteAction, CONTENT_REVEAL_DELAY)
           // Remove overlay after zoom completes
-          setTimeout(() => setPhase("done"), 1800)
-        }, 350)
+          exitTimer = setTimeout(() => setPhase("done"), OVERLAY_EXIT_DELAY)
+        }, ENTER_DELAY)
       }
     }
 
     raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
+    return () => {
+      cancelAnimationFrame(raf)
+      clearTimeout(enterTimer)
+      clearTimeout(revealTimer)
+      clearTimeout(exitTimer)
+    }
   }, [onCompleteAction])
 
   if (phase === "done") return null
