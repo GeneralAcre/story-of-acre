@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion, MotionProps } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 interface TypingAnimationProps extends MotionProps {
   children?: string;
@@ -22,9 +22,10 @@ export function TypingAnimation({
   startOnView = false,
   ...props
 }: TypingAnimationProps) {
-  const MotionComponent = motion.create(Component, {
-    forwardMotionProps: true,
-  });
+  const MotionComponent = useMemo(
+    () => motion.create(Component, { forwardMotionProps: true }),
+    [Component],
+  );
 
   const [displayedText, setDisplayedText] = useState<string>("");
   const [started, setStarted] = useState(false);

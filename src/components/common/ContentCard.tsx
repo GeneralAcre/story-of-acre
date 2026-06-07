@@ -31,7 +31,7 @@ export default function ContentCard({ category, date, readTime, title, descripti
           <a
             href={target}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-full border border-[#FAC335] bg-transparent px-4 py-2 text-sm font-semibold text-[#FAC335] transition hover:bg-[#FAC335] hover:text-[#1A0015]"
           >
             Read More

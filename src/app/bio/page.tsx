@@ -58,12 +58,12 @@ function AboutCopy({ mobile = false }: { mobile?: boolean }) {
 function BioFooter({ mobile = false }: { mobile?: boolean }) {
   return (
     <div className={`${mobile ? "px-6 flex-col gap-1" : "shrink-0 px-10 items-center justify-between"} py-4 flex`}>
-      <span className="font-mono text-[9px] tracking-widest uppercase text-white/20">Â© 2026 Acre</span>
+      <span className="font-mono text-[9px] tracking-widest uppercase text-white/20">© 2026 Acre</span>
       <a
         href="mailto:acreforcoding@gmail.com"
         className={`font-mono text-[9px] tracking-widest uppercase text-white/30 ${mobile ? "" : "hover:text-white transition-colors"}`}
       >
-        Get in touch â†’ acreforcoding@gmail.com
+        Get in touch → acreforcoding@gmail.com
       </a>
     </div>
   )
@@ -97,7 +97,7 @@ function GridCell({ item }: { item: GridItem }) {
       <div className="relative h-full [transform-style:preserve-3d] transition-transform duration-500 group-hover/flip:[transform:rotateY(180deg)]">
         <div className="absolute inset-0 [backface-visibility:hidden]">{faceContent}</div>
         <div className="absolute inset-0 flex items-center justify-center bg-[#FAC335] [backface-visibility:hidden] [transform:rotateY(180deg)]">
-          <img src={item.flipLogo} alt={item.label} className={`${item.flipLogoSize ?? "w-16 h-16"} object-contain`} />
+          <Image src={item.flipLogo} alt={item.label} width={112} height={112} className={`${item.flipLogoSize ?? "w-16 h-16"} object-contain`} />
         </div>
       </div>
     )

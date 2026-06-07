@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import Image from "next/image"
 import Link from "next/link"
 
 const navLinks = [
@@ -29,7 +30,7 @@ export default function Navigation() {
         aria-label="Toggle menu"
         className="focus:outline-none relative z-50"
       >
-        <img src="/acre-logo.png" alt="Acre" className="h-8 w-auto" />
+        <Image src="/acre-logo.png" alt="Acre" width={32} height={32} className="h-8 w-auto" priority />
       </button>
 
       {/* Mobile: full-screen overlay */}

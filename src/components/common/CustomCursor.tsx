@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { motion, useMotionValue, useSpring } from "motion/react"
 
 export default function CustomCursor() {
@@ -8,16 +8,22 @@ export default function CustomCursor() {
   const mouseY = useMotionValue(-200)
   const [hovering, setHovering] = useState(false)
   const [visible, setVisible] = useState(false)
+  const visibleRef = useRef(false)
 
-  const springConfig = { damping: 22, stiffness: 280, mass: 0.5 }
+  const springConfig = useMemo(() => ({ damping: 22, stiffness: 280, mass: 0.5 }), [])
   const springX = useSpring(mouseX, springConfig)
   const springY = useSpring(mouseY, springConfig)
 
   useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) return
+
     const onMove = (e: MouseEvent) => {
       mouseX.set(e.clientX)
       mouseY.set(e.clientY)
-      if (!visible) setVisible(true)
+      if (!visibleRef.current) {
+        visibleRef.current = true
+        setVisible(true)
+      }
     }
 
     const onEnter = (e: MouseEvent) => {
@@ -42,7 +48,7 @@ export default function CustomCursor() {
       document.removeEventListener("mouseover", onEnter)
       document.removeEventListener("mouseout", onLeave)
     }
-  }, [mouseX, mouseY, visible])
+  }, [mouseX, mouseY])
 
   if (!visible) return null
 

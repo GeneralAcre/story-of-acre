@@ -6,7 +6,6 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-  useState,
 } from "react";
 
 interface FlickeringGridProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -33,8 +32,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
-  const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+  const isInViewRef = useRef(false);
 
   const memoizedColor = useMemo(() => {
     const toRGBA = (color: string) => {
@@ -123,20 +121,28 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
     if (!ctx) return;
 
     let animationFrameId: number;
+    let lastTime = 0;
     let gridParams: ReturnType<typeof setupCanvas>;
 
     const updateCanvasSize = () => {
       const newWidth = width || container.clientWidth;
       const newHeight = height || container.clientHeight;
-      setCanvasSize({ width: newWidth, height: newHeight });
       gridParams = setupCanvas(canvas, newWidth, newHeight);
+      drawGrid(
+        ctx,
+        canvas.width,
+        canvas.height,
+        gridParams.cols,
+        gridParams.rows,
+        gridParams.squares,
+        gridParams.dpr,
+      );
     };
 
     updateCanvasSize();
 
-    let lastTime = 0;
     const animate = (time: number) => {
-      if (!isInView) return;
+      if (!isInViewRef.current) return;
 
       const deltaTime = (time - lastTime) / 1000;
       lastTime = time;
@@ -162,23 +168,24 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
     const intersectionObserver = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        isInViewRef.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          lastTime = performance.now();
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = requestAnimationFrame(animate);
+        }
       },
       { threshold: 0 },
     );
 
     intersectionObserver.observe(canvas);
 
-    if (isInView) {
-      animationFrameId = requestAnimationFrame(animate);
-    }
-
     return () => {
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
     };
-  }, [setupCanvas, updateSquares, drawGrid, width, height, isInView]);
+  }, [setupCanvas, updateSquares, drawGrid, width, height]);
 
   return (
     <div
@@ -186,14 +193,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       className={cn(`h-full w-full ${className}`)}
       {...props}
     >
-      <canvas
-        ref={canvasRef}
-        className="pointer-events-none"
-        style={{
-          width: canvasSize.width,
-          height: canvasSize.height,
-        }}
-      />
+      <canvas ref={canvasRef} className="pointer-events-none" />
     </div>
   );
 };
