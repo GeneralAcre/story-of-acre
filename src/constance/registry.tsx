@@ -73,6 +73,13 @@ export const REGISTRY = {
         logo: "/projectPicture/Medusa/Logo dev3pack transparent.png",
         website: "https://hack.dev3pack.xyz/",
       },
+      "IslandDAO": {
+        title: "IslandDAO",
+        description:
+          "A DAO building the world's first floating city.",
+        logo: "/projectPicture/proof-of-alpha/islanddao-logo-dark.png",
+        website: "https://www.islanddao.org/",
+      },
     },
   } as {
     chain: Record<

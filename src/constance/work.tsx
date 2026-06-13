@@ -11,6 +11,16 @@ export const PROJECTS = [
       award: { label: "dev3pack Global Hackathon — Runner-Up Thailand ", href: "https://hack.dev3pack.xyz/projects/jx793eyva2cqv8vv0526r11dr586dtcm" },
     },
     {
+      title: "Proof Of Alpha",
+      image: "/projectPicture/proof-of-alpha/Proof-of-alpha.png",
+      w: "IslandDAO",
+      chain: "Solana",
+      description:
+        "Proof of Alpha is an on-chain game where you practice approaching and talking to girls through real-time AI chat : every interaction earns or costs you AURA, a reputation token that's stored on Solana, tracks your skill over time, and can be upgraded or traded.",
+      website: "https://proof-of-alpha-live.vercel.app/",
+      scope: "Product Architect",
+    },
+    {
       title: "Signal",
       image: "/projectPicture/Solana/Signal-logo.png",
       w: "Colosseum",
