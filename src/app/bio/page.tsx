@@ -11,10 +11,10 @@ const gridItems = [
   { num: "02", abbr: "KR", label: "KRNL Labs",        category: "Partnerships", href: "https://medium.com/@storyofacre/a-two-month-krnl-labs-diary-4f261856fcbd", flipLogo: "/KRNL Labs Logo - Black.png", flipLogoSize: "w-28 h-28" },
   { num: "03", abbr: "VA", label: "Vantage",          category: "Marketing Intern" },
   { num: "04", abbr: "TY", label: "TomyumDAO",        category: "Contributor" },
-  { num: "05", abbr: "ET", label: "ETH Chula",        category: "Founder", href: "https://www.instagram.com/eth.chula/", flipLogo: "/projectPicture/eth-chula.png" },
-  { num: "06", abbr: "EG", label: "Event Beggar",     category: "Event Maxi", href: "https://drive.google.com/drive/u/1/folders/1vJBg0jbJzo7nH7zbSNwDl9t3mdrRYQh5", flipLogo: "/acre-logo-black.png" },
-  { num: "07", abbr: "CO", label: "Content",          category: "Practice", href: "https://medium.com/@acreforcoding", flipLogo: "/acre-logo-black.png" },
-  { num: "08", abbr: "T1", label: "Team1",            category: "Avalanche", flipLogo: "/projectPicture/Avalanche/Team1_Logo.png", flipLogoSize: "w-24 h-24" },
+  { num: "05", abbr: "T1", label: "Team1",            category: "Avalanche", flipLogo: "/projectPicture/Avalanche/Team1_Logo.png", flipLogoSize: "w-24 h-24" },
+  { num: "06", abbr: "",   label: "",                 category: "" },
+  { num: "07", abbr: "",   label: "",                 category: "" },
+  { num: "08", abbr: "",   label: "",                 category: "" },
   { num: "09", abbr: "",   label: "",                 category: "" },
 ]
 

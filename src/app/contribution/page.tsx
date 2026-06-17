@@ -43,6 +43,13 @@ const CONTRIBUTIONS = [
     tags: ["Polkadot"],
     href: "https://x.com/Acrepedia/status/1976296662298460493?s=20",
   },
+  {
+    title: "ETH Chula",
+    year: "July 2025",
+    description: "✦ Founder",
+    tags: ["Ethereum"],
+    href: "https://www.instagram.com/eth.chula/",
+  },
 ]
 
 export default function Contribution() {
