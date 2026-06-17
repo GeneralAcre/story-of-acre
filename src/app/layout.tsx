@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Kdam_Thmor_Pro } from "next/font/google";
+import { Geist, Geist_Mono, Kdam_Thmor_Pro, Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import ClientShell from "./ClientShell";
 
@@ -19,6 +19,12 @@ const kdam = Kdam_Thmor_Pro({
   weight: "400",
 });
 
+const pressStart2P = Press_Start_2P({
+  variable: "--font-pixel",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Acre — Frontend Developer",
   description: "Frontend developer exploring the power of blockchain.",
@@ -30,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${kdam.variable}`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${kdam.variable} ${pressStart2P.variable}`}>
       <body>
         <ClientShell>{children}</ClientShell>
       </body>

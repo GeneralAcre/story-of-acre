@@ -55,17 +55,10 @@ function AboutCopy({ mobile = false }: { mobile?: boolean }) {
   )
 }
 
+
 function BioFooter({ mobile = false }: { mobile?: boolean }) {
   return (
-    <div className={`${mobile ? "px-6 flex-col gap-1" : "shrink-0 px-10 items-center justify-between"} py-4 flex`}>
-      <span className="font-mono text-[9px] tracking-widest uppercase text-white/20">© 2026 Acre</span>
-      <a
-        href="mailto:acreforcoding@gmail.com"
-        className={`font-mono text-[9px] tracking-widest uppercase text-white/30 ${mobile ? "" : "hover:text-white transition-colors"}`}
-      >
-        Get in touch → acreforcoding@gmail.com
-      </a>
-    </div>
+    <div className={`${mobile ? "px-6 flex-col gap-1" : "shrink-0 px-10 items-center justify-between"} py-4 flex`} />
   )
 }
 

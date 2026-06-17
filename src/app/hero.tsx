@@ -45,10 +45,6 @@ export default function Hero() {
         <HeroReveal>
           <div className="relative z-10 flex flex-col items-center gap-6 max-w-3xl mx-auto">
 
-            {/* Eyebrow label */}
-            <p className="font-mono text-[10px] tracking-[0.45em] uppercase text-[#FAC335]/60">
-              ▸ Frontend Developer · Blockchain
-            </p>
 
             {/* Morphing name */}
             <MorphingTextDemo />
@@ -60,9 +56,6 @@ export default function Hero() {
             <div className="max-w-2xl space-y-3">
               <p className="text-base md:text-xl text-[#FAC335]/80 font-light tracking-wide">
                 Exploring the power of blockchain to reshape industries and empower individuals.
-              </p>
-              <p className="text-sm md:text-base text-[#D4A0C0] leading-relaxed">
-                  Acre (Noun) : The person who builds the grid. I take raw ideas and messy chaos and turn them into something that works.
               </p>
             </div>
 

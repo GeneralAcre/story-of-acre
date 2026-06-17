@@ -16,6 +16,21 @@ export const TECH_STACK = [
       title: "Solidity",
       description:
         "EVM contract/backend development stacks for building blockchain applications.",
-    }
+    },
+    {
+      title: "Rust",
+      description:
+        "Systems-level language used for writing Solana programs and performance-critical code.",
+    },
+    {
+      title: "Anchor",
+      description:
+        "Solana smart contract framework that simplifies program development with type-safe abstractions.",
+    },
+    {
+      title: "OpenRouter",
+      description:
+        "Unified API gateway for accessing multiple LLM providers in AI-powered applications.",
+    },
 
   ]

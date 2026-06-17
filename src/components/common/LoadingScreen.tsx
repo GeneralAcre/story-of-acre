@@ -1,175 +1,108 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion } from "motion/react"
-import HeroEye from "@/components/common/HeroEye"
 
 interface LoadingScreenProps {
   onCompleteAction: () => void
 }
 
-type LoadingPhase = "loading" | "entering" | "done"
-
-const LOAD_DURATION = 1200
-const ENTER_DELAY = 350
-const CONTENT_REVEAL_DELAY = 700
-const OVERLAY_EXIT_DELAY = 1800
+const LOAD_DURATION = 1800
+const SEGMENTS = 16
 
 function easeInOutCubic(t: number) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 }
 
+const BAR_WIDTH = 320
+
 export default function LoadingScreen({ onCompleteAction }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0)
-  const [phase, setPhase] = useState<LoadingPhase>("loading")
+  const [opacity, setOpacity] = useState(1)
+  const [gone, setGone] = useState(false)
 
   useEffect(() => {
     const start = Date.now()
     let raf: number
-    let enterTimer: ReturnType<typeof setTimeout>
-    let revealTimer: ReturnType<typeof setTimeout>
-    let exitTimer: ReturnType<typeof setTimeout>
 
     const tick = () => {
-      const elapsed = Date.now() - start
-      const t = Math.min(elapsed / LOAD_DURATION, 1)
+      const t = Math.min((Date.now() - start) / LOAD_DURATION, 1)
       setProgress(Math.floor(easeInOutCubic(t) * 100))
 
       if (t < 1) {
         raf = requestAnimationFrame(tick)
       } else {
         setProgress(100)
-        enterTimer = setTimeout(() => {
-          setPhase("entering")
-          // Site starts fading in while we zoom through
-          revealTimer = setTimeout(onCompleteAction, CONTENT_REVEAL_DELAY)
-          // Remove overlay after zoom completes
-          exitTimer = setTimeout(() => setPhase("done"), OVERLAY_EXIT_DELAY)
-        }, ENTER_DELAY)
+        setTimeout(() => {
+          onCompleteAction()
+          setOpacity(0)
+          setTimeout(() => setGone(true), 600)
+        }, 400)
       }
     }
 
     raf = requestAnimationFrame(tick)
-    return () => {
-      cancelAnimationFrame(raf)
-      clearTimeout(enterTimer)
-      clearTimeout(revealTimer)
-      clearTimeout(exitTimer)
-    }
+    return () => cancelAnimationFrame(raf)
   }, [onCompleteAction])
 
-  if (phase === "done") return null
+  if (gone) return null
 
-  const isEntering = phase === "entering"
+  const filled = Math.round((progress / 100) * SEGMENTS)
 
   return (
-    <div className="fixed inset-0 z-[9999] overflow-hidden bg-[#4A043A]">
-
-      {/* ── Scene — zooms toward the eye on enter ── */}
-      <motion.div
-        className="absolute inset-0 flex flex-col items-center justify-center"
-        animate={
-          isEntering
-            ? { scale: 7, opacity: 0, filter: "brightness(6) blur(4px)" }
-            : { scale: 1, opacity: 1, filter: "brightness(1) blur(0px)" }
-        }
-        transition={{ duration: 1.6, ease: [0.4, 0, 1, 1] }}
-        style={{ transformOrigin: "50% 50%" }}
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 9999,
+        backgroundColor: '#4A043A',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'var(--font-pixel, "Courier New", monospace)',
+        opacity,
+        transition: 'opacity 0.6s ease',
+      }}
+    >
+      {/* LOADING... XX% */}
+      <div
+        style={{
+          width: BAR_WIDTH,
+          display: 'flex',
+          justifyContent: 'space-between',
+          color: '#FAC335',
+          fontSize: 13,
+          letterSpacing: '0.1em',
+          marginBottom: 10,
+        }}
       >
-        {/* Atmospheric background glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 65% 55% at 50% 50%, rgba(161,5,53,0.22) 0%, rgba(74,4,58,0.75) 55%, #4A043A 100%)",
-          }}
-        />
+        <span>LOADING...</span>
+        <span>{progress}%</span>
+      </div>
 
-        {/* Outer ambient ring */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 30% 20% at 50% 50%, rgba(250,195,53,0.06) 0%, transparent 70%)",
-          }}
-        />
-
-        {/* Corner label — like "TURN THE SOUND ON" */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isEntering ? 0 : 0.45 }}
-          transition={{ delay: 0.6 }}
-          className="absolute top-8 right-8 flex items-center gap-2 font-mono text-[9px] tracking-[0.35em] uppercase text-[#FAC335]"
-        >
-          <div className="flex gap-[3px]">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="w-[3px] h-[3px] rounded-full bg-[#FAC335]" />
-            ))}
-          </div>
-          Identity Scan
-        </motion.div>
-
-        {/* Top-left coordinate */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isEntering ? 0 : 0.35 }}
-          transition={{ delay: 0.8 }}
-          className="absolute top-8 left-8 font-mono text-[9px] text-[#FAC335] tracking-widest"
-        >
-          {`48°51'N / 2°21'E`}
-        </motion.div>
-
-        {/* The Eye — portal centrepiece */}
-        <motion.div
-          className="relative z-10 w-full max-w-lg px-6"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <HeroEye />
-        </motion.div>
-
-        {/* Scanning label */}
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: isEntering ? 0 : 0.55, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-5 font-mono text-[9px] tracking-[0.5em] uppercase text-[#FAC335]"
-        >
-          Scanning Identity
-        </motion.p>
-      </motion.div>
-
-      {/* ── Flash bloom on entering ── */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 40% 30% at 50% 50%, #FAC335, #DD192F, transparent)" }}
-        initial={{ opacity: 0 }}
-        animate={isEntering ? { opacity: [0, 0.6, 0] } : { opacity: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-      />
-
-      {/* ── Progress bar + counter ── */}
-      <motion.div
-        className="absolute bottom-0 left-0 right-0"
-        animate={{ opacity: isEntering ? 0 : 1 }}
-        transition={{ duration: 0.25 }}
+      {/* Segmented pixel bar */}
+      <div
+        style={{
+          width: BAR_WIDTH,
+          border: '3px solid #FAC335',
+          padding: '3px 2px',
+          display: 'flex',
+          gap: 3,
+          backgroundColor: '#2A001F',
+          boxSizing: 'border-box',
+        }}
       >
-        <div className="px-8 md:px-12 pb-8 flex items-end justify-between">
-          <span className="font-mono text-[10px] tracking-[0.35em] uppercase text-[#D4A0C0]">
-            Loading
-          </span>
-          <span className="font-mono text-4xl md:text-5xl font-bold text-[#FAC335] tabular-nums">
-            {String(progress).padStart(2, "0")}
-          </span>
-        </div>
-        <div className="h-[2px] bg-[#482D40]">
+        {Array.from({ length: SEGMENTS }).map((_, i) => (
           <div
-            className="h-full bg-[#FAC335]"
-            style={{ width: `${progress}%`, transition: "width 80ms linear" }}
+            key={i}
+            style={{
+              flex: 1,
+              height: 22,
+              backgroundColor: i < filled ? '#FAC335' : 'transparent',
+            }}
           />
-        </div>
-      </motion.div>
+        ))}
+      </div>
     </div>
   )
 }
