@@ -68,16 +68,5 @@ export const PROJECTS = [
       website: "https://titanic-survival-prediction-peach.vercel.app/",
       scope: "Frontend,UXUI",
     },
-    {
-      title: "ETH Chula",
-      image: "/projectPicture/eth-chula.png",
-      w: "",
-      chain: "Ethereum",
-      description:
-        "ETH Chula is a community dedicated to all things Ethereum, offering content for everyone from beginners to advanced users. Currently, it's a one-person effort, but the goal is to expand and become an official club in the future.",
-      website: "https://www.instagram.com/eth.chula/",
-      scope:
-        "Founder",
-    }
   ]
   

@@ -53,10 +53,12 @@ export default function Hero() {
             <TypingAnimation />
 
             {/* Description */}
-            <div className="max-w-2xl space-y-3">
-              <p className="text-base md:text-xl text-[#FAC335]/80 font-light tracking-wide">
-                Exploring the power of blockchain to reshape industries and empower individuals.
-              </p>
+            <div className="max-w-2xl flex flex-wrap justify-center gap-x-3 gap-y-1">
+              {["Builder", "Community Manager", "Marketer"].map((kw, i, arr) => (
+                <span key={kw} className="text-base md:text-lg text-[#FAC335]/80 font-mono whitespace-nowrap font-light tracking-wide">
+                  {kw}{i < arr.length - 1 ? <span className="mx-1 opacity-50">✦</span> : null}
+                </span>
+              ))}
             </div>
 
             {/* CTA buttons */}
