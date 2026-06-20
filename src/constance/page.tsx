@@ -50,7 +50,7 @@ export default function ProjectCard({
 
       {/* ── Text column ── */}
       <div className="w-full md:w-[55%] flex flex-col gap-2 min-w-0 text-left">
-        <h3 className="font-mono text-xs text-[#D4A0C0] transition-opacity duration-500 group-hover:opacity-100 md:text-sm md:opacity-0">
+        <h3 className="font-mono text-xs text-[#D4A0C0] md:text-sm">
           {scope}
         </h3>
         <h2 className="font-kdam text-2xl font-bold tracking-wide md:text-3xl break-words">
@@ -104,7 +104,7 @@ export default function ProjectCard({
 
         <div className="flex flex-wrap items-center gap-3 mt-1">
           <Link
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#FAC335] px-4 py-2 text-sm font-medium text-[#FAC335] bg-transparent transition-all duration-500 ease-in-out lg:opacity-0 group-hover:opacity-100 hover:bg-[#FAC335] hover:text-[#1A0015]"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#FAC335] px-4 py-2 text-sm font-medium text-[#FAC335] bg-transparent transition-all duration-500 ease-in-out hover:bg-[#FAC335] hover:text-[#1A0015]"
             href={website}
             target="_blank"
             rel="noopener noreferrer"

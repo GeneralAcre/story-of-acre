@@ -99,8 +99,8 @@ const Texts: React.FC<Pick<MorphingTextProps, "texts">> = ({ texts }) => {
   const { text1Ref, text2Ref } = useMorphingText(texts)
   return (
     <>
-      <span className="absolute inset-x-0 top-0 m-auto inline-block w-full" ref={text1Ref} />
-      <span className="absolute inset-x-0 top-0 m-auto inline-block w-full" ref={text2Ref} />
+      <span className="absolute left-1/2 -translate-x-1/2 top-0 whitespace-nowrap" ref={text1Ref} />
+      <span className="absolute left-1/2 -translate-x-1/2 top-0 whitespace-nowrap" ref={text2Ref} />
     </>
   )
 }
@@ -125,7 +125,7 @@ const SvgFilters: React.FC = () => (
 export const MorphingText: React.FC<MorphingTextProps> = ({ texts, className }) => (
   <div
     className={cn(
-      "relative mx-auto h-12 w-full text-center font-mono text-[22px] font-bold leading-none whitespace-nowrap overflow-hidden [filter:url(#threshold)_blur(0.6px)] md:h-16 md:text-2xl lg:text-4xl xl:text-5xl",
+      "relative mx-auto h-14 w-full text-center font-mono text-[22px] font-bold leading-none overflow-visible [filter:url(#threshold)_blur(0.6px)] sm:h-16 sm:text-[28px] md:h-20 md:text-4xl lg:h-24 lg:text-5xl xl:text-6xl",
       className,
     )}
   >

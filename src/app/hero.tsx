@@ -53,10 +53,10 @@ export default function Hero() {
             <TypingAnimation />
 
             {/* Description */}
-            <div className="max-w-2xl flex flex-wrap justify-center gap-x-3 gap-y-1">
+            <div className="flex flex-nowrap justify-center items-center gap-x-2">
               {["Builder", "Community Manager", "Marketer"].map((kw, i, arr) => (
-                <span key={kw} className="text-base md:text-lg text-[#FAC335]/80 font-mono whitespace-nowrap font-light tracking-wide">
-                  {kw}{i < arr.length - 1 ? <span className="mx-1 opacity-50">✦</span> : null}
+                <span key={kw} className="text-sm md:text-lg text-[#FAC335]/80 font-mono whitespace-nowrap font-light tracking-wide flex items-center gap-x-2">
+                  {kw}{i < arr.length - 1 ? <span className="opacity-50">✦</span> : null}
                 </span>
               ))}
             </div>
