@@ -9,6 +9,14 @@ export const metadata = {
 
 const CONTRIBUTIONS = [
   {
+    title: "Team1 World Cup Watch Party",
+    year: "July 2026",
+    role: "Event Lead",
+    tags: ["Avalanche"],
+    image: "/contribution/Team1-Watch-Party.png",
+    href: "https://x.com/Acrepedia/status/2073727197404451264?s=20",
+  },
+  {
     title: "Solana Thailand Fellowship",
     year: "June 2026",
     role: "Builder",
@@ -65,10 +73,10 @@ export default function Contribution() {
 
         <SectionReveal className="w-full mb-8">
           <h1 className="font-[family-name:var(--font-kdam-next)] text-2xl sm:text-3xl text-white leading-tight mb-4">
-            Building Communities, Leading Events.
+            Building Communities, Leading Events
           </h1>
           <div className="flex flex-wrap gap-x-3 gap-y-1 mb-6 w-full">
-            {["events", "blockchain", "workshops", "hackathons", "meetups", "ecosystem growth", "student clubs", "fellowships"].map((kw, i, arr) => (
+            {["Events", "Workshops", "Hackathons", "Meetups", "Ecosystem Growth", "Student Clubs", "Fellowships"].map((kw, i, arr) => (
               <span key={kw} className="text-lg sm:text-xl text-[#FAC335] font-mono whitespace-nowrap">
                 {kw}{i < arr.length - 1 ? <span className="mx-2 opacity-60">✦</span> : null}
               </span>
