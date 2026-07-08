@@ -26,7 +26,7 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "Acre — Frontend Developer",
+  title: "Acrepedia",
   description: "Frontend developer exploring the power of blockchain.",
 };
 
