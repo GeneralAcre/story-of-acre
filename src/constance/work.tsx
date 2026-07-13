@@ -11,6 +11,16 @@ export const PROJECTS = [
       award: { label: "dev3pack Global Hackathon — Runner-Up Thailand ", href: "https://hack.dev3pack.xyz/projects/jx793eyva2cqv8vv0526r11dr586dtcm" },
     },
     {
+      title: "Obsession",
+      image: "/projectPicture/Obsession/Obsession-cover.png",
+      w: "MagicBlock",
+      chain: "Solana",
+      description:
+        "Obsession is a fully on-chain fortune-card gacha on Solana. For entertainment only. Not financial, legal, or relationship advice.",
+      website: "https://gacha-er.vercel.app/",
+      scope: "Product Architect",
+    },
+    {
       title: "Proof Of Alpha",
       image: "/projectPicture/proof-of-alpha/Proof-of-alpha.png",
       w: "IslandDAO",
@@ -35,7 +45,7 @@ export const PROJECTS = [
       image: "/projectPicture/girlorladyboy.png",
       w: "Cursor",
       description:
-        "A retro arcade-style browser game inspired by Bangkok's Nana Plaza. Players test their perception in a pixel-art themed challenge complete with score tracking, music toggle, and classic 80s arcade aesthetics.",
+        "Game that challenges players to guess whether the character on screen is a real girl or a ladyboy. Test your perception through a pixel-art styled interface with score tracking and classic arcade aesthetics.",
       website: "https://girlorladyboy.vercel.app/",
       scope: "Product Architect",
     },

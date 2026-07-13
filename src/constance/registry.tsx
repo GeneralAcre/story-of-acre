@@ -80,6 +80,13 @@ export const REGISTRY = {
         logo: "/projectPicture/proof-of-alpha/islanddao-logo-dark.png",
         website: "https://www.islanddao.org/",
       },
+      "MagicBlock": {
+        title: "MagicBlock",
+        description:
+          "Real-time infrastructure for Solana, powering fully on-chain gaming and applications through Ephemeral Rollups.",
+        logo: "/projectPicture/Project-logo/MagicBlock-Logomark-Black.png",
+        website: "https://magicblock.gg/",
+      },
     },
   } as {
     chain: Record<
