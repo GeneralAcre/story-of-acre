@@ -7,25 +7,13 @@ import Link from "next/link"; // You'll need this for 'asChild' to work with Lin
 const AddButton = [
   { name: "Github", link: "https://github.com/GeneralAcre" },
   { name: "Linkedin", link: "https://www.linkedin.com/in/sanpaphat-porntongprasert/" },
-  { name: "Resume", link: "/Sanpaphat-Porntongprasert-Resume.pdf" },
+  { name: "Resume", link: "https://drive.google.com/file/d/1awqIDkT6yxNsG2kos8e1v67X-Byh0nKN/view?usp=sharing" },
 ];
 
 export default function LinkButton() {
   return (
     <div className="flex justify-center items-center space-x-4">
       {AddButton.map((buttonData) => {
-        const isResumeButton = buttonData.name === "Resume";
-        if (isResumeButton) {
-          return (
-            <a
-              key={buttonData.name}
-              href={buttonData.link}
-              download="Sanpaphat-Porntongprasert-Resume.pdf"
-            >
-              <Button>{buttonData.name}</Button>
-            </a>
-          );
-        }
         return (
           <Link
             key={buttonData.name}
