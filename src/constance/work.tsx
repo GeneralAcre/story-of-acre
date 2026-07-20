@@ -21,6 +21,15 @@ export const PROJECTS = [
       scope: "Product Architect",
     },
     {
+      title: "Moment",
+      image: "/projectPicture/Moment/Moment-cover.png",
+      chain: "Solana",
+      description:
+        "Moment is an on-chain card platform on Solana for capturing and sharing moments as collectible cards.",
+      website: "https://moment-card.vercel.app/",
+      scope: "Product Architect",
+    },
+    {
       title: "Proof Of Alpha",
       image: "/projectPicture/proof-of-alpha/Proof-of-alpha.png",
       w: "IslandDAO",
