@@ -9,6 +9,13 @@ export const metadata = {
 
 const CONTRIBUTIONS = [
   {
+    title: "World Cup FINAL Watch Party by Team1 & Superteam Thailand",
+    year: "July 2026",
+    role: "Organizer",
+    tags: ["Avalanche", "Solana"],
+    image: "/contribution/WorldCup-Final.png",
+  },
+  {
     title: "Team1 World Cup Watch Party",
     year: "July 2026",
     role: "Event Lead",
