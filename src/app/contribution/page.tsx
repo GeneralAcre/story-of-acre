@@ -14,6 +14,7 @@ const CONTRIBUTIONS = [
     role: "Organizer",
     tags: ["Avalanche", "Solana"],
     image: "/contribution/WorldCup-Final.png",
+    href: "https://x.com/Acrepedia/status/2079249407825105028?s=20",
   },
   {
     title: "Team1 World Cup Watch Party",
