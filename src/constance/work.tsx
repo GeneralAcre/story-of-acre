@@ -1,5 +1,15 @@
 export const PROJECTS = [
       {
+      title: "Moment",
+      image: "/projectPicture/Moment/Moment-cover.png",
+      chain: "Solana",
+      description:
+        "Moment is an on-chain card platform on Solana for capturing and sharing moments as collectible cards.",
+      website: "https://moment-card.vercel.app/",
+      scope: "Product Architect",
+      award: { label: "TXODD World Cup Hackathon : Superteam Thailand Runner-Up", href: "https://moment-card.vercel.app/" },
+    },
+    {
       title: "Medusa",
       image: "/projectPicture/Medusa/medusa-cover.png",
       w: "dev3pack",
@@ -8,7 +18,7 @@ export const PROJECTS = [
         "Medusa Score is a decentralized credit identity layer for the Solana ecosystem. We transform raw on-chain data transaction history, liquidation events, and protocol loyalty into a verifiable credit score. ",
       website: "https://medusa-score.vercel.app/",
       scope: "Product Architect",
-      award: { label: "dev3pack Global Hackathon — Runner-Up Thailand ", href: "https://hack.dev3pack.xyz/projects/jx793eyva2cqv8vv0526r11dr586dtcm" },
+      award: { label: "dev3pack Global Hackathon : Runner-Up Thailand ", href: "https://hack.dev3pack.xyz/projects/jx793eyva2cqv8vv0526r11dr586dtcm" },
     },
     {
       title: "Obsession",
@@ -19,16 +29,6 @@ export const PROJECTS = [
         "Obsession is a fully on-chain fortune-card gacha on Solana. For entertainment only. Not financial, legal, or relationship advice.",
       website: "https://gacha-er.vercel.app/",
       scope: "Product Architect",
-    },
-    {
-      title: "Moment",
-      image: "/projectPicture/Moment/Moment-cover.png",
-      chain: "Solana",
-      description:
-        "Moment is an on-chain card platform on Solana for capturing and sharing moments as collectible cards.",
-      website: "https://moment-card.vercel.app/",
-      scope: "Product Architect",
-      award: { label: "TXODD World Cup Hackathon — Superteam Thailand Community Runner-Up", href: "https://moment-card.vercel.app/" },
     },
     {
       title: "Proof Of Alpha",

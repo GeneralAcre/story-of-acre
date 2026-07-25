@@ -21,13 +21,6 @@ export const REGISTRY = {
         logo: "/projectPicture/ISD-Logo.png",
         website: "https://github.com/isd-sgcu",
       },
-      Ethereum: {
-        title: "Ethereum",
-        description:
-          "Ethereum is the main platform for thousands of apps and blockchains, all powered by the Ethereum protocol.",
-        logo: "/projectPicture/eth-logo.png",
-        website: "https://ethereum.org/en/",
-      },
       Polkadot: {
         title: "Polkadot",
         description:
