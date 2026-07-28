@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Kdam_Thmor_Pro, Press_Start_2P } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ClientShell from "./ClientShell";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${kdam.variable} ${pressStart2P.variable}`}>
       <body>
         <ClientShell>{children}</ClientShell>
+        <Analytics />
       </body>
     </html>
   );
