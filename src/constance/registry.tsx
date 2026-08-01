@@ -35,6 +35,13 @@ export const REGISTRY = {
         logo: "https://cryptologos.cc/logos/solana-sol-logo.png",
         website: "https://solana.com/",
       },
+      Avalanche: {
+        title: "Avalanche",
+        description:
+          "Avalanche is a fast, low-cost, eco-friendly blockchain platform for building custom, interoperable networks.",
+        logo: "/projectPicture/Avalanche/Avalanche_Logomark.png",
+        website: "https://www.avax.network/",
+      },
     },
 
     organization: {
@@ -72,6 +79,13 @@ export const REGISTRY = {
           "A DAO building the world's first floating city.",
         logo: "/projectPicture/proof-of-alpha/islanddao-logo-dark.png",
         website: "https://www.islanddao.org/",
+      },
+      "Team1": {
+        title: "Team1",
+        description:
+          "A global network of builders, developers, creatives, and community growing the Avalanche ecosystem.",
+        logo: "/projectPicture/Avalanche/Team1_Logo.png",
+        website: "https://www.team1.network/",
       },
       "MagicBlock": {
         title: "MagicBlock",

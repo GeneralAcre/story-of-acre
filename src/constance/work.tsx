@@ -1,5 +1,15 @@
 export const PROJECTS = [
       {
+      title: "Acre Labs",
+      image: "/projectPicture/AcreLabs/AcreLabs.png",
+      w: "Team1",
+      chain: "Avalanche",
+      description:
+        "Acre Labs lets event organizers mint on-chain proof-of-attendance NFTs on Avalanche : attendees claim a commemorative NFT straight to their wallet within 24 hours of the event.",
+      website: "https://acre-labs.vercel.app/",
+      scope: "Product Architect",
+    },
+    {
       title: "Moment",
       image: "/projectPicture/Moment/Moment-cover.png",
       chain: "Solana",
