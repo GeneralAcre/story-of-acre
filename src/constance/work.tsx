@@ -7,7 +7,7 @@ export const PROJECTS = [
         "Moment is an on-chain card platform on Solana for capturing and sharing moments as collectible cards.",
       website: "https://moment-card.vercel.app/",
       scope: "Product Architect",
-      award: { label: "TXODD World Cup Hackathon : Superteam Thailand Runner-Up", href: "https://moment-card.vercel.app/" },
+      award: { label: "TXODD World Cup Hackathon : Superteam Thailand Runner-Up", href: "https://x.com/SuperteamTH/status/2081648418481746298?s=20" },
     },
     {
       title: "Medusa",
