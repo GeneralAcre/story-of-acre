@@ -9,6 +9,14 @@ export const metadata = {
 
 const CONTRIBUTIONS = [
   {
+    title: "Padel Rave Bangkok",
+    year: "August 2026",
+    role: "Organizer",
+    tags: ["Avalanche"],
+    image: "/contribution/Padel-Rave.png",
+    href: "https://x.com/AvaxTeam1/status/2087606611527233758?s=20",
+  },
+  {
     title: "World Cup FINAL Watch Party by Team1 & Superteam Thailand",
     year: "July 2026",
     role: "Organizer",
