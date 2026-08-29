@@ -52,7 +52,6 @@ export default function CaseStudies() {
                     sizes="(max-width: 768px) 100vw, 40vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute bottom-5 left-5 font-kdam text-5xl text-[#FAC335] drop-shadow-md">{study.number}</span>
                 </div>
 
                 <div className="flex flex-col p-6 sm:p-8">
@@ -78,7 +77,7 @@ export default function CaseStudies() {
                     rel="noopener noreferrer"
                     className="mt-8 inline-flex w-fit items-center gap-2 border border-[#FAC335] px-4 py-2 font-mono text-sm text-[#FAC335] transition-colors hover:bg-[#FAC335] hover:text-[#1A0015]"
                   >
-                    Read case study <ArrowUpRight className="size-4" aria-hidden="true" />
+                    Read case study
                   </Link>
                 </div>
               </article>
