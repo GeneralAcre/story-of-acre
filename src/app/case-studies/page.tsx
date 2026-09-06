@@ -37,25 +37,25 @@ export default function CaseStudies() {
         <div className="flex flex-col gap-8">
           {CASE_STUDIES.map((study, index) => (
             <SectionReveal key={study.title} delay={index * 0.1}>
-              <article className="group grid min-h-[220px] grid-cols-[30%_70%] items-stretch overflow-hidden border border-[#FAC335]/20 bg-[#1B0B14]/60 transition-colors hover:border-[#FAC335]/50 sm:min-h-[280px] md:min-h-[340px]">
-                <div className="relative min-h-full overflow-hidden bg-[#2A0E20]">
+              <article className="group grid min-h-[280px] grid-cols-[30%_70%] items-stretch overflow-hidden border border-[#FAC335]/20 bg-[#1B0B14]/60 transition-colors hover:border-[#FAC335]/50 sm:min-h-[320px] md:min-h-[360px]">
+                <div className="relative w-full overflow-hidden bg-[#2A0E20]">
                   <Image
                     src={study.image}
                     alt={`${study.title} case study cover`}
                     fill
                     sizes="(max-width: 768px) 30vw, 20vw"
-                    className="object-contain transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 
-                <div className="flex flex-col justify-center p-4 sm:p-7 md:p-10">
+                <div className="flex flex-col justify-start p-4 sm:p-6 md:p-8">
                   <p className="font-mono text-xs uppercase tracking-[0.16em] text-[#FAC335] sm:text-sm">{study.category}</p>
                   <h2 className="mt-3 font-kdam text-lg leading-snug text-white sm:mt-4 sm:text-2xl md:text-3xl">{study.title}</h2>
                   <Link
                     href={study.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex w-fit items-center gap-2 border border-[#FAC335] px-3 py-1.5 font-mono text-xs text-[#FAC335] transition-colors hover:bg-[#FAC335] hover:text-[#1A0015] sm:mt-8 sm:px-4 sm:py-2 sm:text-sm"
+                    className="mt-4 inline-flex w-fit items-center gap-2 border border-[#FAC335] px-3 py-1.5 font-mono text-xs text-[#FAC335] transition-colors hover:bg-[#FAC335] hover:text-[#1A0015] sm:mt-6 sm:px-4 sm:py-2 sm:text-sm"
                   >
                     Read case study
                   </Link>
