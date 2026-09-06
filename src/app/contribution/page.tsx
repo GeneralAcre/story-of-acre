@@ -8,6 +8,14 @@ export const metadata = {
 }
 
 const CONTRIBUTIONS = [
+    {
+    title: "Team1 x Chula: Avalanche Builder Workshop & Networking Bangkok",
+    year: "September 2026",
+    role: "Event Lead",
+    tags: ["Avalanche"],
+    image: "/contribution/Team1-chula-workshop.png",
+    href: "https://x.com/Acrepedia/status/2096555740383375601?s=20",
+  },
   {
     title: "Padel Rave Bangkok",
     year: "August 2026",
