@@ -4,7 +4,7 @@ import Link
 
 export default function Footer() {
   return (
-    <div className="container flex flex-1 flex-col gap-10 w-full">
+    <div className="flex w-screen flex-1 flex-col gap-10 ml-[calc(50%-50vw)] mr-[calc(50%-50vw)]">
       <Separator />
       <div className="flex flex-wrap gap-x-20 gap-y-2 md:justify-around">
         <div className="text-start text-2xl font-semibold md:text-3xl">

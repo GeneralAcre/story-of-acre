@@ -46,7 +46,7 @@ export default function Home() {
 
           </div>
 
-          <div className="px-8 w-full">
+          <div className="w-full">
             <SectionReveal>
               <Footer />
             </SectionReveal>
