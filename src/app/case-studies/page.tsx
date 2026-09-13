@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import SectionReveal from "@/components/common/SectionReveal"
+import Footer from "@/components/common/footer"
 
 export const metadata = {
   title: "Case Studies — Acre",
@@ -63,6 +64,12 @@ export default function CaseStudies() {
               </article>
             </SectionReveal>
           ))}
+        </div>
+
+        <div className="mt-16 w-full sm:mt-20">
+          <SectionReveal>
+            <Footer />
+          </SectionReveal>
         </div>
       </div>
     </main>
