@@ -45,6 +45,13 @@ export const REGISTRY = {
     },
 
     organization: {
+      "ID Chula": {
+        title: "ID Chula",
+        description:
+          "Department of Industrial Design",
+        logo: "https://static.wixstatic.com/media/cf3b7e_6fe3d60eb28c4ee7878f303ef3a63090~mv2.jpg/v1/fill/w_252,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/logoid.jpg",
+        website: "https://www.idchulalongkorn.com/",
+      },
       "Cursor": {
         title: "Cursor",
         description:

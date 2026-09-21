@@ -88,6 +88,16 @@ export const PROJECTS = [
       scope: "Frontend,UXUI",
     },
     {
+      title: "Proof",
+      image: "/projectPicture/Proof/Proof-Cover.png",
+      w: "ID Chula",
+      chain: "Solana",
+      description:
+        "Proof is a thesis project built for ID Chula, an on-chain platform on Solana.",
+      website: "https://id-thesis.vercel.app/",
+      scope: "Product Architect",
+    },
+    {
       title: "Titanic Survial Prediction",
       image: "/projectPicture/ProjectPicture_1.png",
       w: "ID Chula",
