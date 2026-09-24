@@ -13,6 +13,7 @@ interface ProjectCardProps {
   scope?: string
   chain?: string
   award?: { label: string; href: string }
+  featured?: boolean
 }
 
 export default function ProjectCard({
@@ -24,25 +25,26 @@ export default function ProjectCard({
   w,
   chain,
   award,
+  featured = false,
 }: ProjectCardProps) {
   const isLogoOnly = title === "ETH Chula"
   const isLeftAlignedImage = title === "Mirage" || title === "Medusa"
 
   return (
-    <div className="group w-full flex flex-col gap-6 text-left transition-transform duration-500 md:scale-90 md:hover:scale-100 md:flex-row md:odd:flex-row-reverse md:items-center md:gap-10">
+    <div className={`group w-full flex flex-col gap-6 text-left transition-transform duration-500 md:flex-row md:items-center md:gap-10 ${featured ? "md:flex-row-reverse" : "md:odd:flex-row-reverse"}`}>
 
       {/* ── Image column ── */}
-      <div className="w-full md:w-[45%] shrink-0 flex items-center justify-center bg-transparent">
+      <div className="w-full md:w-[48%] shrink-0 flex items-center justify-center bg-transparent">
         {isLogoOnly ? (
           <Image src={image} alt={title} width={160} height={160} className="w-[130px] md:w-[160px] h-auto rounded-2xl" />
         ) : (
-          <div className={`relative w-full max-w-[480px] h-[220px] md:h-[300px] rounded-2xl overflow-hidden`}>
+          <div className="relative h-[220px] w-full max-w-[560px] overflow-hidden rounded-2xl md:h-[340px]">
             <Image
               src={image}
               alt={title}
               fill
               className={`object-cover ${isLeftAlignedImage ? "object-left" : "object-center"}`}
-              sizes="(max-width: 768px) 100vw, 480px"
+              sizes="(max-width: 768px) 100vw, 560px"
             />
           </div>
         )}
@@ -50,10 +52,10 @@ export default function ProjectCard({
 
       {/* ── Text column ── */}
       <div className="w-full md:w-[55%] flex flex-col gap-2 min-w-0 text-left">
-        <h3 className="font-mono text-xs text-[#D4A0C0] md:text-sm">
+        <h3 className={`font-mono text-xs md:text-sm ${featured ? "text-[#3A0736]/70" : "text-[#D4A0C0]"}`}>
           {scope}
         </h3>
-        <h2 className="font-kdam text-2xl font-bold tracking-wide md:text-3xl break-words">
+        <h2 className={`font-kdam text-2xl font-bold tracking-wide md:text-3xl break-words ${featured ? "text-[#3A0736]" : ""}`}>
           {title}
         </h2>
 
@@ -76,7 +78,7 @@ export default function ProjectCard({
           )}
         </div>
 
-        <p className="text-sm text-muted-foreground md:text-base md:leading-6 break-words">
+        <p className={`text-sm md:text-base md:leading-6 break-words ${featured ? "text-[#3A0736]/80" : "text-muted-foreground"}`}>
           {description}
         </p>
 
@@ -104,7 +106,7 @@ export default function ProjectCard({
 
         <div className="flex flex-wrap items-center gap-3 mt-1">
           <Link
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#FAC335] px-4 py-2 text-sm font-medium text-[#FAC335] bg-transparent transition-all duration-500 ease-in-out hover:bg-[#FAC335] hover:text-[#1A0015]"
+            className={`inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium transition-all duration-500 ease-in-out ${featured ? "border-[#3A0736] bg-[#3A0736] text-[#FAC335] hover:bg-transparent hover:text-[#3A0736]" : "border-[#FAC335] bg-transparent text-[#FAC335] hover:bg-[#FAC335] hover:text-[#1A0015]"}`}
             href={website}
             target="_blank"
             rel="noopener noreferrer"

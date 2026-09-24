@@ -1,3 +1,12 @@
+export const MARKETING = {
+      title: "Marketing Portfolio",
+      image: "/Marketing-Portfolio.png",
+      description:
+        "A portfolio showcasing my marketing work, campaigns, and creative projects.",
+      website: "https://acre-marketing.vercel.app/",
+      scope: "Marketing",
+    };
+
 export const PROJECTS = [
     {
       title: "Moment",

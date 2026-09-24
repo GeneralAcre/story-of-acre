@@ -7,7 +7,7 @@ import ReviewCard from "@/constance/Card/ReviewCard";
 import SmoothScroll from "./smoothScroll";
 import { Header } from "@/components/common/header";
 import Footer from "@/components/common/footer";
-import { PROJECTS } from "@/constance/work";
+import { MARKETING, PROJECTS } from "@/constance/work";
 import SectionReveal from "@/components/common/SectionReveal";
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
           <div className="relative flex w-full flex-col items-center justify-center overflow-hidden px-8">
 
             {/* Tech Stack Section */}
-            <SectionReveal className="relative flex w-full flex-col gap-4 py-8 md:max-w-[64rem]">
+            <SectionReveal className="relative flex w-full flex-col gap-4 px-4 py-8 md:max-w-7xl md:px-0">
               <Header title="Tech Stack" subtitle="Here are some of the technologies I'm familiar with." />
               <Marquee pauseOnHover className="[--duration:20s]">
                 {TECH_STACK.map((techStackItem) => (
@@ -31,8 +31,20 @@ export default function Home() {
               </Marquee>
             </SectionReveal>
 
+            {/* Marketing Section */}
+            <SectionReveal className="relative -mx-8 flex w-[calc(100%+4rem)] flex-col gap-6 bg-[#FAC335] px-8 py-8 text-[#3A0736] md:gap-8 md:px-8 md:py-10">
+              <div className="mx-auto flex w-full max-w-7xl items-center gap-4">
+                <div className="h-px flex-1 bg-[#3A0736]/30" />
+                <h2 className="font-kdam text-2xl font-extrabold md:text-3xl">Marketing</h2>
+                <div className="h-px flex-1 bg-[#3A0736]/30" />
+              </div>
+              <div className="mx-auto w-full max-w-7xl">
+                <ProjectCard {...MARKETING} featured />
+              </div>
+            </SectionReveal>
+
             {/* Projects Section */}
-            <SectionReveal className="relative flex w-full flex-col gap-4 py-8 md:max-w-[64rem]">
+            <SectionReveal className="relative flex w-full flex-col gap-4 py-8 md:max-w-7xl">
               <Header title="Projects" subtitle="Additional projects that I've worked on or contributed to." />
               <div className="h-4" />
               <div className="space-y-6 md:space-y-8">
