@@ -110,7 +110,6 @@ export const PROJECTS = [
       title: "Titanic Survial Prediction",
       image: "/projectPicture/ProjectPicture_1.png",
       w: "ID Chula",
-      chain: "ID",
       description:
       "Predicting Titanic survival rates, this site analyzes data to identify characteristics of survivors and the factors involved.",
       website: "https://titanic-survival-prediction-peach.vercel.app/",
