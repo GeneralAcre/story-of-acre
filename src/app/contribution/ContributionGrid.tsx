@@ -8,6 +8,14 @@ import SectionReveal from "@/components/common/SectionReveal"
 
 const CONTRIBUTIONS = [
   {
+    title: "Team1 Codebase Hackathon : Chula Edition",
+    year: "September 2026",
+    role: "Event Lead",
+    tags: ["Avalanche"],
+    image: "/contribution/Codebase-Chula-Hackthon.png",
+    href: "https://x.com/Acrepedia/status/2104527775948497039?s=20",
+  },
+  {
     title: "Team1 x Chula: Avalanche Builder Workshop & Networking Bangkok",
     year: "September 2026",
     role: "Event Lead",
