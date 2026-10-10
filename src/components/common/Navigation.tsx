@@ -28,10 +28,10 @@ export default function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className={`font-mono text-xs uppercase tracking-[0.2em] transition-colors ${
+              className={`relative font-sans text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 ${
                 isActive(link.href)
-                  ? "text-white underline underline-offset-8 decoration-1"
-                  : "text-white/50 hover:text-white"
+                  ? "text-white after:scale-x-100 after:bg-white"
+                  : "text-white/55 after:bg-[#FAC335] hover:text-white hover:after:scale-x-100"
               }`}
             >
               {link.label}

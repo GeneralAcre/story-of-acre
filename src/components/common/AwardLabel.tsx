@@ -1,5 +1,4 @@
-// Splits "Event : Result" so the result (what was won) stands out from the event name.
-// `color` lets light backgrounds use a deeper gold that stays readable.
+// Splits "Event : Result" into two rows: what was won first, then the event that gave it.
 export default function AwardLabel({ label, color = "#FAC335" }: { label: string; color?: string }) {
   const [event, ...rest] = label.split(":")
   const result = rest.join(":").trim()
@@ -7,10 +6,9 @@ export default function AwardLabel({ label, color = "#FAC335" }: { label: string
   if (!result) return <span className="font-semibold" style={{ color }}>{event.trim()}</span>
 
   return (
-    <span style={{ color }}>
-      <span className="opacity-75">{event.trim()}</span>
-      <span className="opacity-40"> · </span>
-      <span className="font-semibold">{result}</span>
+    <span className="flex flex-col gap-0.5" style={{ color }}>
+      <span className="font-semibold leading-snug">{result}</span>
+      <span className="text-sm leading-snug opacity-60">{event.trim()}</span>
     </span>
   )
 }

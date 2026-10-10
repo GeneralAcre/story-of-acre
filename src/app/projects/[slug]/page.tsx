@@ -7,6 +7,7 @@ import { VISIBLE_PROJECTS, projectSlug } from "@/constance/work"
 import { REGISTRY } from "@/constance/registry"
 import LivePreview from "@/components/common/LivePreview"
 import AwardLabel from "@/components/common/AwardLabel"
+import TechLogo from "@/components/common/TechLogo"
 
 type Params = Promise<{ slug: string }>
 
@@ -23,6 +24,11 @@ const LINK_ICONS: [RegExp, IconType][] = [
 const iconFor = (href: string) => LINK_ICONS.find(([re]) => re.test(href))?.[1]
 
 const BUTTON = "inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors"
+const CATEGORY_STYLES = {
+  Hackathon: "bg-[#7D0B2C] text-white",
+  "University project": "bg-[#FB4B4E] text-white",
+  Interest: "bg-[#FFCBDD] text-[#7D0B2C]",
+} as const
 
 export function generateStaticParams() {
   return VISIBLE_PROJECTS.map((p) => ({ slug: projectSlug(p.title) }))
@@ -37,8 +43,9 @@ export async function generateMetadata({ params }: { params: Params }) {
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <section className="flex flex-col gap-6">
-      <div className="border-b border-black/15 pb-3">
-        <h2 className="text-sm text-black/50">{label}</h2>
+      <div className="flex items-center gap-4">
+        <h2 className="shrink-0 rounded-md bg-black px-3 py-1.5 text-sm font-bold uppercase tracking-[0.15em] text-white">{label}</h2>
+        <div className="h-px flex-1 bg-black/15" />
       </div>
       {children}
     </section>
@@ -54,7 +61,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
   const project = findProject((await params).slug)
   if (!project) notFound()
 
-  const { title, website, description, award, tags, role, timeline, team, links, overview, painPoints, contributions, features, gallery, outcome } = project
+  const { title, website, description, award, category, tags, role, timeline, team, links, socials, overview, painPoints, contributions, features, tech, gallery, outcome } = project
   const chain = project.chain ? REGISTRY.chain[project.chain] : undefined
   const org = project.w ? REGISTRY.organization[project.w] : undefined
   const builtWith = [chain, org].filter((item) => item !== undefined)
@@ -66,7 +73,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
     ...(team ? [{ label: "Team", value: team, pending: false }] : []),
   ]
 
-  const allLinks = [{ label: "Website", href: website }, ...(links ?? [])]
+  const allLinks = [{ label: new URL(website).hostname.replace(/^www\./, ""), href: website }, ...(socials ?? []), ...(links ?? [])]
 
   return (
     <main className="theme-light min-h-screen overflow-x-hidden pb-16">
@@ -85,38 +92,25 @@ export default async function ProjectPage({ params }: { params: Params }) {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_300px] md:gap-12">
               <div className="flex min-w-0 flex-col gap-4">
                 <h1 className="font-heading text-4xl font-bold leading-none md:text-6xl">{title}</h1>
-                {tags && tags.length > 0 && (
-                  <p className="text-lg text-black/55 md:text-xl">{tags.join(" · ")}</p>
+                {(category || (tags && tags.length > 0)) && (
+                  <div className="flex flex-wrap items-center gap-2">
+                    {category && (
+                      <span className={`inline-flex w-fit items-center rounded-full px-3 py-1.5 text-sm font-medium ${CATEGORY_STYLES[category]}`}>
+                        {category}
+                      </span>
+                    )}
+                    {(tags ?? []).map((tag) => (
+                      <span key={tag} className="inline-flex items-center rounded-full border border-black/15 px-3 py-1 text-sm text-black/60">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 )}
                 <p className="max-w-3xl text-lg leading-relaxed text-black/75">{description}</p>
               </div>
 
               <div className="flex flex-col gap-6">
-                <div className="flex flex-wrap gap-2">
-                  {allLinks.map(({ label, href }, i) => {
-                    const Icon = iconFor(href) ?? Globe
-                    return (
-                      <a
-                        key={href}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`${BUTTON} ${i === 0 ? "bg-black text-white hover:bg-black/80" : "border border-black/20 text-black hover:border-black"}`}
-                      >
-                        <Icon className="size-4" aria-hidden="true" />
-                        {label}
-                      </a>
-                    )
-                  })}
-                </div>
-
                 <dl className="flex flex-col gap-6">
-                  {facts.map(({ label, value, pending }) => (
-                    <div key={label} className="flex flex-col gap-1.5">
-                      <dt className="text-base font-medium">{label}</dt>
-                      <dd className={`text-base ${pending ? "italic text-black/35" : "text-black/60"}`}>{value}</dd>
-                    </div>
-                  ))}
                   {award && (
                     <div className="flex flex-col gap-1.5">
                       <dt className="text-base font-medium">Award</dt>
@@ -133,6 +127,12 @@ export default async function ProjectPage({ params }: { params: Params }) {
                       </dd>
                     </div>
                   )}
+                  {facts.map(({ label, value, pending }) => (
+                    <div key={label} className="flex flex-col gap-1.5">
+                      <dt className="text-base font-medium">{label}</dt>
+                      <dd className={`text-base ${pending ? "italic text-black/35" : "text-black/60"}`}>{value}</dd>
+                    </div>
+                  ))}
                   {builtWith.length > 0 && (
                     <div className="flex flex-col gap-2">
                       <dt className="text-base font-medium">Built with</dt>
@@ -152,6 +152,26 @@ export default async function ProjectPage({ params }: { params: Params }) {
                       </dd>
                     </div>
                   )}
+                  <div className="flex flex-col gap-2">
+                    <dt className="text-base font-medium">Social</dt>
+                    <dd className="flex flex-wrap gap-2">
+                      {allLinks.map(({ label, href }) => {
+                        const Icon = iconFor(href) ?? Globe
+                        return (
+                          <a
+                            key={href}
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${BUTTON} border border-black/20 text-black hover:border-black`}
+                          >
+                            <Icon className="size-4" aria-hidden="true" />
+                            {label}
+                          </a>
+                        )
+                      })}
+                    </dd>
+                  </div>
                 </dl>
               </div>
             </div>
@@ -195,16 +215,66 @@ export default async function ProjectPage({ params }: { params: Params }) {
 
           <Section label="Features">
             {features && features.length > 0 ? (
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                {features.map(({ title: name, body }) => (
-                  <div key={name} className="flex flex-col gap-3 rounded-xl bg-black/[0.04] p-6 md:p-8">
-                    <h3 className="text-lg font-bold uppercase tracking-wide">{name}</h3>
-                    <p className="text-base leading-relaxed text-black/60">{body}</p>
+              <div className="flex flex-col gap-12 md:gap-16">
+                {/* Showcase rows: features with a screenshot, alternating sides */}
+                {features.filter((f) => f.image).map(({ title: name, body, image, why, fixes }, i) => (
+                  <div key={name} className="grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-12">
+                    <div className={`overflow-hidden rounded-xl bg-[#0B0B0B] ${i % 2 === 1 ? "md:order-2" : ""}`}>
+                      <Image src={image!} alt={`${title}: ${name}`} width={1136} height={900} sizes="(max-width: 768px) 100vw, 50vw" className="h-auto w-full" />
+                    </div>
+                    <div className="flex flex-col gap-4">
+                      <span className="text-sm tabular-nums text-black/40">[{String(i + 1).padStart(2, "0")}]</span>
+                      <h3 className="text-2xl font-bold md:text-3xl">{name}</h3>
+                      <p className="text-base leading-relaxed text-black/65 md:text-lg">{body}</p>
+                      {(why || fixes) && (
+                        <div className="flex flex-col gap-4 rounded-xl border-l-4 border-black bg-black/[0.04] px-5 py-4">
+                          {why && (
+                            <div>
+                              <p className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-black/50">Why we need it</p>
+                              <p className="text-base leading-relaxed text-black/80">{why}</p>
+                            </div>
+                          )}
+                          {fixes && (
+                            <div>
+                              <p className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-black/50">What it fixes</p>
+                              <p className="text-base leading-relaxed text-black/80">{fixes}</p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 ))}
+
+                {/* Remaining features without a screenshot */}
+                {features.some((f) => !f.image) && (
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+                    {features.filter((f) => !f.image).map(({ title: name, body, why, fixes }) => (
+                      <div key={name} className="flex flex-col gap-3 rounded-xl bg-black/[0.04] p-6 md:p-8">
+                        <h3 className="text-lg font-bold uppercase tracking-wide">{name}</h3>
+                        <p className="text-base leading-relaxed text-black/60">{body}</p>
+                        {why && <p className="text-sm leading-relaxed text-black/55"><span className="font-semibold text-black/80">Why we need it: </span>{why}</p>}
+                        {fixes && <p className="text-sm leading-relaxed text-black/55"><span className="font-semibold text-black/80">What it fixes: </span>{fixes}</p>}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ) : <Pending />}
           </Section>
+
+          {tech && tech.length > 0 && (
+            <Section label="Technology">
+              <ul className="flex flex-wrap gap-x-8 gap-y-4">
+                {tech.map(({ name, use }) => (
+                  <li key={name} title={use} className="inline-flex items-center gap-2.5">
+                    <TechLogo name={name} />
+                    <span className="text-base font-medium underline decoration-black/30 underline-offset-4">{name}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+          )}
 
           {gallery && gallery.length > 0 && (
             <Section label="Gallery">

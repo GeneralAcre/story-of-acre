@@ -33,7 +33,7 @@ export default function Home() {
             </SectionReveal>
 
             {/* Marketing Section */}
-            <SectionReveal className="relative flex w-full flex-col gap-4 py-8 md:max-w-7xl">
+            <SectionReveal className="relative flex w-full flex-col gap-4 py-8">
               <Header title="Marketing" subtitle="Campaigns, events, and creative work beyond code." />
               <div className="h-4" />
               <FeaturedProject {...MARKETING} />
