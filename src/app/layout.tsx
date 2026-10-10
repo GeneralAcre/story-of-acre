@@ -1,29 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Kdam_Thmor_Pro, Press_Start_2P } from "next/font/google";
+import { Ubuntu, Ubuntu_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ClientShell from "./ClientShell";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const ubuntu = Ubuntu({
+  variable: "--font-ubuntu",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const ubuntuMono = Ubuntu_Mono({
+  variable: "--font-ubuntu-mono",
   subsets: ["latin"],
-});
-
-const kdam = Kdam_Thmor_Pro({
-  variable: "--font-kdam-next",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const pressStart2P = Press_Start_2P({
-  variable: "--font-pixel",
-  subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -37,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${kdam.variable} ${pressStart2P.variable}`}>
+    <html lang="en" className={`${ubuntu.variable} ${ubuntuMono.variable}`}>
       <body>
         <ClientShell>{children}</ClientShell>
         <Analytics />

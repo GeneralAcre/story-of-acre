@@ -30,7 +30,7 @@ type GridItem = typeof gridItems[number]
 function BioHeader({ mobile = false }: { mobile?: boolean }) {
   return (
     <div className={`${mobile ? "px-6" : "shrink-0 px-10"} border-b border-white/10 py-4 flex items-baseline gap-4`}>
-      <span className={`${mobile ? "text-2xl" : "text-3xl"} font-kdam font-bold tracking-wide`}>Acre</span>
+      <span className={`${mobile ? "text-2xl" : "text-3xl"} font-heading font-bold tracking-wide`}>Acre</span>
       <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-white/30">Biography</span>
     </div>
   )
@@ -75,12 +75,12 @@ function GridCell({ item }: { item: GridItem }) {
     <div className="p-4 xl:p-5 flex flex-col h-full">
       <span className="font-mono text-[9px] text-white/25 tracking-widest">{item.num}</span>
       <div className="mt-auto flex flex-col gap-1">
-        <span className="font-kdam text-3xl xl:text-4xl leading-none tracking-wide">{item.abbr}</span>
+        <span className="font-heading text-3xl xl:text-4xl leading-none tracking-wide">{item.abbr}</span>
         <span className="flex items-center gap-1 text-xs text-white/80 leading-snug mt-1">
           {item.label}
           {item.href && <ExternalLink className="size-3 shrink-0 opacity-50" />}
         </span>
-        <span className="font-mono text-[9px] text-[#FAC335]/70 tracking-[0.15em] uppercase">{item.category}</span>
+        <span className="font-mono text-[9px] text-[#FFFFFF]/70 tracking-[0.15em] uppercase">{item.category}</span>
       </div>
     </div>
   )
@@ -89,7 +89,7 @@ function GridCell({ item }: { item: GridItem }) {
     const content = (
       <div className="relative h-full [transform-style:preserve-3d] transition-transform duration-500 group-hover/flip:[transform:rotateY(180deg)]">
         <div className="absolute inset-0 [backface-visibility:hidden]">{faceContent}</div>
-        <div className="absolute inset-0 flex items-center justify-center bg-[#FAC335] [backface-visibility:hidden] [transform:rotateY(180deg)]">
+        <div className="absolute inset-0 flex items-center justify-center bg-[#FFFFFF] [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <Image src={item.flipLogo} alt={item.label} width={112} height={112} className={`${item.flipLogoSize ?? "w-16 h-16"} object-contain`} />
         </div>
       </div>
@@ -122,7 +122,7 @@ export default function Bio() {
   return (
     <>
       {/* ── Desktop: fixed viewport, no scroll ── */}
-      <div className="hidden md:flex flex-col h-screen overflow-hidden pt-8 text-white">
+      <div className="hidden md:flex flex-col h-[calc(100vh-3.5rem)] overflow-hidden text-white">
 
         <BioHeader />
 

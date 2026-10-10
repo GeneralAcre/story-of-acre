@@ -132,10 +132,10 @@ export default function ContributionGrid() {
     <>
       <SectionReveal className="w-full mb-10">
         <div ref={wrapperRef} className="flex flex-wrap items-center gap-x-3 gap-y-3">
-          <h2 className="font-[family-name:var(--font-kdam-next)] text-xl leading-tight text-white sm:text-2xl">
+          <h2 className="font-heading text-xl leading-tight text-white sm:text-2xl">
             WHAT DID I CONTRIBUTE ON
           </h2>
-          <span className="bg-[#FAC335] px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-[#4A043A] sm:text-base">
+          <span className="bg-[#FFFFFF] px-3 py-1.5 text-sm font-bold uppercase tracking-wide text-[#000000] sm:text-base">
             A MONTH LIKE...
           </span>
 
@@ -145,7 +145,7 @@ export default function ContributionGrid() {
               onClick={() => setOpen((o) => !o)}
               aria-expanded={open}
               aria-haspopup="listbox"
-              className="flex items-center gap-2 border-b-2 border-[#FAC335] pb-1 font-mono text-base text-white transition-colors hover:text-[#FAC335] sm:text-lg"
+              className="flex items-center gap-2 border-b-2 border-[#FFFFFF] pb-1 font-mono text-base text-white transition-colors hover:text-[#FFFFFF] sm:text-lg"
             >
               {month === "All" ? "all months" : month.toLowerCase()}
               <ChevronUp className={`size-4 shrink-0 transition-transform duration-200 ${open ? "" : "rotate-180"}`} />
@@ -154,14 +154,14 @@ export default function ContributionGrid() {
             {open && (
               <div
                 role="listbox"
-                className="absolute left-0 top-full z-20 mt-3 flex min-w-[200px] flex-col border border-[#FAC335]/30 bg-[#1B0B14] py-2 font-mono text-sm shadow-2xl sm:text-base"
+                className="absolute left-0 top-full z-20 mt-3 flex min-w-[200px] flex-col border border-[#FFFFFF]/30 bg-[#000000] py-2 font-mono text-sm shadow-2xl sm:text-base"
               >
                 <button
                   type="button"
                   role="option"
                   aria-selected={month === "All"}
                   onClick={() => { setMonth("All"); setOpen(false) }}
-                  className={`px-4 py-2 text-left transition-colors hover:text-[#FAC335] ${month === "All" ? "text-[#FAC335]" : "text-white"}`}
+                  className={`px-4 py-2 text-left transition-colors hover:text-[#FFFFFF] ${month === "All" ? "text-[#FFFFFF]" : "text-white"}`}
                 >
                   all months
                 </button>
@@ -172,7 +172,7 @@ export default function ContributionGrid() {
                     role="option"
                     aria-selected={month === m}
                     onClick={() => { setMonth(m); setOpen(false) }}
-                    className={`px-4 py-2 text-left transition-colors hover:text-[#FAC335] ${month === m ? "text-[#FAC335]" : "text-white"}`}
+                    className={`px-4 py-2 text-left transition-colors hover:text-[#FFFFFF] ${month === m ? "text-[#FFFFFF]" : "text-white"}`}
                   >
                     {m.toLowerCase()}
                   </button>
@@ -186,8 +186,8 @@ export default function ContributionGrid() {
       <div className="grid w-full grid-cols-1 gap-5 py-4 font-mono sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((item, index) => {
           const card = (
-            <div className="group flex h-full flex-col overflow-hidden rounded-sm border border-[#FAC335]/20 bg-[#1B0B14]/60 transition-colors hover:border-[#FAC335]/50">
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#2A0E20]">
+            <div className="group flex h-full flex-col overflow-hidden rounded-sm border border-[#FFFFFF]/20 bg-[#000000]/60 transition-colors hover:border-[#FFFFFF]/50">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#141414]">
                 {item.image ? (
                   <Image
                     src={item.image}
@@ -199,25 +199,25 @@ export default function ContributionGrid() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="grid h-full w-full grid-cols-6 grid-rows-4 opacity-10">
                       {Array.from({ length: 24 }).map((_, i) => (
-                        <div key={i} className="border border-[#FAC335]/30" />
+                        <div key={i} className="border border-[#FFFFFF]/30" />
                       ))}
                     </div>
-                    <span className="absolute text-xs uppercase tracking-widest text-[#FAC335]/30">no image</span>
+                    <span className="absolute text-xs uppercase tracking-widest text-[#FFFFFF]/30">no image</span>
                   </div>
                 )}
-                <span className="absolute top-3 right-3 rounded-sm border border-[#FAC335]/40 bg-[#4A043A] px-2.5 py-1 text-xs font-bold text-[#FAC335]">
+                <span className="absolute top-3 right-3 rounded-sm border border-[#FFFFFF]/40 bg-[#000000] px-2.5 py-1 text-xs font-bold text-[#FFFFFF]">
                   {item.year}
                 </span>
               </div>
 
               <div className="flex flex-1 flex-col gap-2 p-4">
                 <p className="text-sm font-bold leading-snug text-white">{item.title}</p>
-                <p className="text-xs text-[#EDE1C3]/60">✦ {item.role}</p>
+                <p className="text-xs text-[#EEEEEE]/60">✦ {item.role}</p>
                 <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
                   {item.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-sm bg-[#FAC335] px-2 py-0.5 text-xs font-bold text-[#4A043A]"
+                      className="rounded-sm bg-[#FFFFFF] px-2 py-0.5 text-xs font-bold text-[#000000]"
                     >
                       {tag}
                     </span>
@@ -241,7 +241,7 @@ export default function ContributionGrid() {
         })}
 
         {filtered.length === 0 && (
-          <p className="col-span-full py-10 text-center text-sm text-[#EDE1C3]/50">
+          <p className="col-span-full py-10 text-center text-sm text-[#EEEEEE]/50">
             Nothing to show for that month yet.
           </p>
         )}

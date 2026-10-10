@@ -1,16 +1,53 @@
 export const MARKETING = {
       title: "Marketing Portfolio",
-      image: "/Marketing-Portfolio.png",
       description:
         "A portfolio showcasing my marketing work, campaigns, and creative projects.",
       website: "https://acre-marketing.vercel.app/",
     };
 
-export const PROJECTS = [
+export interface Project {
+  title: string
+  hidden?: boolean // true = not shown on the site (data kept for later)
+  website: string
+  description: string
+  chain?: string
+  w?: string
+  award?: { label: string; href: string }
+  // Case-study details for the project page. Every field is optional;
+  // a section only shows once it has content.
+  tags?: string[]
+  role?: string
+  timeline?: string
+  team?: string
+  links?: { label: string; href: string }[]
+  overview?: { heading: string; body: string }[]
+  painPoints?: string[]
+  contributions?: string[]
+  features?: { title: string; body: string }[]
+  // Pictures go in public/projectPicture/<Project>/ and are referenced as "/projectPicture/<Project>/file.png"
+  gallery?: { src: string; caption?: string }[]
+  outcome?: string[]
+}
+
+export const PROJECTS: Project[] = [
     {
       title: "Moment",
-      image: "/projectPicture/Moment/Moment-cover.png",
       chain: "Solana",
+      tags: ["Hackathon", "Solana", "Shipped"],
+      role: "Founder",
+      timeline: "July 2026",
+      painPoints: [
+        "Fans want to collect the moments of a match, not just the score or a player card.",
+      ],
+      features: [
+        { title: "Sealed on-chain draw", body: "Every pull is a real Solana transaction, resolved on MagicBlock's Ephemeral Rollup." },
+        { title: "Verifiable randomness", body: "Rarity and card seed come from an oracle VRF you can check on-chain." },
+        { title: "Mint as a real NFT", body: "Claim any pull as an SPL token on the base layer: durable, transferable, and visible in any wallet." },
+      ],
+      outcome: [
+        "Turned live match outcomes and historic milestones into digital collectibles on Solana.",
+        "A fresh use of sports data beyond scores and predictions, with room to grow after the World Cup.",
+      ],
       description:
         "Moment is an on-chain card platform on Solana for capturing and sharing moments as collectible cards.",
       website: "https://moment-card.vercel.app/",
@@ -18,7 +55,6 @@ export const PROJECTS = [
     },
     {
       title: "Medusa",
-      image: "/projectPicture/Medusa/medusa-cover.png",
       w: "dev3pack",
       chain: "Solana",
       description:
@@ -28,7 +64,6 @@ export const PROJECTS = [
     },
         {
       title: "CardMart",
-      image: "/projectPicture/CardMart/CardMart-Cover.png",
       w: "ID Chula",
       chain: "Solana",
       description:
@@ -36,8 +71,7 @@ export const PROJECTS = [
       website: "https://id-thesis.vercel.app/",
     },
           {
-      title: "Acre Labs",
-      image: "/projectPicture/AcreLabs/AcreLabs.png",
+      title: "AcreLabs",
       chain: "Avalanche",
       description:
         "A native Avalanche loyalty and POAP protocol for issuing custom participation badges. Moving beyond basic event check-ins, it tracks community contributions, loyalty, and partnerships for projects",
@@ -45,7 +79,6 @@ export const PROJECTS = [
     },
     {
       title: "Obsession",
-      image: "/projectPicture/Obsession/Obsession-cover.png",
       w: "MagicBlock",
       chain: "Solana",
       description:
@@ -54,7 +87,6 @@ export const PROJECTS = [
     },
     {
       title: "Proof Of Alpha",
-      image: "/projectPicture/proof-of-alpha/Proof-of-alpha.png",
       w: "IslandDAO",
       chain: "Solana",
       description:
@@ -63,7 +95,6 @@ export const PROJECTS = [
     },
     {
       title: "Signal",
-      image: "/projectPicture/Solana/Signal-logo.png",
       w: "Colosseum",
       chain: "Solana",
       description:
@@ -72,7 +103,6 @@ export const PROJECTS = [
     },
     {
       title: "Girl or Ladyboy",
-      image: "/projectPicture/girlorladyboy.png",
       w: "Cursor",
       description:
         "Game that challenges players to guess whether the character on screen is a real girl or a ladyboy. Test your perception through a pixel-art styled interface with score tracking and classic arcade aesthetics.",
@@ -80,7 +110,7 @@ export const PROJECTS = [
     },
     {
       title: "WhaleSight",
-      image: "/projectPicture/Whalesight/Landing-Page.png",
+      hidden: true,
       w: "Pacifica",
       chain: "Solana",
       description:
@@ -89,7 +119,7 @@ export const PROJECTS = [
     },
     {
       title: "Mirage",
-      image: "/projectPicture/Polkadot/mirage-cover.png",
+      hidden: true,
       chain: "Polkadot",
       description:
         "Mirage is a dynamic NFT on Polkadot from a 4x4 Polkadot pixel, your staked assets evolve a dynamic NFT. Earn $XP, watch your Mirage grow, and prepare for living testament to your ecosystem journey.",
@@ -97,7 +127,7 @@ export const PROJECTS = [
     },
     {
       title: "Titanic Survial Prediction",
-      image: "/projectPicture/ProjectPicture_1.png",
+      hidden: true,
       w: "ID Chula",
       description:
       "Predicting Titanic survival rates, this site analyzes data to identify characteristics of survivors and the factors involved.",
@@ -107,3 +137,8 @@ export const PROJECTS = [
   
 
 
+
+export const VISIBLE_PROJECTS = PROJECTS.filter((p) => !p.hidden)
+
+export const projectSlug = (title: string) =>
+  title.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")

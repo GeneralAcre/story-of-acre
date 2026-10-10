@@ -2,12 +2,13 @@ import { Marquee } from "@/components/magicui/marquee";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { TECH_STACK } from "@/constance/tech-stack";
 import Hero from "./hero";
-import ProjectCard from "../constance/page";
+import FeaturedProject from "../constance/FeaturedProject";
+import ProjectTile from "../constance/ProjectTile";
 import ReviewCard from "@/constance/Card/ReviewCard";
 import SmoothScroll from "./smoothScroll";
 import { Header } from "@/components/common/header";
 import Footer from "@/components/common/footer";
-import { MARKETING, PROJECTS } from "@/constance/work";
+import { MARKETING, VISIBLE_PROJECTS } from "@/constance/work";
 import SectionReveal from "@/components/common/SectionReveal";
 
 export default function Home() {
@@ -32,25 +33,21 @@ export default function Home() {
             </SectionReveal>
 
             {/* Marketing Section */}
-            <SectionReveal className="relative -mx-8 flex w-[calc(100%+4rem)] flex-col gap-6 bg-[#FAC335] px-8 py-8 text-[#3A0736] md:gap-8 md:px-8 md:py-10">
-              <div className="mx-auto flex w-full max-w-7xl items-center gap-4">
-                <div className="h-px flex-1 bg-[#3A0736]/30" />
-                <h2 className="font-kdam text-2xl font-extrabold md:text-3xl">Marketing</h2>
-                <div className="h-px flex-1 bg-[#3A0736]/30" />
-              </div>
-              <div className="mx-auto w-full max-w-7xl">
-                <ProjectCard {...MARKETING} featured />
-              </div>
+            <SectionReveal className="relative flex w-full flex-col gap-4 py-8 md:max-w-7xl">
+              <Header title="Marketing" subtitle="Campaigns, events, and creative work beyond code." />
+              <div className="h-4" />
+              <FeaturedProject {...MARKETING} />
             </SectionReveal>
 
             {/* Projects Section */}
-            <SectionReveal className="relative flex w-full flex-col gap-4 py-8 md:max-w-7xl">
+            <div id="projects" className="scroll-mt-20" />
+            <SectionReveal className="relative flex w-full flex-col gap-4 py-8">
               <Header title="Projects" subtitle="Additional projects that I've worked on or contributed to." />
               <div className="h-4" />
-              <div className="space-y-6 md:space-y-8">
-                {PROJECTS.map((project, i) => (
-                  <SectionReveal key={i} delay={i * 0.1}>
-                    <ProjectCard {...project} />
+              <div className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+                {VISIBLE_PROJECTS.map((project, i) => (
+                  <SectionReveal key={i} delay={(i % 3) * 0.1}>
+                    <ProjectTile index={i} {...project} />
                   </SectionReveal>
                 ))}
               </div>

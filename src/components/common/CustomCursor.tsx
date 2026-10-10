@@ -56,7 +56,7 @@ export default function CustomCursor() {
     <>
       {/* Dot — snaps instantly */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9998] bg-[#FAC335]"
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9998] bg-[#FFFFFF]"
         style={{
           x: mouseX,
           y: mouseY,
@@ -70,7 +70,7 @@ export default function CustomCursor() {
 
       {/* Ring — follows with spring lag */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9997] border border-[#FAC335]"
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9997] border border-[#FFFFFF]"
         style={{
           x: springX,
           y: springY,

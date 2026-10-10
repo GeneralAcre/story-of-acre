@@ -1,71 +1,60 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Home, User, BookOpen, Trophy, type LucideIcon } from "lucide-react"
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Bio", href: "/bio" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Contribution", href: "/contribution" },
+const navLinks: { label: string; href: string; icon: LucideIcon }[] = [
+  { label: "Home", href: "/", icon: Home },
+  { label: "Bio", href: "/bio", icon: User },
+  { label: "Case Studies", href: "/case-studies", icon: BookOpen },
+  { label: "Contribution", href: "/contribution", icon: Trophy },
 ]
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setIsOpen(false)
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
+  const pathname = usePathname()
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href))
 
   return (
-    <div ref={ref} className="fixed top-5 right-6 z-50">
-      <button
-        onClick={() => setIsOpen((v) => !v)}
-        aria-label="Toggle menu"
-        className="focus:outline-none relative z-50"
-      >
-        <Image src="/acre-logo.png" alt="Acre" width={32} height={32} className="h-8 w-auto" priority />
-      </button>
-
-      {/* Mobile: full-screen overlay */}
-      {isOpen && (
-        <div className="md:hidden fixed inset-0 bg-[#1B0B14]/98 backdrop-blur-md flex flex-col items-center justify-center gap-8">
+    <>
+      {/* Desktop: top header */}
+      <header className="hidden md:flex fixed top-0 inset-x-0 z-50 h-14 items-center justify-between border-b border-white/10 bg-black/90 px-8 backdrop-blur-md">
+        <Link href="/" aria-label="Home">
+          <Image src="/acre-logo.png" alt="Acre" width={32} height={32} className="h-8 w-auto" priority />
+        </Link>
+        <nav className="flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              onClick={() => setIsOpen(false)}
-              className="font-kdam text-3xl font-bold text-white/70 hover:text-white transition-colors"
+              className={`font-mono text-xs uppercase tracking-[0.2em] transition-colors ${
+                isActive(link.href)
+                  ? "text-white underline underline-offset-8 decoration-1"
+                  : "text-white/50 hover:text-white"
+              }`}
             >
               {link.label}
             </Link>
           ))}
-        </div>
-      )}
+        </nav>
+      </header>
 
-      {/* Desktop: small dropdown */}
-      {isOpen && (
-        <div className="hidden md:block absolute right-0 mt-3 w-40 rounded-2xl border border-white/10 bg-[#1B0B14]/95 backdrop-blur-md shadow-xl overflow-hidden">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className="block px-5 py-3 text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
+      {/* Mobile: bottom tab bar */}
+      <nav className="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-4 border-t border-white/10 bg-black/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md">
+        {navLinks.map(({ label, href, icon: Icon }) => (
+          <Link
+            key={href}
+            href={href}
+            className={`flex flex-col items-center gap-1 py-2.5 text-[10px] font-medium transition-colors ${
+              isActive(href) ? "text-white" : "text-white/40"
+            }`}
+          >
+            <Icon className="size-5" strokeWidth={isActive(href) ? 2.25 : 1.75} />
+            {label}
+          </Link>
+        ))}
+      </nav>
+    </>
   )
 }
