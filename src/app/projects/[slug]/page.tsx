@@ -7,7 +7,6 @@ import { VISIBLE_PROJECTS, projectSlug } from "@/constance/work"
 import { REGISTRY } from "@/constance/registry"
 import LivePreview from "@/components/common/LivePreview"
 import AwardLabel from "@/components/common/AwardLabel"
-import TechLogo from "@/components/common/TechLogo"
 
 type Params = Promise<{ slug: string }>
 
@@ -61,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
   const project = findProject((await params).slug)
   if (!project) notFound()
 
-  const { title, website, description, award, category, tags, role, timeline, team, links, socials, overview, painPoints, contributions, features, tech, gallery, outcome } = project
+  const { title, website, description, award, category, tags, role, timeline, team, links, socials, overview, painPoints, contributions, features, gallery, outcome } = project
   const chain = project.chain ? REGISTRY.chain[project.chain] : undefined
   const org = project.w ? REGISTRY.organization[project.w] : undefined
   const builtWith = [chain, org].filter((item) => item !== undefined)
@@ -157,13 +156,14 @@ export default async function ProjectPage({ params }: { params: Params }) {
                     <dd className="flex flex-wrap gap-2">
                       {allLinks.map(({ label, href }) => {
                         const Icon = iconFor(href) ?? Globe
+                        const isWebsite = href === website
                         return (
                           <a
                             key={href}
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`${BUTTON} border border-black/20 text-black hover:border-black`}
+                            className={`${BUTTON} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB4B4E] focus-visible:ring-offset-2 ${isWebsite ? `${category ? CATEGORY_STYLES[category] : "bg-black text-white"} hover:brightness-95` : "border border-black/20 text-black hover:border-black hover:bg-black/5"}`}
                           >
                             <Icon className="size-4" aria-hidden="true" />
                             {label}
@@ -218,9 +218,9 @@ export default async function ProjectPage({ params }: { params: Params }) {
               <div className="flex flex-col gap-12 md:gap-16">
                 {/* Showcase rows: features with a screenshot, alternating sides */}
                 {features.filter((f) => f.image).map(({ title: name, body, image, why, fixes }, i) => (
-                  <div key={name} className="grid grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-12">
-                    <div className={`overflow-hidden rounded-xl bg-[#0B0B0B] ${i % 2 === 1 ? "md:order-2" : ""}`}>
-                      <Image src={image!} alt={`${title}: ${name}`} width={1136} height={900} sizes="(max-width: 768px) 100vw, 50vw" className="h-auto w-full" />
+                  <div key={name} className={`grid grid-cols-1 items-center gap-6 md:gap-12 ${i % 2 === 1 ? "md:grid-cols-[3fr_2fr]" : "md:grid-cols-[2fr_3fr]"}`}>
+                    <div className={`mx-auto w-full max-w-xl overflow-hidden rounded-xl bg-[#0B0B0B] ${i % 2 === 1 ? "md:order-2" : ""}`}>
+                      <Image src={image!} alt={`${title}: ${name}`} width={1136} height={900} sizes="(max-width: 768px) 100vw, 40vw" className="h-auto w-full" />
                     </div>
                     <div className="flex flex-col gap-4">
                       <span className="text-sm tabular-nums text-black/40">[{String(i + 1).padStart(2, "0")}]</span>
@@ -263,19 +263,6 @@ export default async function ProjectPage({ params }: { params: Params }) {
             ) : <Pending />}
           </Section>
 
-          {tech && tech.length > 0 && (
-            <Section label="Technology">
-              <ul className="flex flex-wrap gap-x-8 gap-y-4">
-                {tech.map(({ name, use }) => (
-                  <li key={name} title={use} className="inline-flex items-center gap-2.5">
-                    <TechLogo name={name} />
-                    <span className="text-base font-medium underline decoration-black/30 underline-offset-4">{name}</span>
-                  </li>
-                ))}
-              </ul>
-            </Section>
-          )}
-
           {gallery && gallery.length > 0 && (
             <Section label="Gallery">
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -298,9 +285,9 @@ export default async function ProjectPage({ params }: { params: Params }) {
 
           <Section label="Outcome">
             {outcome && outcome.length > 0 ? (
-              <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-x-12">
                 {outcome.map((item, i) => (
-                  <li key={i} className="font-heading text-2xl font-medium leading-snug md:text-3xl">{item}</li>
+                  <li key={i} className="text-lg font-medium leading-snug md:text-xl">{item}</li>
                 ))}
               </ul>
             ) : <Pending />}
