@@ -8,7 +8,7 @@ export default function ClientShell({ children }: { children: React.ReactNode })
     <>
       <CustomCursor />
       <Navigation />
-      <div className="pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0 md:pt-14">{children}</div>
+      <div className="pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0 md:pt-14">{children}</div>
     </>
   )
 }

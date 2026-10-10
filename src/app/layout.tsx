@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Ubuntu, Ubuntu_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -19,6 +19,14 @@ const ubuntuMono = Ubuntu_Mono({
 export const metadata: Metadata = {
   title: "Acrepedia",
   description: "Frontend developer exploring the power of blockchain.",
+};
+
+// viewport-fit=cover lets the mobile tab bar extend under the iOS home indicator / Safari toolbar
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({

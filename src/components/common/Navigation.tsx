@@ -41,16 +41,16 @@ export default function Navigation() {
       </header>
 
       {/* Mobile: bottom tab bar */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-4 border-t border-white/10 bg-black pb-[env(safe-area-inset-bottom)]">
+      <nav className="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-4 border-t border-white/10 bg-black/80 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl">
         {navLinks.map(({ label, href, icon: Icon }) => (
           <Link
             key={href}
             href={href}
-            className={`flex flex-col items-center gap-1.5 pb-2.5 pt-3 text-[13px] font-medium transition-colors ${
+            className={`flex flex-col items-center gap-1 pb-2 pt-2.5 text-[11px] font-medium transition-colors ${
               isActive(href) ? "text-white" : "text-white/50"
             }`}
           >
-            <Icon className="size-6" strokeWidth={isActive(href) ? 2 : 1.5} />
+            <Icon className="size-[22px]" strokeWidth={isActive(href) ? 2 : 1.5} />
             {label}
           </Link>
         ))}
