@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react"
-import LivePreview from "@/components/common/LivePreview"
+import SiteCover from "@/components/common/SiteCover"
 
 interface FeaturedProjectProps {
   title: string
@@ -14,8 +14,7 @@ export default function FeaturedProject({ title, description, website, areas = [
       {/* ── Tile: same size and style as the project tiles ── */}
       <a href={website} target="_blank" rel="noopener noreferrer" className="group flex flex-col gap-2.5 md:gap-3">
         <div className="transition-transform duration-300 group-hover:-translate-y-1">
-          <LivePreview
-            url={website}
+          <SiteCover
             title={title}
             className="aspect-[4/3] w-full transition-shadow duration-300 group-hover:shadow-[0_12px_30px_-12px_rgba(255,255,255,0.12)]"
           />

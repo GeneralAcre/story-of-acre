@@ -5,7 +5,7 @@ import { FaXTwitter, FaGithub, FaDiscord, FaYoutube, FaMedium, FaTelegram } from
 import type { IconType } from "react-icons"
 import { VISIBLE_PROJECTS, projectSlug } from "@/constance/work"
 import { REGISTRY } from "@/constance/registry"
-import LivePreview from "@/components/common/LivePreview"
+import SiteCover from "@/components/common/SiteCover"
 import AwardLabel from "@/components/common/AwardLabel"
 
 type Params = Promise<{ slug: string }>
@@ -78,7 +78,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
     <main className="theme-light min-h-screen overflow-x-hidden pb-16">
       {/* ── Cover: live preview, full width ── */}
       <a href={website} target="_blank" rel="noopener noreferrer" aria-label={`Open ${title}`} className="block">
-        <LivePreview url={website} title={title} className="aspect-[16/10] w-full md:aspect-[5/2]" />
+        <SiteCover title={title} sizes="100vw" priority className="aspect-[16/10] w-full md:aspect-[5/2]" />
       </a>
 
       <div className="mt-8 flex w-full flex-col px-6 md:mt-10 md:px-8">

@@ -23,9 +23,9 @@ export default function Home() {
           <div className="relative flex w-full flex-col items-center justify-center overflow-hidden px-8">
 
             {/* Tech Stack Section */}
-            <SectionReveal className="relative flex w-full flex-col gap-4 px-4 py-8 md:max-w-7xl md:px-0">
+            <SectionReveal className="relative flex w-full flex-col gap-4 py-8">
               <Header title="Tech Stack" subtitle="Here are some of the technologies I'm familiar with." />
-              <Marquee pauseOnHover className="[--duration:20s]">
+              <Marquee pauseOnHover className="-mx-8 w-[calc(100%+4rem)] [--duration:20s]">
                 {TECH_STACK.map((techStackItem) => (
                   <ReviewCard key={techStackItem.title} {...techStackItem} />
                 ))}

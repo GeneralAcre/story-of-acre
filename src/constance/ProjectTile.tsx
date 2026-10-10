@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Trophy } from "lucide-react"
 import { projectSlug } from "@/constance/work"
-import LivePreview from "@/components/common/LivePreview"
+import SiteCover from "@/components/common/SiteCover"
 
 interface ProjectTileProps {
   index: number
@@ -23,8 +23,7 @@ export default function ProjectTile({ index, title, website, award }: ProjectTil
   return (
     <Link href={`/projects/${projectSlug(title)}`} className="group flex flex-col gap-2.5 text-left md:gap-3">
       <div className="transition-transform duration-300 group-hover:-translate-y-1">
-        <LivePreview
-          url={website}
+        <SiteCover
           title={title}
           className="aspect-[4/3] w-full transition-shadow duration-300 group-hover:shadow-[0_12px_30px_-12px_rgba(255,255,255,0.12)]"
         />
