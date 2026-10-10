@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
     // Keep resized images cached for 31 days so each size is only generated once,
     // not again for every visitor.
     minimumCacheTTL: 2678400,
+    // 90 = full-width project-page banners, which look soft at the default 75
+    qualities: [75, 90],
   },
   async headers() {
     return [

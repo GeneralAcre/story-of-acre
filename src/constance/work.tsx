@@ -15,6 +15,8 @@ export interface Project {
   title: string
   hidden?: boolean // true = not shown on the site (data kept for later)
   website: string
+  // Custom cover picture; replaces the recorded landing-page loop (and `npm run covers` skips it)
+  cover?: string
   description: string
   category?: "Hackathon" | "University project" | "Interest"
   chain?: string
@@ -298,6 +300,7 @@ export const PROJECTS: Project[] = [
     },
     {
       title: "Proof Of Alpha",
+      cover: "/projectPicture/proof-of-alpha/cover.jpg",
       category: "Hackathon",
       w: "IslandDAO",
       chain: "Solana",

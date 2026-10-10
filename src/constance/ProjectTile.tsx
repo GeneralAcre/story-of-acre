@@ -7,6 +7,7 @@ interface ProjectTileProps {
   index: number
   title: string
   website: string
+  cover?: string
   award?: { label: string; href: string }
 }
 
@@ -17,7 +18,7 @@ const splitAward = (label: string) => {
   return result ? { event: event.trim(), result } : { event: "", result: event.trim() }
 }
 
-export default function ProjectTile({ index, title, website, award }: ProjectTileProps) {
+export default function ProjectTile({ index, title, cover, award }: ProjectTileProps) {
   const { event, result } = award ? splitAward(award.label) : { event: "", result: "" }
 
   return (
@@ -25,6 +26,7 @@ export default function ProjectTile({ index, title, website, award }: ProjectTil
       <div className="transition-transform duration-300 group-hover:-translate-y-1">
         <SiteCover
           title={title}
+          cover={cover}
           className="aspect-[4/3] w-full transition-shadow duration-300 group-hover:shadow-[0_12px_30px_-12px_rgba(255,255,255,0.12)]"
         />
       </div>

@@ -6,18 +6,23 @@ import { projectSlug } from "@/constance/work"
 
 interface SiteCoverProps {
   title: string
+  cover?: string
+  wide?: boolean // full-width banner: a high-res still (<slug>-wide.jpg), no video
   className?: string
   sizes?: string
   priority?: boolean
 }
 
 // Recorded 8-second loop of a project's landing page (public/projectPicture/covers/<slug>.mp4),
-// over a still frame (<slug>.jpg). Refresh both with `npm run covers`.
+// over a still frame (<slug>.jpg). Refresh them with `npm run covers`.
 // Live iframes were dropped: on phones they loaded every project site at once,
 // crashing Safari and playing the sites' audio. The loop only downloads and plays
-// while the card is on screen, and never plays when the viewer prefers reduced motion.
-export default function SiteCover({ title, className = "", sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw", priority = false }: SiteCoverProps) {
-  const slug = projectSlug(title)
+// while the card is on screen and the tab is visible, and never plays when the
+// viewer prefers reduced motion.
+// `wide` banners and projects with a custom `cover` picture show just a picture.
+export default function SiteCover({ title, cover, wide = false, className = "", sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw", priority = false }: SiteCoverProps) {
+  const file = `/projectPicture/covers/${projectSlug(title)}`
+  const hasVideo = !cover && !wide
   const videoRef = useRef<HTMLVideoElement>(null)
   const [playing, setPlaying] = useState(false)
 
@@ -25,30 +30,40 @@ export default function SiteCover({ title, className = "", sizes = "(max-width: 
     const video = videoRef.current
     if (!video || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
+    let onScreen = false
+    const update = () => {
+      if (onScreen && !document.hidden) video.play().catch(() => {})
+      else video.pause()
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) video.play().catch(() => {})
-        else video.pause()
+        onScreen = entry.isIntersecting
+        update()
       },
       { threshold: 0.25 }
     )
     observer.observe(video)
-    return () => observer.disconnect()
-  }, [])
+    document.addEventListener("visibilitychange", update)
+    return () => {
+      observer.disconnect()
+      document.removeEventListener("visibilitychange", update)
+    }
+  }, [hasVideo])
 
   return (
     <div className={`relative overflow-hidden border border-white/10 bg-[#141414] ${className}`}>
       <Image
-        src={`/projectPicture/covers/${slug}.jpg`}
+        src={cover ?? `${file}${wide ? "-wide" : ""}.jpg`}
         alt={`${title} landing page`}
         fill
         sizes={sizes}
+        quality={wide ? 90 : 75}
         priority={priority}
-        className="object-cover object-top"
+        className={`object-cover ${cover ? "object-center" : "object-top"}`}
       />
-      <video
+      {hasVideo && <video
         ref={videoRef}
-        src={`/projectPicture/covers/${slug}.mp4`}
+        src={`${file}.mp4`}
         muted
         loop
         playsInline
@@ -56,7 +71,7 @@ export default function SiteCover({ title, className = "", sizes = "(max-width: 
         aria-hidden="true"
         onPlaying={() => setPlaying(true)}
         className={`absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-500 ${playing ? "opacity-100" : "opacity-0"}`}
-      />
+      />}
     </div>
   )
 }

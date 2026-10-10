@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
   const project = findProject((await params).slug)
   if (!project) notFound()
 
-  const { title, website, description, award, category, tags, role, timeline, team, links, socials, overview, painPoints, contributions, features, gallery, outcome } = project
+  const { title, website, cover, description, award, category, tags, role, timeline, team, links, socials, overview, painPoints, contributions, features, gallery, outcome } = project
   const chain = project.chain ? REGISTRY.chain[project.chain] : undefined
   const org = project.w ? REGISTRY.organization[project.w] : undefined
   const builtWith = [chain, org].filter((item) => item !== undefined)
@@ -78,7 +78,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
     <main className="theme-light min-h-screen overflow-x-hidden pb-16">
       {/* ── Cover: live preview, full width ── */}
       <a href={website} target="_blank" rel="noopener noreferrer" aria-label={`Open ${title}`} className="block">
-        <SiteCover title={title} sizes="100vw" priority className="aspect-[16/10] w-full md:aspect-[5/2]" />
+        <SiteCover title={title} cover={cover} wide sizes="100vw" priority className="aspect-[16/10] w-full md:aspect-[5/2]" />
       </a>
 
       <div className="mt-8 flex w-full flex-col px-6 md:mt-10 md:px-8">
