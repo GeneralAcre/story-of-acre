@@ -46,8 +46,8 @@ export default function Home() {
               <div className="h-4" />
               <div className="grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
                 {VISIBLE_PROJECTS.map((project, i) => (
-                  <SectionReveal key={i} delay={(i % 3) * 0.1}>
-                    <ProjectTile index={i} {...project} />
+                  <SectionReveal key={project.title} delay={(i % 3) * 0.1}>
+                    <ProjectTile {...project} />
                   </SectionReveal>
                 ))}
               </div>

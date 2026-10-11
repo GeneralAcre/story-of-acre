@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { Globe, Trophy } from "lucide-react"
+import { ArrowUpRight, Globe, Trophy } from "lucide-react"
 import { FaXTwitter, FaGithub, FaDiscord, FaYoutube, FaMedium, FaTelegram } from "react-icons/fa6"
 import type { IconType } from "react-icons"
 import { VISIBLE_PROJECTS, projectSlug } from "@/constance/work"
@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
   const project = findProject((await params).slug)
   if (!project) notFound()
 
-  const { title, website, cover, description, award, category, tags, role, timeline, team, links, socials, overview, painPoints, contributions, features, gallery, outcome } = project
+  const { title, website, cover, description, award, category, tags, role, timeline, team, links, socials, overview, contributions, features, outcome } = project
   const chain = project.chain ? REGISTRY.chain[project.chain] : undefined
   const org = project.w ? REGISTRY.organization[project.w] : undefined
   const builtWith = [chain, org].filter((item) => item !== undefined)
@@ -72,7 +72,8 @@ export default async function ProjectPage({ params }: { params: Params }) {
     ...(team ? [{ label: "Team", value: team, pending: false }] : []),
   ]
 
-  const allLinks = [{ label: new URL(website).hostname.replace(/^www\./, ""), href: website }, ...(socials ?? []), ...(links ?? [])]
+  const hostname = new URL(website).hostname.replace(/^www\./, "")
+  const allLinks = [...(socials ?? []), ...(links ?? [])]
 
   return (
     <main className="theme-light min-h-screen overflow-x-hidden pb-16">
@@ -106,6 +107,16 @@ export default async function ProjectPage({ params }: { params: Params }) {
                   </div>
                 )}
                 <p className="max-w-3xl text-lg leading-relaxed text-black/75">{description}</p>
+                <a
+                  href={website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex w-fit items-center gap-2 rounded-lg bg-black px-5 py-3 text-base font-medium text-white transition-colors hover:bg-black/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB4B4E] focus-visible:ring-offset-2"
+                >
+                  <Globe className="size-4" aria-hidden="true" />
+                  Visit {hostname}
+                  <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                </a>
               </div>
 
               <div className="flex flex-col gap-6">
@@ -144,34 +155,35 @@ export default async function ProjectPage({ params }: { params: Params }) {
                             rel="noopener noreferrer"
                             className={`${BUTTON} border border-black/20 text-black hover:border-black`}
                           >
-                            <Image src={item.logo} alt="" width={20} height={20} className="size-5 rounded-full" />
+                            <Image src={item.logo} alt="" width={20} height={20} className="size-5 rounded-full object-contain" />
                             {item.title}
                           </a>
                         ))}
                       </dd>
                     </div>
                   )}
-                  <div className="flex flex-col gap-2">
-                    <dt className="text-base font-medium">Social</dt>
-                    <dd className="flex flex-wrap gap-2">
-                      {allLinks.map(({ label, href }) => {
-                        const Icon = iconFor(href) ?? Globe
-                        const isWebsite = href === website
-                        return (
-                          <a
-                            key={href}
-                            href={href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`${BUTTON} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB4B4E] focus-visible:ring-offset-2 ${isWebsite ? `${category ? CATEGORY_STYLES[category] : "bg-black text-white"} hover:brightness-95` : "border border-black/20 text-black hover:border-black hover:bg-black/5"}`}
-                          >
-                            <Icon className="size-4" aria-hidden="true" />
-                            {label}
-                          </a>
-                        )
-                      })}
-                    </dd>
-                  </div>
+                  {allLinks.length > 0 && (
+                    <div className="flex flex-col gap-2">
+                      <dt className="text-base font-medium">Social</dt>
+                      <dd className="flex flex-wrap gap-2">
+                        {allLinks.map(({ label, href }) => {
+                          const Icon = iconFor(href) ?? Globe
+                          return (
+                            <a
+                              key={href}
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`${BUTTON} border border-black/20 text-black hover:border-black hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB4B4E] focus-visible:ring-offset-2`}
+                            >
+                              <Icon className="size-4" aria-hidden="true" />
+                              {label}
+                            </a>
+                          )
+                        })}
+                      </dd>
+                    </div>
+                  )}
                 </dl>
               </div>
             </div>
@@ -190,22 +202,11 @@ export default async function ProjectPage({ params }: { params: Params }) {
             </Section>
           )}
 
-          <Section label="Pain points">
-            {painPoints && painPoints.length > 0 ? (
-              <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                {painPoints.map((item, i) => (
-                  <li key={i} className="border-l-2 border-black pl-4 text-lg leading-relaxed text-black/80">{item}</li>
-                ))}
-              </ul>
-            ) : <Pending />}
-          </Section>
-
           {contributions && contributions.length > 0 && (
             <Section label="What I did">
               <ol className="flex flex-col">
-                {contributions.map((item, i) => (
-                  <li key={i} className="flex gap-4 border-b border-black/10 py-5 text-lg leading-relaxed first:pt-0 md:gap-6">
-                    <span className="shrink-0 tabular-nums text-black/40">[{String(i + 1).padStart(2, "0")}]</span>
+                {contributions.map((item) => (
+                  <li key={item} className="border-b border-black/10 py-5 text-lg leading-relaxed first:pt-0">
                     <span className="text-black/85">{item}</span>
                   </li>
                 ))}
@@ -216,72 +217,15 @@ export default async function ProjectPage({ params }: { params: Params }) {
           <Section label="Features">
             {features && features.length > 0 ? (
               <div className="flex flex-col gap-12 md:gap-16">
-                {/* Showcase rows: features with a screenshot, alternating sides */}
-                {features.filter((f) => f.image).map(({ title: name, body, image, why, fixes }, i) => (
-                  <div key={name} className={`grid grid-cols-1 items-center gap-6 md:gap-12 ${i % 2 === 1 ? "md:grid-cols-[3fr_2fr]" : "md:grid-cols-[2fr_3fr]"}`}>
-                    <div className={`mx-auto w-full max-w-xl overflow-hidden rounded-xl bg-[#0B0B0B] ${i % 2 === 1 ? "md:order-2" : ""}`}>
-                      <Image src={image!} alt={`${title}: ${name}`} width={1136} height={900} sizes="(max-width: 768px) 100vw, 40vw" className="h-auto w-full" />
-                    </div>
-                    <div className="flex flex-col gap-4">
-                      <span className="text-sm tabular-nums text-black/40">[{String(i + 1).padStart(2, "0")}]</span>
-                      <h3 className="text-2xl font-bold md:text-3xl">{name}</h3>
-                      <p className="text-base leading-relaxed text-black/65 md:text-lg">{body}</p>
-                      {(why || fixes) && (
-                        <div className="flex flex-col gap-4 rounded-xl border-l-4 border-black bg-black/[0.04] px-5 py-4">
-                          {why && (
-                            <div>
-                              <p className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-black/50">Why we need it</p>
-                              <p className="text-base leading-relaxed text-black/80">{why}</p>
-                            </div>
-                          )}
-                          {fixes && (
-                            <div>
-                              <p className="mb-1 text-xs font-bold uppercase tracking-[0.15em] text-black/50">What it fixes</p>
-                              <p className="text-base leading-relaxed text-black/80">{fixes}</p>
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
+                {features.map(({ title: name, body }) => (
+                  <div key={name} className="flex max-w-4xl flex-col gap-4">
+                    <h3 className="text-2xl font-bold md:text-3xl">{name}</h3>
+                    <p className="text-base leading-relaxed text-black/65 md:text-lg">{body}</p>
                   </div>
                 ))}
-
-                {/* Remaining features without a screenshot */}
-                {features.some((f) => !f.image) && (
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                    {features.filter((f) => !f.image).map(({ title: name, body, why, fixes }) => (
-                      <div key={name} className="flex flex-col gap-3 rounded-xl bg-black/[0.04] p-6 md:p-8">
-                        <h3 className="text-lg font-bold uppercase tracking-wide">{name}</h3>
-                        <p className="text-base leading-relaxed text-black/60">{body}</p>
-                        {why && <p className="text-sm leading-relaxed text-black/55"><span className="font-semibold text-black/80">Why we need it: </span>{why}</p>}
-                        {fixes && <p className="text-sm leading-relaxed text-black/55"><span className="font-semibold text-black/80">What it fixes: </span>{fixes}</p>}
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             ) : <Pending />}
           </Section>
-
-          {gallery && gallery.length > 0 && (
-            <Section label="Gallery">
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                {gallery.map(({ src, caption }, i) => (
-                  <figure key={src} className={`flex flex-col gap-2 ${i === 0 ? "md:col-span-2" : ""}`}>
-                    <Image
-                      src={src}
-                      alt={caption ?? `${title} screenshot ${i + 1}`}
-                      width={1600}
-                      height={1000}
-                      sizes={i === 0 ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
-                      className="h-auto w-full rounded-xl border border-black/10"
-                    />
-                    {caption && <figcaption className="text-sm text-black/50">{caption}</figcaption>}
-                  </figure>
-                ))}
-              </div>
-            </Section>
-          )}
 
           <Section label="Outcome">
             {outcome && outcome.length > 0 ? (

@@ -4,7 +4,6 @@ import { projectSlug } from "@/constance/work"
 import SiteCover from "@/components/common/SiteCover"
 
 interface ProjectTileProps {
-  index: number
   title: string
   website: string
   cover?: string
@@ -18,7 +17,7 @@ const splitAward = (label: string) => {
   return result ? { event: event.trim(), result } : { event: "", result: event.trim() }
 }
 
-export default function ProjectTile({ index, title, cover, award }: ProjectTileProps) {
+export default function ProjectTile({ title, cover, award }: ProjectTileProps) {
   const { event, result } = award ? splitAward(award.label) : { event: "", result: "" }
 
   return (
@@ -33,7 +32,6 @@ export default function ProjectTile({ index, title, cover, award }: ProjectTileP
 
       <div className="flex flex-col gap-2 px-0.5">
         <h3 className="flex gap-2 text-2xl font-bold leading-tight text-white md:text-xl lg:text-2xl">
-          <span className="shrink-0 tabular-nums">[{String(index + 1).padStart(2, "0")}]</span>
           <span>{title}</span>
         </h3>
         {award && (

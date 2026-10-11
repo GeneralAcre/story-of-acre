@@ -28,9 +28,8 @@ export default function FeaturedProject({ title, description, website, areas = [
 
         {areas.length > 0 && (
           <ol className="flex flex-col border-t border-white/15">
-            {areas.map((area, i) => (
+            {areas.map((area) => (
               <li key={area} className="flex gap-4 border-b border-white/15 py-4 text-lg md:text-xl">
-                <span className="shrink-0 tabular-nums text-white/40">[{String(i + 1).padStart(2, "0")}]</span>
                 <span className="font-medium text-white">{area}</span>
               </li>
             ))}
