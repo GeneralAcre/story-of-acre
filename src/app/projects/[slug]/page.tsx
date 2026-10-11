@@ -63,7 +63,11 @@ export default async function ProjectPage({ params }: { params: Params }) {
   const { title, website, cover, description, award, category, tags, role, timeline, team, links, socials, overview, contributions, features } = project
   const chain = project.chain ? REGISTRY.chain[project.chain] : undefined
   const org = project.w ? REGISTRY.organization[project.w] : undefined
-  const builtWith = [chain, org].filter((item) => item !== undefined)
+  // The chain is what it runs on; the organization is the hackathon or university it was made for
+  const affiliations = [
+    ...(chain ? [{ label: "Built on", item: chain }] : []),
+    ...(org ? [{ label: category === "University project" ? "Thesis at" : "Made for", item: org }] : []),
+  ]
 
   // Role and Timeline always show (with a placeholder until filled in); Team only when set.
   const facts = [
@@ -72,6 +76,8 @@ export default async function ProjectPage({ params }: { params: Params }) {
     ...(team ? [{ label: "Team", value: team, pending: false }] : []),
   ]
 
+  // Website buttons use the same colors as the category badge
+  const websiteStyle = category ? CATEGORY_STYLES[category] : "bg-black text-white"
   const hostname = new URL(website).hostname.replace(/^www\./, "")
   const allLinks = [...(socials ?? []), ...(links ?? [])]
 
@@ -111,7 +117,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
                   href={website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex w-fit items-center gap-2 rounded-lg bg-black px-5 py-3 text-base font-medium text-white transition-colors hover:bg-black/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB4B4E] focus-visible:ring-offset-2"
+                  className={`group hidden w-fit items-center gap-2 rounded-lg px-5 py-3 text-base font-medium transition-[filter] hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FB4B4E] focus-visible:ring-offset-2 md:inline-flex ${websiteStyle}`}
                 >
                   <Globe className="size-4" aria-hidden="true" />
                   Visit {hostname}
@@ -120,9 +126,9 @@ export default async function ProjectPage({ params }: { params: Params }) {
               </div>
 
               <div className="flex flex-col gap-6">
-                <dl className="flex flex-col gap-6">
+                <dl className="grid grid-cols-[auto_auto] justify-between gap-x-4 gap-y-6 md:flex md:flex-col">
                   {award && (
-                    <div className="flex flex-col gap-1.5">
+                    <div className="col-span-2 flex flex-col gap-1.5">
                       <dt className="text-base font-medium">Award</dt>
                       <dd>
                         <a
@@ -140,28 +146,25 @@ export default async function ProjectPage({ params }: { params: Params }) {
                   {facts.map(({ label, value, pending }) => (
                     <div key={label} className="flex flex-col gap-1.5">
                       <dt className="text-base font-medium">{label}</dt>
-                      <dd className={`text-base ${pending ? "italic text-black/35" : "text-black/60"}`}>{value}</dd>
+                      <dd className={`text-sm md:text-base ${pending ? "italic text-black/35" : "text-black/60"}`}>{value}</dd>
                     </div>
                   ))}
-                  {builtWith.length > 0 && (
-                    <div className="flex flex-col gap-2">
-                      <dt className="text-base font-medium">Built with</dt>
+                  {affiliations.map(({ label, item }) => (
+                    <div key={label} className="flex flex-col gap-2">
+                      <dt className="text-base font-medium">{label}</dt>
                       <dd className="flex flex-wrap gap-2">
-                        {builtWith.map((item) => (
-                          <a
-                            key={item.title}
-                            href={item.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`${BUTTON} border border-black/20 text-black hover:border-black`}
-                          >
-                            <Image src={item.logo} alt="" width={20} height={20} className="size-5 rounded-full object-contain" />
-                            {item.title}
-                          </a>
-                        ))}
+                        <a
+                          href={item.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`${BUTTON} border border-black/20 text-black hover:border-black`}
+                        >
+                          <Image src={item.logo} alt="" width={20} height={20} className="size-5 rounded-full object-contain" />
+                          {item.title}
+                        </a>
                       </dd>
                     </div>
-                  )}
+                  ))}
                   {allLinks.length > 0 && (
                     <div className="flex flex-col gap-2">
                       <dt className="text-base font-medium">Social</dt>
@@ -184,6 +187,21 @@ export default async function ProjectPage({ params }: { params: Params }) {
                       </dd>
                     </div>
                   )}
+                  {/* Mobile: website button at the end of the details, in the right column */}
+                  <div className="col-start-2 flex flex-col gap-2 md:hidden">
+                    <dt className="text-base font-medium">Website</dt>
+                    <dd>
+                      <a
+                        href={website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${BUTTON} ${websiteStyle} transition-[filter] hover:brightness-95`}
+                      >
+                        Visit site
+                        <ArrowUpRight className="size-4" aria-hidden="true" />
+                      </a>
+                    </dd>
+                  </div>
                 </dl>
               </div>
             </div>
