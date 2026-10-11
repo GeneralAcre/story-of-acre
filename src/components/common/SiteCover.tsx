@@ -7,7 +7,7 @@ import { projectSlug } from "@/constance/work"
 interface SiteCoverProps {
   title: string
   cover?: string
-  wide?: boolean // full-width banner: a high-res still (<slug>-wide.jpg), no video
+  wide?: boolean // full-width banner: a high-res still (<slug>-banner.jpg), no video
   className?: string
   sizes?: string
   priority?: boolean
@@ -53,7 +53,7 @@ export default function SiteCover({ title, cover, wide = false, className = "", 
   return (
     <div className={`relative overflow-hidden border border-white/10 bg-[#141414] ${className}`}>
       <Image
-        src={cover ?? `${file}${wide ? "-wide" : ""}.jpg`}
+        src={cover ?? `${file}${wide ? "-banner" : ""}.jpg`}
         alt={`${title} landing page`}
         fill
         sizes={sizes}

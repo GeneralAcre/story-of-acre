@@ -14,7 +14,9 @@ const navLinks: { label: string; href: string; icon: LucideIcon }[] = [
 
 export default function Navigation() {
   const pathname = usePathname()
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href))
+  // Project pages are opened from the Home grid, so they keep Home highlighted
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" || pathname.startsWith("/projects") : pathname.startsWith(href)
 
   return (
     <>
@@ -23,15 +25,16 @@ export default function Navigation() {
         <Link href="/" aria-label="Home">
           <Image src="/acre-logo.png" alt="Acre" width={32} height={32} className="h-8 w-auto" priority />
         </Link>
-        <nav className="flex items-center gap-8">
+        <nav className="flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`relative font-sans text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 ${
+              aria-current={isActive(link.href) ? "page" : undefined}
+              className={`rounded-full px-4 py-2 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors ${
                 isActive(link.href)
-                  ? "text-white after:scale-x-100 after:bg-white"
-                  : "text-white/55 after:bg-[#FAC335] hover:text-white hover:after:scale-x-100"
+                  ? "bg-white/15 text-white"
+                  : "text-white/55 hover:bg-white/5 hover:text-white"
               }`}
             >
               {link.label}

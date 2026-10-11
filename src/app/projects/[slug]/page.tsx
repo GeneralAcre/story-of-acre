@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
   const project = findProject((await params).slug)
   if (!project) notFound()
 
-  const { title, website, description, award, category, tags, role, timeline, team, links, socials, overview, contributions, features } = project
+  const { title, website, cover, description, award, category, tags, role, timeline, team, links, socials, overview, contributions, features } = project
   const chain = project.chain ? REGISTRY.chain[project.chain] : undefined
   const org = project.w ? REGISTRY.organization[project.w] : undefined
   const builtWith = [chain, org].filter((item) => item !== undefined)
