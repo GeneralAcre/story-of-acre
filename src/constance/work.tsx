@@ -105,14 +105,13 @@ export const PROJECTS: Project[] = [
         },
       ],
       features: [
-        { title: "Wallet profile", body: "Connect or paste a Solana wallet to see its credibility score, successful transactions, active days, protocol usage, and wallet age. Its whole history sits in one place, in plain language, so nobody has to dig through block explorers to judge it.",
-          image: "/projectPicture/Medusa/profile.png" },
-        { title: "Score simulator & DeFi rates", body: "Preview how staking SOL, repaying a loan, or holding longer would move a score, and compare the APR it unlocks across Solend, Kamino, and MarginFi. The score stops being a black box: people see how to improve it and what it's worth.",
-          image: "/projectPicture/Medusa/simulator.png" },
-        { title: "Public leaderboard", body: "Ranks top-scoring wallets, with anonymous defaults and opt-in display names. Seeing strong wallets sets a benchmark and gives reliable borrowers a visible reward for their history.",
-          image: "/projectPicture/Medusa/leaderboard.png" },
-        { title: "Point-based NFT badges", body: "Four badge levels, from High Risk to Prime, earned by points, with higher levels needing stronger on-chain evidence. The badge makes a wallet's reputation portable, so other apps can read it at a glance.",
-          image: "/projectPicture/Medusa/badge.png" },
+        { title: "Wallet trust check", body: "Paste or connect any Solana wallet to see how trustworthy it is, in plain language instead of raw transaction data.",
+          image: "/projectPicture/Medusa/profile.png", subfeatures: [
+          { title: "Credit score", body: "One score built from the wallet's age, balance, successful transactions, active days, and protocol usage, with a risk level from High Risk to Prime." },
+          { title: "Score simulator", body: "See how staking SOL, repaying a loan, or holding longer would change the score, and the lending rates it could unlock on Solend, Kamino, and MarginFi." },
+          { title: "NFT badge", body: "Earn a badge that matches the score, so other apps can see the wallet's reputation at a glance." },
+          { title: "Leaderboard", body: "See the top-scoring wallets. Names stay anonymous unless the owner chooses to show one." },
+        ] },
       ],
       tech: [
         { name: "Next.js", use: "App framework and page routing" },
@@ -192,13 +191,13 @@ export const PROJECTS: Project[] = [
         },
       ],
       features: [
-        { title: "Claimable event badges", body: "Every event gets its own badge, open to claim during the event and closed after. It's proof you were there that lasts long after the event is over.",
-          image: "/projectPicture/AcreLabs/claim-badge.png" },
-        { title: "Community member cards", body: "Pick a community and get your own ID-style card with your name, X handle, and photo, or create cards for your own community. Members get a visible way to say they belong beyond a Telegram or Discord group, and communities get a way to recognize them.",
-          image: "/projectPicture/AcreLabs/member-card.png" },
+        { title: "Badges & Cards", body: "Collect proof of the events you attend and the communities you belong to, all on Avalanche.",
+          image: "/projectPicture/AcreLabs/claim-badge.png", subfeatures: [
+          { title: "Event badges", body: "Every event gets its own badge. Claim it while the event is open; it closes after. Any organizer can connect a wallet and create badges for their event." },
+          { title: "Member cards", body: "Pick a community and get an ID-style card with your name, X handle, and photo. Communities can create cards for their own members." },
+        ] },
         { title: "Leaderboard", body: "Earn 10 points per badge claimed and 5 per member card, with top collectors ranked across AcreLabs. Showing up becomes something people can see and compete on, and the members who keep coming back get rewarded.",
           image: "/projectPicture/AcreLabs/leaderboard.png" },
-        { title: "Create your own badge", body: "Any organizer can connect a wallet and issue badges for their event." },
       ],
       tech: [
         { name: "Next.js", use: "App framework and page routing" },
@@ -231,17 +230,19 @@ export const PROJECTS: Project[] = [
         },
       ],
       features: [
-        { title: "Themed decks", body: "Three live decks (Life, Relationship, and Meme), each with its own art and price from 0.001 SOL. Different questions need different answers, so each deck matches the reading to the question instead of feeling generic.",
-          image: "/projectPicture/Obsession/decks.png" },
-        { title: "Sealed on-chain draw", body: "Every pull is drawn on-chain, powered by MagicBlock. A fortune only feels meaningful if the draw is fair, and anyone can check the odds." },
-        { title: "Collection", body: "Every card you pull is kept in your collection, so you can return when the answer changes." },
+        { title: "Gacha packs", body: "Pick a deck, open a sealed pack, and get a fortune card for your question. Every draw is decided on-chain, so nobody can rig the result.",
+          image: "/projectPicture/Obsession/decks.png", subfeatures: [
+          { title: "Themed decks", body: "Choose a Life, Relationship, or Meme deck, each with its own art, to match the question on your mind." },
+          { title: "Fair draws with MagicBlock VRF", body: "We integrated MagicBlock's VRF (Verifiable Random Function) to pick each card. When you open a pack, the VRF generates a random number together with a cryptographic proof, and our Solana program checks that proof on-chain before using the number to choose your card. Nobody can predict or change the result, not even us, and anyone can verify that a draw was fair." },
+          { title: "Collection", body: "Every card you pull is saved to your collection, so you can come back to it when the answer changes." },
+        ] },
       ],
       tech: [
         { name: "Vite + React", use: "Front end and draw flow" },
         { name: "Tailwind CSS", use: "Styling" },
         { name: "Solana web3.js", use: "Pack purchase and draw transactions" },
         { name: "Solana Wallet Adapter", use: "Wallet connection" },
-        { name: "MagicBlock", use: "On-chain draw engine" },
+        { name: "MagicBlock VRF", use: "Verifiable on-chain randomness for every draw" },
       ],
       description:
         "Obsession is a fully on-chain fortune-card gacha on Solana. For entertainment only. Not financial, legal, or relationship advice.",
@@ -257,15 +258,19 @@ export const PROJECTS: Project[] = [
       socials: [{ label: "created_alpha", href: "https://x.com/created_alpha" }],
       tags: ["AI chat", "Social skills", "Solana"],
       features: [
-        { title: "Real-time AI conversations", body: "Practice approaching and talking to someone through live AI chat. Confidence comes from practice, so you can rehearse without real stakes and stop freezing up in real conversations." },
-        { title: "AURA reputation token", body: "Every interaction earns or costs AURA, a reputation token stored on Solana that tracks your skill over time. Seeing your progress shows whether you're actually getting better and keeps you practicing." },
-        { title: "Upgrade or trade", body: "AURA can be upgraded or traded, so your skill has value outside the game." },
-        { title: "Mobile-first wallet login", body: "Works with Solana wallets on Saga and Seeker phones, or Phantom and Backpack on desktop." },
+        { title: "AI conversations", body: "Practice approaching and talking to someone with an AI that replies in real time, so you can build confidence without real-life stakes.", subfeatures: [
+          { title: "Situation map", body: "Pick a place on the map and start a live conversation with an AI character in that setting." },
+          { title: "Scenarios", body: "Quick real-life moments, like a smile across a coffee shop or a reply that just says 'lol'. Choose how you would respond and see how well you handled it." },
+        ] },
+        { title: "AURA reputation token", body: "Every conversation earns or costs AURA, a reputation token on Solana that tracks how your skills improve over time.", subfeatures: [
+          { title: "Earn AURA", body: "Handle a conversation well and you earn AURA; fumble it and you lose some, so your balance shows your real progress." },
+          { title: "Upgrade", body: "Spend AURA in the store on upgrades, like streak boosts, to level up faster." },
+        ] },
       ],
       tech: [
         { name: "Next.js", use: "App framework" },
         { name: "Tailwind CSS", use: "Styling" },
-        { name: "Solana Wallet Adapter", use: "Wallet login on Saga, Seeker, Phantom, and Backpack" },
+        { name: "Solana Wallet Adapter", use: "Wallet login" },
         { name: "Solana", use: "Stores the AURA reputation token" },
       ],
       description:
@@ -292,13 +297,13 @@ export const PROJECTS: Project[] = [
         },
       ],
       features: [
-        { title: "Proof of Presence for any event", body: "Attach Signal to an existing Luma or Eventbrite event. It deploys on Solana, Avalanche, Base, and more, and generates a check-in QR in one transaction, so organizers keep the tools they already use instead of rebuilding the event on a new platform.",
-          image: "/projectPicture/Signal/hero.png" },
-        { title: "Attach. Scan. Earn.", body: "Attach to an event, scan and verify with World ID, then earn an NFT and a higher Signal Score. One human gets one check-in, so rewards go to real people and nobody can farm check-ins with many wallets.",
-          image: "/projectPicture/Signal/three-steps.png" },
-        { title: "Multi-chain live events", body: "Browse and filter events across Solana, Avalanche, Base, Polygon, and Ethereum, then check in and claim your NFT. Communities live on different chains, and Signal follows them there instead of locking attendance to one.",
-          image: "/projectPicture/Signal/live-events.png" },
-        { title: "Builder Passport", body: "A portable on-chain identity tied to your wallet, earned across every event and platform." },
+        { title: "Proof of Presence (POAP)", body: "Check in to an event and get an on-chain proof that you were really there. Each check-in is verified, so one person can only claim once.",
+          image: "/projectPicture/Signal/hero.png", subfeatures: [
+          { title: "Works with Luma & Eventbrite", body: "Organizers attach Signal to an event they already run on Luma or Eventbrite. One transaction creates the check-in QR code, with no need to rebuild the event somewhere new." },
+          { title: "Scan & verify with World ID", body: "Attendees scan the QR code and confirm they're human with World ID: one human, one check-in. Bots and people with many wallets can't farm rewards." },
+          { title: "Multi-chain", body: "Check in and claim your proof on Solana, Avalanche, Base, Polygon, or Ethereum, wherever the community lives." },
+          { title: "Signal Score & Builder Passport", body: "Every check-in raises your Signal Score and adds to your Builder Passport, a portable on-chain record of the events and communities you've been part of." },
+        ] },
       ],
       tech: [
         { name: "Next.js", use: "App framework and page routing" },
@@ -321,13 +326,17 @@ export const PROJECTS: Project[] = [
       timeline: "April 2026",
       tags: ["Game", "Pixel art", "Arcade"],
       features: [
-        { title: "Arcade start screen", body: "A pixel-art Nana Plaza scene with score counters, music, and an Insert Coin start, styled like a classic arcade cabinet. The look sets a light, playful tone, so it feels like a game, not a form to fill in.",
-          image: "/projectPicture/GirlOrLadyboy/arcade.png" },
-        { title: "Story intro", body: "A short visual-novel opening sets the scene on Sukhumvit Soi 4 at 2 a.m., pulling players into the setting before the first question.",
-          image: "/projectPicture/GirlOrLadyboy/story.png" },
-        { title: "Spotter's field guide", body: "A Tips & Trick page explains the cultural background of kathoey in Thailand and the visual cues to look for, from easy to hard, so players learn and improve instead of guessing blindly.",
-          image: "/projectPicture/GirlOrLadyboy/field-guide.png" },
-        { title: "Score tracking", body: "Arcade-style 1UP and high-score counters track how well you do." },
+        { title: "Game", body: "Look at the character on screen and guess: girl or ladyboy? A light, arcade-style guessing game set in Bangkok's Nana Plaza.",
+          image: "/projectPicture/GirlOrLadyboy/arcade.png", subfeatures: [
+          { title: "Arcade start screen", body: "A pixel-art Nana Plaza scene with music and an Insert Coin start, styled like a classic arcade cabinet." },
+          { title: "Story intro", body: "A short visual-novel opening sets the scene on Sukhumvit Soi 4 at 2 a.m. before the first question." },
+          { title: "Score tracking", body: "Arcade-style 1UP and high-score counters show how well you do." },
+        ] },
+        { title: "Tips & Trick", body: "A field guide that helps players learn instead of guessing blindly.",
+          image: "/projectPicture/GirlOrLadyboy/field-guide.png", subfeatures: [
+          { title: "Cultural background", body: "Explains who kathoey are and their place in Thai culture." },
+          { title: "Visual cues", body: "Walks through what to look for, from easy cues to hard ones, so players get better each round." },
+        ] },
       ],
       tech: [
         { name: "Next.js", use: "App framework and page routing" },
