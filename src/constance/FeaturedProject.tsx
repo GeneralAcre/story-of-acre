@@ -29,8 +29,8 @@ export default function FeaturedProject({ title, description, website, areas = [
         {areas.length > 0 && (
           <ol className="flex flex-col border-t border-white/15">
             {areas.map((area) => (
-              <li key={area} className="flex gap-4 border-b border-white/15 py-4 text-lg md:text-xl">
-                <span className="font-medium text-white">{area}</span>
+              <li key={area} className="group flex gap-4 border-b border-white/15 py-4 text-lg transition-colors hover:border-[#CD8FDC]/60 md:text-xl">
+                <span className="font-medium text-white transition-colors group-hover:text-[#CD8FDC]">{area}</span>
               </li>
             ))}
           </ol>

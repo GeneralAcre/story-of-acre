@@ -1,6 +1,6 @@
 import { Marquee } from "@/components/magicui/marquee";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
-import { TECH_STACK } from "@/constance/tech-stack";
+import { TECH_STACK, TECH_STACK_TOOLS } from "@/constance/tech-stack";
 import Hero from "./hero";
 import FeaturedProject from "../constance/FeaturedProject";
 import ProjectTile from "../constance/ProjectTile";
@@ -27,6 +27,11 @@ export default function Home() {
               <Header title="Tech Stack" subtitle="Here are some of the technologies I'm familiar with." />
               <Marquee pauseOnHover className="-mx-8 w-[calc(100%+4rem)] [--duration:20s]">
                 {TECH_STACK.map((techStackItem) => (
+                  <ReviewCard key={techStackItem.title} {...techStackItem} />
+                ))}
+              </Marquee>
+              <Marquee reverse pauseOnHover className="-mx-8 w-[calc(100%+4rem)] [--duration:20s]">
+                {TECH_STACK_TOOLS.map((techStackItem) => (
                   <ReviewCard key={techStackItem.title} {...techStackItem} />
                 ))}
               </Marquee>
