@@ -4,7 +4,7 @@ const ReviewCard = ({title,description,}: {title: string;description: string;}) 
     return (
       <figure
         className={cn(
-          "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+          "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4 text-left",
           " bg-[#0A0A0A] hover:bg-[#141414] border-[#FFFFFF]/20",)}>
 
         <div className="flex flex-row items-center gap-2">
