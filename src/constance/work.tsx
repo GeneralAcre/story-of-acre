@@ -60,11 +60,13 @@ export const PROJECTS: Project[] = [
         },
       ],
       features: [
-        { title: "Match packs", body: "Fans remember moments, not stat lines, so packs are built around them. Pick an Event, Match, or Player pack and open a sealed card tied to a real World Cup moment, for 0.01–0.05 devnet SOL.",
-          image: "/projectPicture/Moment/draw-packs.png" },
-        { title: "Sealed on-chain draw", body: "Every pull is a real Solana transaction, resolved on MagicBlock's Ephemeral Rollup. Opening a pack feels instant but stays on-chain and trusted, without slow, expensive base-layer transactions." },
-        { title: "Verifiable randomness", body: "Rarity and card seed come from an oracle VRF you can check on-chain. Collectors only value rare cards if the odds are fair, and nobody has to trust hidden server-side randomness." },
-        { title: "Mint as a real NFT", body: "Claim any pull as an SPL token on the base layer. It's durable, transferable, and visible in any wallet, so the card is truly yours to hold, move, or sell instead of being locked in one platform's database." },
+        { title: "Gacha packs", body: "Open sealed packs of collectible cards built around real World Cup moments, and keep the plays you remember.",
+          image: "/projectPicture/Moment/draw-packs.png", subfeatures: [
+          { title: "Pick a pack", body: "Choose an Event, Match, or Player pack. Each one is built around the part of the game fans actually remember, not just stat lines." },
+          { title: "Instant on-chain draw", body: "Every pull is a real Solana transaction resolved on MagicBlock's Ephemeral Rollup, so opening a pack feels instant and stays on-chain." },
+          { title: "Fair odds", body: "Rarity comes from verifiable randomness you can check on-chain, so rare cards are rare for everyone." },
+          { title: "Keep your cards", body: "Claim any pull as an NFT you can hold, move, or sell from your own wallet." },
+        ] },
       ],
       tech: [
         { name: "React", use: "Pack selection, draw flow, and collection UI" },

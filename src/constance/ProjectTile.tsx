@@ -35,11 +35,11 @@ export default function ProjectTile({ title, cover, award }: ProjectTileProps) {
           <span>{title}</span>
         </h3>
         {award && (
-          <div className="flex items-start gap-2.5 text-[#FAC335]">
+          <div className="flex items-start gap-2.5 text-[#CD8FDC]">
             <Trophy className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
             <div className="flex flex-col gap-0.5">
               <span className="text-base font-bold leading-snug md:text-lg">{result}</span>
-              {event && <span className="text-sm leading-snug text-[#FAC335]/70">{event}</span>}
+              {event && <span className="text-sm leading-snug text-[#CD8FDC]/70">{event}</span>}
             </div>
           </div>
         )}

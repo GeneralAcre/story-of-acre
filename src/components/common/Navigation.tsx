@@ -23,7 +23,7 @@ export default function Navigation() {
       {/* Desktop: top header */}
       <header className="hidden md:flex fixed top-0 inset-x-0 z-50 h-14 items-center justify-between border-b border-white/10 bg-black/90 px-8 backdrop-blur-md">
         <Link href="/" aria-label="Home">
-          <Image src="/acre-logo.png" alt="Acre" width={32} height={32} className="h-8 w-auto" priority />
+          <Image src="/acre-star.png" alt="Acre" width={32} height={32} className="h-8 w-auto" priority />
         </Link>
         <nav className="flex items-center gap-1">
           {navLinks.map((link) => (

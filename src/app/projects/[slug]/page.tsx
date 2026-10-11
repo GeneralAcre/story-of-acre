@@ -24,9 +24,9 @@ const iconFor = (href: string) => LINK_ICONS.find(([re]) => re.test(href))?.[1]
 
 const BUTTON = "inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors"
 const CATEGORY_STYLES = {
-  Hackathon: "bg-[#7D0B2C] text-white",
-  "University project": "bg-[#FB4B4E] text-white",
-  Interest: "bg-[#FFCBDD] text-[#7D0B2C]",
+  Hackathon: "bg-[#480354] text-white", // dark amethyst
+  "University project": "bg-[#CD8FDC] text-[#480354]", // wisteria
+  Interest: "bg-[#86CDBB] text-[#480354]", // pearl aqua
 } as const
 
 export function generateStaticParams() {
