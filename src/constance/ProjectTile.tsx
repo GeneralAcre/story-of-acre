@@ -39,7 +39,7 @@ export default function ProjectTile({ title, cover, award }: ProjectTileProps) {
             <Trophy className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
             <div className="flex flex-col gap-0.5">
               <span className="text-base font-bold leading-snug md:text-lg">{result}</span>
-              {event && <span className="text-base leading-snug text-[#CD8FDC]/70 md:text-lg">{event}</span>}
+              {event && <span className="text-base font-bold leading-snug md:text-lg">{event}</span>}
             </div>
           </div>
         )}

@@ -8,7 +8,7 @@ export default function AwardLabel({ label, color = "#FAC335" }: { label: string
   return (
     <span className="flex flex-col gap-0.5" style={{ color }}>
       <span className="font-semibold leading-snug">{result}</span>
-      <span className="text-sm leading-snug opacity-60">{event.trim()}</span>
+      <span className="text-sm font-semibold leading-snug">{event.trim()}</span>
     </span>
   )
 }

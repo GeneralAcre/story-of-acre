@@ -28,6 +28,12 @@ const CATEGORY_STYLES = {
   "University project": "bg-[#CD8FDC] text-[#480354]", // wisteria
   Interest: "bg-[#86CDBB] text-[#480354]", // pearl aqua
 } as const
+// Award text uses the category color
+const CATEGORY_COLORS = {
+  Hackathon: "#480354",
+  "University project": "#CD8FDC",
+  Interest: "#86CDBB",
+} as const
 
 export function generateStaticParams() {
   return VISIBLE_PROJECTS.map((p) => ({ slug: projectSlug(p.title) }))
@@ -76,6 +82,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
     ...(team ? [{ label: "Team", value: team, pending: false }] : []),
   ]
 
+  const awardColor = category ? CATEGORY_COLORS[category] : "#000000"
   // Website buttons use the same colors as the category badge
   const websiteStyle = category ? CATEGORY_STYLES[category] : "bg-black text-white"
   const hostname = new URL(website).hostname.replace(/^www\./, "")
@@ -137,8 +144,8 @@ export default async function ProjectPage({ params }: { params: Params }) {
                           rel="noopener noreferrer"
                           className="group inline-flex items-start gap-2 text-base"
                         >
-                          <Trophy className="mt-1 size-4 shrink-0 text-black" aria-hidden="true" />
-                          <span className="underline-offset-4 group-hover:underline"><AwardLabel label={award.label} color="#000000" /></span>
+                          <Trophy className="mt-1 size-4 shrink-0" style={{ color: awardColor }} aria-hidden="true" />
+                          <span className="underline underline-offset-4 group-hover:opacity-80"><AwardLabel label={award.label} color={awardColor} /></span>
                         </a>
                       </dd>
                     </div>
