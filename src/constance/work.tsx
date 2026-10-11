@@ -33,7 +33,7 @@ export interface Project {
   overview?: { heading: string; body: string }[]
   contributions?: string[]
   // `image` turns a feature into a showcase row: screenshot beside the text.
-  features?: { title: string; body: string; image?: string }[]
+  features?: { title: string; body: string; image?: string; subfeatures?: { title: string; body: string; definitions?: { term: string; description: string }[] }[] }[]
   // Stack used, each with what it does in this project
   tech?: { name: string; use: string }[]
   // Pictures go in public/projectPicture/<Project>/ and are referenced as "/projectPicture/<Project>/file.png"
@@ -146,15 +146,18 @@ export const PROJECTS: Project[] = [
         },
       ],
       features: [
-        { title: "Market heatmap", body: "See at a glance which series are gaining or losing value. Each tile is a series, sized by trading volume and colored by price change over 24 hours, 7 days, or 30 days, so collectors can spot where money is moving before they buy instead of guessing from forum posts and social media." },
-        { title: "Real sale prices", body: "Price history from completed sales for every card, broken down by grade. Compare raw, PSA 9, PSA 10, and more side by side to see what a card actually sells for, not what sellers ask, without spending hours on eBay and SNKRDUNK." },
-        { title: "AI agent", body: "Give the agent a task, like a card, a grade, and a max price. It watches new listings all day, tells you how a price compares to recent sales, buys within your limit, and notifies you when something matches, so you never miss a deal or overpay in a rush." },
-        { title: "Community", body: "See the top traders of the week, follow what they buy and sell, and get notified when a new series drops or prices start to move. Market news lives in one place instead of across Facebook groups, Discord servers, and X." },
-        { title: "Live auctions", body: "Rare cards don't have a fixed price, so let the market decide. Put a card up for auction or bid in real time, with start times and reserve prices, and every auction settles through the same escrow as a normal sale." },
-        { title: "Direct messages", body: "Message a seller right from the listing to ask for close-ups of the corners or a short video under light, and get them in the same chat. Buyers can check a card's condition before paying, especially for raw cards, without leaving the app." },
-        { title: "Raw or graded", body: "No grading needed. Most cards people own are raw, and grading costs money and takes weeks, so you can list a raw card with its condition or a graded card with its grade, and both sell in the same marketplace. No more driving to a local store or event to sell." },
-        { title: "Protected payments", body: "Buyer funds sit in on-chain escrow and are only released after the card passes inspection. If it doesn't match the listing, the buyer is refunded, so nobody gets burned by fake cards or sellers who never ship. Cards can stay in the vault or ship to your home." },
-        { title: "No wallet needed", body: "Sign in with Google or email and a wallet is created for you automatically: no seed phrase, no browser extension. Most collectors have never used crypto, so it feels like any other app. Signing in is free; you only pay when you list or buy." },
+        { title: "Market", body: "Find cards, compare prices, and follow market activity in one place.", subfeatures: [
+          { title: "Buy & sell", body: "Browse listings or sell your own cards. Message sellers to ask questions or request close-up photos and videos.", definitions: [
+            { term: "Raw card", description: "A card that has not been professionally checked or scored." },
+            { term: "Graded card", description: "A card assessed by a grader. The grading company assigns it a numeric score (such as PSA 9 or PSA 10) and seals it in a protective case." },
+            { term: "Grader", description: "A trained specialist who checks a card’s condition and verifies its authenticity." },
+          ] },
+          { title: "Heatmap", body: "Each tile represents a card series. Larger tiles mean more trading volume, and the color shows whether prices are rising or falling. Choose 24 hours, 7 days, or 30 days to see changes over one day, one week, or one month." },
+          { title: "Sale price history", body: "See completed sales and compare actual prices by card condition and grade, instead of relying on asking prices." },
+          { title: "Auctions & safe checkout", body: "Set a start time and reserve price for an auction, or bid in real time. Escrow holds payment until the card arrives and is checked. If it does not match the listing, the buyer can be refunded. Keep the card in the vault or have it shipped to your home." },
+        ] },
+        { title: "AI buying assistant", body: "Set the card, grade, and maximum price you want. The assistant watches new listings, compares asking prices with recent sales, and can buy within your limit. It notifies you when it finds a match, so you do not have to monitor listings all day." },
+        { title: "Leaderboard", body: "See the top traders of the week and follow what they buy and sell. Check market activity and find out when prices move." },
       ],
       tech: [
         { name: "Next.js", use: "App framework and page routing" },

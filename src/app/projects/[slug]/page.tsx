@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
   const project = findProject((await params).slug)
   if (!project) notFound()
 
-  const { title, website, cover, description, award, category, tags, role, timeline, team, links, socials, overview, contributions, features, outcome } = project
+  const { title, website, description, award, category, tags, role, timeline, team, links, socials, overview, contributions, features } = project
   const chain = project.chain ? REGISTRY.chain[project.chain] : undefined
   const org = project.w ? REGISTRY.organization[project.w] : undefined
   const builtWith = [chain, org].filter((item) => item !== undefined)
@@ -217,25 +217,36 @@ export default async function ProjectPage({ params }: { params: Params }) {
           <Section label="Features">
             {features && features.length > 0 ? (
               <div className="flex flex-col gap-12 md:gap-16">
-                {features.map(({ title: name, body }) => (
+                {features.map(({ title: name, body, subfeatures }) => (
                   <div key={name} className="flex max-w-4xl flex-col gap-4">
                     <h3 className="text-2xl font-bold md:text-3xl">{name}</h3>
                     <p className="text-base leading-relaxed text-black/65 md:text-lg">{body}</p>
+                    {subfeatures && subfeatures.length > 0 && (
+                      <ul className="ml-2 flex flex-col gap-6 md:ml-4">
+                        {subfeatures.map(({ title: subfeatureTitle, body: subfeatureBody, definitions }) => (
+                          <li key={subfeatureTitle} className="flex flex-col gap-2">
+                            <h4 className="text-lg font-semibold md:text-xl">{subfeatureTitle}</h4>
+                            <p className="text-base leading-relaxed text-black/65 md:text-lg">{subfeatureBody}</p>
+                            {definitions && definitions.length > 0 && (
+                              <dl className="flex flex-col gap-3 rounded-lg border border-black/15 bg-black/[0.03] p-4 text-base leading-relaxed text-black/65 md:text-lg">
+                                {definitions.map(({ term, description }) => (
+                                  <div key={term}>
+                                    <dt className="inline font-semibold text-black">{term}:</dt>{" "}
+                                    <dd className="inline">{description}</dd>
+                                  </div>
+                                ))}
+                              </dl>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 ))}
               </div>
             ) : <Pending />}
           </Section>
 
-          <Section label="Outcome">
-            {outcome && outcome.length > 0 ? (
-              <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-x-12">
-                {outcome.map((item, i) => (
-                  <li key={i} className="text-lg font-medium leading-snug md:text-xl">{item}</li>
-                ))}
-              </ul>
-            ) : <Pending />}
-          </Section>
         </article>
       </div>
 
