@@ -249,7 +249,6 @@ export const PROJECTS: Project[] = [
     },
     {
       title: "Proof Of Alpha",
-      cover: "/projectPicture/proof-of-alpha/cover-hd.jpg",
       category: "Hackathon",
       w: "IslandDAO",
       chain: "Solana",
