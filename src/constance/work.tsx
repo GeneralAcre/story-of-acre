@@ -254,7 +254,7 @@ export const PROJECTS: Project[] = [
       w: "IslandDAO",
       chain: "Solana",
       role: "Project Owner",
-      timeline: "June – October 2026",
+      timeline: "June 2026 (1-week hackathon)",
       socials: [{ label: "created_alpha", href: "https://x.com/created_alpha" }],
       tags: ["AI chat", "Social skills", "Solana"],
       features: [
@@ -323,7 +323,7 @@ export const PROJECTS: Project[] = [
       category: "Hackathon",
       w: "Cursor",
       role: "Project Owner",
-      timeline: "April 2026",
+      timeline: "April 2026 (2-week hackathon)",
       tags: ["Game", "Pixel art", "Arcade"],
       features: [
         { title: "Game", body: "Look at the character on screen and guess: girl or ladyboy? A light, arcade-style guessing game set in Bangkok's Nana Plaza.",
