@@ -101,14 +101,12 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    cursor: none;
   }
   body {
     @apply bg-background text-foreground;
-    cursor: none;
   }
-  a, button, [role="button"] {
-    cursor: none;
+  button, [role="button"] {
+    cursor: pointer;
   }
 
   .font-heading {
