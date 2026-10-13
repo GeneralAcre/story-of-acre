@@ -8,6 +8,14 @@ import SectionReveal from "@/components/common/SectionReveal"
 
 const CONTRIBUTIONS = [
   {
+    title: "Team1 x KU: Introduction to Blockchain",
+    year: "October 2026",
+    role: "Event Lead",
+    tags: ["Avalanche"],
+    image: "/contribution/Team1-Kaset.png",
+    href: "https://x.com/Acrepedia/status/2109252406076899578?s=20",
+  },
+  {
     title: "Team1 Codebase Hackathon : Chula Edition",
     year: "September 2026",
     role: "Event Lead",
