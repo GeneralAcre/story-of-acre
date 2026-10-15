@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Trophy } from "lucide-react"
+import { ExternalLink, Trophy } from "lucide-react"
 import { projectSlug } from "@/constance/work"
 import SiteCover from "@/components/common/SiteCover"
 
@@ -17,22 +17,33 @@ const splitAward = (label: string) => {
   return result ? { event: event.trim(), result } : { event: "", result: event.trim() }
 }
 
-export default function ProjectTile({ title, cover, award }: ProjectTileProps) {
+export default function ProjectTile({ title, website, cover, award }: ProjectTileProps) {
   const { event, result } = award ? splitAward(award.label) : { event: "", result: "" }
 
   return (
-    <Link href={`/projects/${projectSlug(title)}`} className="group flex flex-col gap-2.5 text-left md:gap-3">
+    <div className="group flex flex-col gap-2.5 text-left md:gap-3">
       <div className="transition-transform duration-300 group-hover:-translate-y-1">
-        <SiteCover
-          title={title}
-          cover={cover}
-          className="aspect-[4/3] w-full transition-shadow duration-300 group-hover:shadow-[0_12px_30px_-12px_rgba(255,255,255,0.12)]"
-        />
+        <Link href={`/projects/${projectSlug(title)}`} aria-label={`View ${title} project details`}>
+          <SiteCover
+            title={title}
+            cover={cover}
+            className="aspect-[4/3] w-full transition-shadow duration-300 group-hover:shadow-[0_12px_30px_-12px_rgba(255,255,255,0.12)]"
+          />
+        </Link>
       </div>
 
       <div className="flex flex-col gap-2 px-0.5">
-        <h3 className="flex gap-2 text-2xl font-bold leading-tight text-white md:text-xl lg:text-2xl">
-          <span>{title}</span>
+        <h3 className="flex items-center justify-between gap-3 text-2xl font-bold leading-tight text-white md:text-xl lg:text-2xl">
+          <Link href={`/projects/${projectSlug(title)}`} className="hover:text-white/80">{title}</Link>
+          <a
+            href={website}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Visit ${title} website`}
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#CD8FDC]/70 px-4 py-2 text-sm font-semibold text-white/85 transition-colors hover:border-[#CD8FDC] hover:bg-[#CD8FDC]/10 hover:text-white"
+          >
+            Visit <ExternalLink className="size-4" aria-hidden="true" />
+          </a>
         </h3>
         {award && (
           <div className="flex items-start gap-2.5 text-[#CD8FDC]">
@@ -44,6 +55,6 @@ export default function ProjectTile({ title, cover, award }: ProjectTileProps) {
           </div>
         )}
       </div>
-    </Link>
+    </div>
   )
 }
