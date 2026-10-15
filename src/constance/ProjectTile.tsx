@@ -1,11 +1,10 @@
 import Link from "next/link"
-import { ExternalLink, Trophy } from "lucide-react"
+import { ArrowRight, Trophy } from "lucide-react"
 import { projectSlug } from "@/constance/work"
 import SiteCover from "@/components/common/SiteCover"
 
 interface ProjectTileProps {
   title: string
-  website: string
   cover?: string
   award?: { label: string; href: string }
 }
@@ -17,7 +16,7 @@ const splitAward = (label: string) => {
   return result ? { event: event.trim(), result } : { event: "", result: event.trim() }
 }
 
-export default function ProjectTile({ title, website, cover, award }: ProjectTileProps) {
+export default function ProjectTile({ title, cover, award }: ProjectTileProps) {
   const { event, result } = award ? splitAward(award.label) : { event: "", result: "" }
 
   return (
@@ -35,15 +34,13 @@ export default function ProjectTile({ title, website, cover, award }: ProjectTil
       <div className="flex flex-col gap-2 px-0.5">
         <h3 className="flex items-center justify-between gap-3 text-2xl font-bold leading-tight text-white md:text-xl lg:text-2xl">
           <Link href={`/projects/${projectSlug(title)}`} className="hover:text-white/80">{title}</Link>
-          <a
-            href={website}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Visit ${title} website`}
+          <Link
+            href={`/projects/${projectSlug(title)}`}
+            aria-label={`View ${title} project details`}
           className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#CD8FDC]/70 px-4 py-2 text-sm font-semibold text-white/85 transition-colors hover:border-[#CD8FDC] hover:bg-[#CD8FDC]/10 hover:text-white"
           >
-            Visit <ExternalLink className="size-4" aria-hidden="true" />
-          </a>
+            Visit <ArrowRight className="size-4" aria-hidden="true" />
+          </Link>
         </h3>
         {award && (
           <div className="flex items-start gap-2.5 text-[#CD8FDC]">
