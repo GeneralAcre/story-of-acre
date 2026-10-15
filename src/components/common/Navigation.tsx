@@ -43,9 +43,11 @@ export default function Navigation() {
         </nav>
       </header>
 
-      {/* Mobile: bottom tab bar. Opaque bg (no translucency/blur) so iOS Safari tints the area under
-          its floating toolbar to match; the ::after strip also covers that area if Safari doesn't. */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-4 border-t border-white/10 bg-[#0a0a0a] pb-[env(safe-area-inset-bottom)] after:pointer-events-none after:absolute after:inset-x-0 after:top-full after:h-40 after:bg-[#0a0a0a] after:content-['']">
+      {/* iOS 26 Safari samples an opaque, full-width fixed strip at the bottom edge to tint its toolbar */}
+      <div aria-hidden className="md:hidden pointer-events-none fixed inset-x-0 -bottom-2 z-40 h-3 bg-[#0a0a0a]" />
+
+      {/* Mobile: bottom tab bar (opaque, no translucency/blur, so Safari's toolbar tint matches it) */}
+      <nav className="md:hidden fixed bottom-0 inset-x-0 z-50 grid grid-cols-4 border-t border-white/10 bg-[#0a0a0a] pb-[env(safe-area-inset-bottom)]">
         {navLinks.map(({ label, href, icon: Icon }) => (
           <Link
             key={href}

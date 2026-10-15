@@ -134,6 +134,14 @@ body::after {
   background-size: 200px 200px;
 }
 
+/* iOS 26 Safari tints its toolbar from fixed elements touching the viewport edges; this transparent
+   full-screen overlay would win and let page content show through, so drop it on mobile */
+@media (max-width: 767px) {
+  body::after {
+    display: none;
+  }
+}
+
 /* Light section of the site (project case-study pages) */
 .theme-light {
   --background: #FFFFFF;
